@@ -1,0 +1,8 @@
+# Điền GitHub handle thật. Xem docs/protocols/OWNERSHIP.md
+/ai_core/                                  @tuyen
+/ai_core/ai_core/schemas.py                @tuyen @backend-dev @frontend-dev
+/backend/                                  @backend-dev
+/frontend/                                 @frontend-dev
+/frontend/src/types/api.ts                 @frontend-dev @backend-dev
+/docs/protocols/AI_CORE_CONTRACT.md        @tuyen @backend-dev @frontend-dev
+/docs/protocols/API_CONTRACT.md            @tuyen @backend-dev @frontend-dev

@@ -1,0 +1,74 @@
+{
+  "version": "0.1",
+  "questions": [
+    {
+      "id": "family_history",
+      "text": "Trong gia đình (bố, mẹ, anh chị em ruột) có ai từng mắc ung thư không?",
+      "type": "multi_choice",
+      "options": ["Không", "Ung thư vú", "Ung thư đại trực tràng", "Ung thư gan", "Ung thư phổi", "Ung thư cổ tử cung", "Ung thư tuyến tiền liệt", "Khác"],
+      "required": true
+    },
+    {
+      "id": "smoking",
+      "text": "Bạn có đang hút thuốc hoặc từng hút thuốc không?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "pack_years",
+      "text": "Ước tính số gói-năm (số gói/ngày × số năm hút)?",
+      "type": "number",
+      "required": true,
+      "depends_on": "smoking=true"
+    },
+    {
+      "id": "alcohol",
+      "text": "Mức độ uống rượu bia?",
+      "type": "single_choice",
+      "options": ["Không", "Ít (≤1 lần/tuần)", "Thường xuyên (≥3 lần/tuần)"],
+      "required": true
+    },
+    {
+      "id": "hbv_hcv",
+      "text": "Bạn có từng được chẩn đoán viêm gan B hoặc C không?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "f_hpv_vaccine",
+      "text": "Bạn đã tiêm vắc-xin HPV chưa?",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "symptom_lump",
+      "text": "Gần đây bạn có sờ thấy khối u hoặc cục bất thường ở vú, cổ, bụng hay nơi nào khác không?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "symptom_bleeding",
+      "text": "Bạn có bị chảy máu bất thường (đi ngoài ra máu, ho ra máu, ra máu âm đạo ngoài kỳ kinh) không?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "symptom_weight_loss",
+      "text": "Bạn có sụt cân nhanh (>5% cân nặng trong 6 tháng) mà không rõ nguyên nhân không?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "symptom_persistent_pain",
+      "text": "Bạn có cơn đau kéo dài trên 3 tuần không giải thích được không?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "other_symptoms",
+      "text": "Bạn có triệu chứng nào khác muốn chia sẻ không? (tuỳ chọn)",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

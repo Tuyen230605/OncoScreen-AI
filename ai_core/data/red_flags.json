@@ -1,0 +1,26 @@
+[
+  {
+    "code": "symptom_lump",
+    "symptom": "Sờ thấy khối u / cục bất thường",
+    "severity": "urgent",
+    "advice": "Hãy đến cơ sở y tế chuyên khoa để được khám và đánh giá trong vài ngày tới."
+  },
+  {
+    "code": "symptom_bleeding",
+    "symptom": "Chảy máu bất thường",
+    "severity": "urgent",
+    "advice": "Chảy máu bất thường cần được bác sĩ thăm khám sớm. Đừng trì hoãn."
+  },
+  {
+    "code": "symptom_weight_loss",
+    "symptom": "Sụt cân nhanh không rõ nguyên nhân",
+    "severity": "soon",
+    "advice": "Hãy đặt lịch khám tổng quát trong 1–2 tuần tới để tìm nguyên nhân."
+  },
+  {
+    "code": "symptom_persistent_pain",
+    "symptom": "Đau kéo dài trên 3 tuần",
+    "severity": "soon",
+    "advice": "Đau kéo dài cần được đánh giá bởi bác sĩ; hãy đi khám trong vài tuần tới."
+  }
+]

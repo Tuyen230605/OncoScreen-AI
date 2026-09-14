@@ -1,0 +1,16 @@
+# PostgreSQL cho dev/demo: `docker compose up -d`  (dừng: `docker compose down`; xoá data: `docker compose down -v`)
+# Không muốn dùng Docker → DATABASE_URL=sqlite:///./dev.db trong .env
+services:
+  db:
+    image: postgres:16
+    container_name: oncoscreen-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: oncoscreen
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

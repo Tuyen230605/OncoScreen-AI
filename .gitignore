@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+npm-debug.log*
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Data / DB (local)
+*.db
+*.sqlite
+ai_core/data/vector_store/
+backend/dev.db
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

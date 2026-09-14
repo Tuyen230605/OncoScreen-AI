@@ -1,0 +1,41 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install
+        run: |
+          pip install -e "./ai_core[dev]"
+          pip install -r backend/requirements.txt
+      - name: Lint
+        run: |
+          ruff check ai_core backend
+      - name: Test ai_core
+        run: cd ai_core && pytest -q
+      - name: Test backend
+        env:
+          DATABASE_URL: sqlite:///./test.db
+          USE_MOCK_AGENT: "true"
+          SECRET_KEY: ci
+        run: cd backend && pytest -q
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: cd frontend && npm ci
+      - run: cd frontend && npm run lint --if-present
+      - run: cd frontend && npm run build
+        env:
+          NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api/v1
+          NEXT_PUBLIC_USE_MOCK_API: "true"
