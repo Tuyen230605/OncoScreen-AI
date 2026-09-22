@@ -125,7 +125,7 @@ class RedFlagResult(BaseModel):
     message: str | None = None
 
     @model_validator(mode="after")
-    def _validate_consistency(self) -> "RedFlagResult":
+    def _validate_consistency(self) -> RedFlagResult:
         if self.detected and (not self.flags or not self.message):
             raise ValueError("detected red-flag results require flags and message")
         if not self.detected and self.flags:
@@ -188,7 +188,7 @@ class ScreeningResult(BaseModel):
     trace_id: str
 
     @model_validator(mode="after")
-    def _validate_status_payload(self) -> "ScreeningResult":
+    def _validate_status_payload(self) -> ScreeningResult:
         if not self.disclaimer.strip():
             raise ValueError("disclaimer must not be empty")
         if not self.trace_id.strip():

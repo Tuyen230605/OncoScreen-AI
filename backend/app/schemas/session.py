@@ -3,7 +3,15 @@ from __future__ import annotations
 from datetime import date, datetime
 from typing import Generic, Literal, TypeVar
 
-from ai_core.schemas import Answer, CancerType, Questionnaire, RedFlagResult, RiskAssessment, ScreeningPlan, SessionStatus
+from ai_core.schemas import (
+    Answer,
+    CancerType,
+    Questionnaire,
+    RedFlagResult,
+    RiskAssessment,
+    ScreeningPlan,
+    SessionStatus,
+)
 from pydantic import BaseModel, Field
 
 from app.schemas.auth import UserOut
