@@ -55,7 +55,19 @@ _SRC_CERV = Source(
 
 
 class MockAgent:
+    """Deterministic agent dùng để FE/BE phát triển song song.
+
+    Mock vẫn chạy detector red-flag thật và trả đúng schema như agent thật.
+    ``today`` có thể truyền vào test để ngày ``next_due`` không phụ thuộc đồng hồ hệ thống.
+    """
+
     name = "mock"
+
+    def __init__(self, today: date | None = None) -> None:
+        self._today = today
+
+    def _current_date(self) -> date:
+        return self._today or date.today()
 
     def get_questionnaire(self, profile: PatientProfile) -> Questionnaire:
         return build_questionnaire(profile)
@@ -73,7 +85,7 @@ class MockAgent:
             return ScreeningResult(status="red_flag", red_flag=rf, disclaimer=DISCLAIMER_VI, trace_id=trace_id)
 
         p = ctx.profile
-        today = date.today()
+        today = self._current_date()
         items: list[PlanItem] = []
         factors: list[RiskFactor] = []
 

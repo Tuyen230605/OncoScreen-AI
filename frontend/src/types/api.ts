@@ -164,9 +164,11 @@ export interface SessionOut extends SessionSummary {
   reminders: ReminderOut[];
 }
 export interface AnswersIn {
+  /** Có thể gửi từng phần; backend merge theo question_id. */
   answers: Answer[];
 }
 export interface ReviewIn {
+  /** approve dùng draft_plan nếu final_plan không được gửi; reject bắt buộc note. */
   action: "approve" | "reject";
   final_plan?: ScreeningPlan;
   note?: string;

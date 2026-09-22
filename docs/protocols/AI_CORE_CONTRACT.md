@@ -66,6 +66,36 @@ EducationContent { cancer_type, title, warning_signs:list[str], prevention_tips:
 4. `draft_plan` serialise bằng `.model_dump(mode="json")` → lưu thẳng vào cột JSON, đọc lại bằng `ScreeningPlan.model_validate`.
 5. `MockAgent` và `ScreeningAgent` cùng interface, cùng schema → backend test với mock là đủ tin cậy về hình dạng dữ liệu.
 
+### 3.1 Payload theo trạng thái
+
+Đây là quy tắc bắt buộc cho mọi implementation của agent:
+
+| `status` | Bắt buộc | Phải rỗng |
+|---|---|---|
+| `red_flag` | `red_flag.detected=true`, `red_flag.flags`, `red_flag.message`, `disclaimer`, `trace_id` | `risk_assessment`, `draft_plan` |
+| `pending_review` | `risk_assessment`, `draft_plan.items[]`, `disclaimer`, `trace_id` | `red_flag` |
+
+`ScreeningResult` tự kiểm tra các quy tắc này bằng Pydantic. Backend không cần tự đoán
+payload có hợp lệ hay không; nếu agent trả dữ liệu sai, lỗi phải được map thành HTTP 502.
+
+### 3.2 Hợp đồng MockAgent
+
+`MockAgent` là implementation thay thế cho `ScreeningAgent`, không phải một schema khác.
+Nó phải:
+
+- trả questionnaire từ `data/questionnaire.json` và tôn trọng `depends_on`;
+- chạy detector red-flag rule-based trước khi tạo kế hoạch;
+- trả đủ ba trạng thái để tích hợp: `collecting` được thể hiện qua `missing_questions`,
+  `red_flag` khi phát hiện triệu chứng và `pending_review` khi đủ dữ liệu;
+- luôn trả `PlanItem.sources` không rỗng và disclaimer tiếng Việt;
+- hỗ trợ truyền `today` khi khởi tạo trong test để `next_due` tái lập được.
+
+Các ca chuẩn để BE/FE dùng khi tích hợp:
+
+1. Nữ 45 tuổi, có tiền sử gia đình ung thư vú, không có triệu chứng → `pending_review`.
+2. Nam 55 tuổi, hút thuốc từ 20 gói-năm trở lên → `pending_review`, có item phổi.
+3. Bất kỳ hồ sơ nào trả lời một red-flag symptom là `true` → `red_flag`, không có plan.
+
 ## 4. Cấu hình AI Core đọc từ env
 `LLM_PROVIDER`, `LLM_MODEL`, `LLM_API_KEY`, `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL`, `VECTOR_STORE_DIR`, `USE_MOCK_AGENT`.
 Backend không cần biết chi tiết — chỉ đảm bảo `.env` ở root được load (`ai_core.config` tự đọc).

@@ -22,7 +22,7 @@ class UserOut(BaseModel):
     id: str
     email: str
     full_name: str
-    role: str
+    role: Literal["patient", "doctor"]
     created_at: datetime
 
     model_config = {"from_attributes": True}

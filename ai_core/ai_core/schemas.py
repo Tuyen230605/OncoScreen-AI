@@ -10,7 +10,7 @@ from datetime import date, datetime
 from enum import Enum
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # --------------------------------------------------------------------------- enums
 
@@ -63,6 +63,8 @@ class RedFlagSeverity(str, Enum):
 
 
 class PatientProfile(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     age: int = Field(ge=0, le=120)
     gender: Gender
     genetics_history: list[str] = Field(default_factory=list, description="mã tiền sử gia đình, xem questionnaire.json")
@@ -71,7 +73,7 @@ class PatientProfile(BaseModel):
 
 
 class Answer(BaseModel):
-    question_id: str
+    question_id: str = Field(min_length=1)
     value: Any
 
 
@@ -86,6 +88,8 @@ class PatientContext(BaseModel):
 
 
 class Question(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     id: str
     text: str
     type: QuestionType
@@ -97,8 +101,10 @@ class Question(BaseModel):
 
 
 class Questionnaire(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     version: str
-    questions: list[Question]
+    questions: list[Question] = Field(min_length=1)
 
 
 # --------------------------------------------------------------------------- red flag
@@ -112,19 +118,31 @@ class RedFlag(BaseModel):
 
 
 class RedFlagResult(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     detected: bool
     flags: list[RedFlag] = Field(default_factory=list)
     message: str | None = None
+
+    @model_validator(mode="after")
+    def _validate_consistency(self) -> "RedFlagResult":
+        if self.detected and (not self.flags or not self.message):
+            raise ValueError("detected red-flag results require flags and message")
+        if not self.detected and self.flags:
+            raise ValueError("non-detected red-flag results cannot contain flags")
+        return self
 
 
 # --------------------------------------------------------------------------- output
 
 
 class Source(BaseModel):
-    doc_id: str
-    title: str
+    model_config = ConfigDict(extra="forbid")
+
+    doc_id: str = Field(min_length=1)
+    title: str = Field(min_length=1)
     section: str | None = None
-    excerpt: str
+    excerpt: str = Field(min_length=1)
     url: str | None = None
 
 
@@ -151,13 +169,17 @@ class PlanItem(BaseModel):
 
 
 class ScreeningPlan(BaseModel):
-    items: list[PlanItem]
+    model_config = ConfigDict(extra="forbid")
+
+    items: list[PlanItem] = Field(min_length=1)
     general_advice: str = ""
     generated_at: datetime
     model: str = Field(description="tên model/agent đã sinh plan, vd. claude-opus-5 | mock")
 
 
 class ScreeningResult(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     status: Literal["pending_review", "red_flag"]
     risk_assessment: RiskAssessment | None = None
     draft_plan: ScreeningPlan | None = None
@@ -165,13 +187,23 @@ class ScreeningResult(BaseModel):
     disclaimer: str
     trace_id: str
 
-    @field_validator("draft_plan")
-    @classmethod
-    def _no_plan_on_red_flag(cls, v: ScreeningPlan | None, info: Any) -> ScreeningPlan | None:
-        # invariant #1 của contract: red_flag → không có plan
-        if info.data.get("status") == "red_flag" and v is not None:
-            raise ValueError("draft_plan must be None when status == 'red_flag'")
-        return v
+    @model_validator(mode="after")
+    def _validate_status_payload(self) -> "ScreeningResult":
+        if not self.disclaimer.strip():
+            raise ValueError("disclaimer must not be empty")
+        if not self.trace_id.strip():
+            raise ValueError("trace_id must not be empty")
+        if self.status == "red_flag":
+            if self.draft_plan is not None or self.risk_assessment is not None:
+                raise ValueError("red_flag results cannot contain risk_assessment or draft_plan")
+            if self.red_flag is None or not self.red_flag.detected:
+                raise ValueError("red_flag results require red_flag.detected=true")
+        else:
+            if self.draft_plan is None or self.risk_assessment is None:
+                raise ValueError("pending_review results require risk_assessment and draft_plan")
+            if self.red_flag is not None:
+                raise ValueError("pending_review results cannot contain red_flag")
+        return self
 
 
 class EducationContent(BaseModel):

@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from typing import Generic, Literal, TypeVar
 
-from ai_core.schemas import Answer, Questionnaire, RedFlagResult, RiskAssessment, ScreeningPlan
+from ai_core.schemas import Answer, CancerType, Questionnaire, RedFlagResult, RiskAssessment, ScreeningPlan, SessionStatus
 from pydantic import BaseModel, Field
 
 from app.schemas.auth import UserOut
@@ -32,10 +32,10 @@ class ReminderOut(BaseModel):
     id: str
     session_id: str
     patient_id: str
-    cancer_type: str
+    cancer_type: CancerType
     method: str
     due_date: date
-    status: str
+    status: Literal["scheduled", "due", "done", "skipped"]
     completed_at: date | None = None
     message: str | None = None
 
@@ -46,7 +46,7 @@ class SessionSummary(BaseModel):
     id: str
     patient_id: str
     patient_name: str
-    status: str
+    status: SessionStatus
     created_at: datetime
     updated_at: datetime
     has_red_flag: bool

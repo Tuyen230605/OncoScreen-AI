@@ -1,4 +1,7 @@
+from datetime import date
+
 from ai_core.api import get_agent
+from ai_core.mock import MockAgent
 from ai_core.schemas import Answer, Gender, PatientContext, PatientProfile, ScreeningResult
 
 
@@ -38,3 +41,23 @@ def test_missing_questions_respects_depends_on():
     assert "pack_years" not in missing
     missing2 = agent.missing_questions(profile, [Answer(question_id="smoking", value=True)])
     assert "pack_years" in missing2
+
+
+def test_mock_agent_supports_deterministic_due_dates():
+    agent = MockAgent(today=date(2026, 9, 14))
+    result = agent.run_screening(_ctx(genetics_history=["breast_cancer_mother"]))
+    assert result.draft_plan is not None
+    assert result.draft_plan.items[0].next_due >= date(2026, 9, 14)
+
+
+def test_mock_agent_smoking_case_contains_lung_plan():
+    profile = PatientProfile(age=55, gender=Gender.male, lifestyle={"smoking": True, "pack_years": 30})
+    answers = [
+        Answer(question_id="smoking", value=True),
+        Answer(question_id="pack_years", value=30),
+    ]
+    result = MockAgent(today=date(2026, 9, 14)).run_screening(
+        PatientContext(session_id="lung", profile=profile, answers=answers)
+    )
+    assert result.draft_plan is not None
+    assert any(item.cancer_type.value == "lung" for item in result.draft_plan.items)

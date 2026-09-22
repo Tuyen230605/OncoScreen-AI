@@ -59,6 +59,14 @@ SessionOut = SessionSummary & {
 - role=patient: `draft_plan` luôn `null`; `final_plan`/`risk_assessment` chỉ khác `null` khi `status=approved`.
 - role=doctor: thấy tất cả.
 
+**Quy tắc gửi answers:**
+
+- `POST /sessions/{id}/answers` là thao tác merge theo `question_id`; gửi lại cùng một
+  `question_id` sẽ ghi đè câu trả lời cũ.
+- Có thể gửi từng phần. Khi còn câu bắt buộc đang hiển thị, response giữ `status=collecting`.
+- Red-flag được kiểm tra trước việc kiểm tra đủ câu và trước khi gọi agent tạo kế hoạch.
+- Khi chuyển sang `red_flag` hoặc `pending_review`, session không nhận answers tiếp và trả HTTP 409.
+
 ## 4. Doctor — HITL
 | Method | Path | Role | Body | Response |
 |---|---|---|---|---|
@@ -74,6 +82,13 @@ ReviewIn = {
 }
 ```
 Approve → backend: `status=approved`, lưu `final_plan`, `doctor_id`, `reviewed_at`, ghi `audit_logs`, sinh `reminders`.
+
+**Quy tắc ReviewIn:**
+
+- `approve`: `final_plan` có thể bỏ trống để dùng nguyên `draft_plan`; nếu gửi lên thì phải
+  đúng schema `ScreeningPlan` và vẫn phải có source cho từng item.
+- `reject`: bắt buộc `note` không rỗng; không tạo reminder.
+- Review lại session không còn `pending_review` trả HTTP 409.
 
 ## 5. Reminders
 | Method | Path | Role | Body | Response |
