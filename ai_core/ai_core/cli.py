@@ -12,7 +12,16 @@ from ai_core.schemas import Answer, Gender, PatientContext, PatientProfile
 def demo(real: bool) -> None:
     agent = get_agent(force_mock=not real)
     profile = PatientProfile(age=45, gender=Gender.female, genetics_history=["breast_cancer_mother"])
-    answers = [Answer(question_id="smoking", value=False), Answer(question_id="symptom_lump", value=False)]
+    answers = [
+        Answer(question_id="family_history", value=["Ung thư vú"]),
+        Answer(question_id="smoking", value=False),
+        Answer(question_id="alcohol", value="Không"),
+        Answer(question_id="hbv_hcv", value=False),
+        Answer(question_id="symptom_lump", value=False),
+        Answer(question_id="symptom_bleeding", value=False),
+        Answer(question_id="symptom_weight_loss", value=False),
+        Answer(question_id="symptom_persistent_pain", value=False),
+    ]
     ctx = PatientContext(session_id="demo", profile=profile, answers=answers)
     print(f"agent = {agent.name}")
     print(json.dumps(agent.run_screening(ctx).model_dump(mode="json"), ensure_ascii=False, indent=2))

@@ -10,7 +10,12 @@ from ai_core.graph.state import AgentState
 
 def _after_red_flag(state: AgentState) -> str:
     rf = state.get("red_flag")
-    return END if (rf and rf.detected) else "assess_risk"
+    if rf and rf.detected:
+        return END
+    missing = state.get("missing_questions", [])
+    if missing:
+        raise ValueError("missing required questions: " + ", ".join(missing))
+    return "assess_risk"
 
 
 def build_graph():

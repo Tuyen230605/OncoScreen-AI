@@ -44,5 +44,7 @@ def detect_red_flags(answers: list[Answer]) -> RedFlagResult:
 
 def _is_truthy(v: object) -> bool:
     if isinstance(v, str):
-        return v.strip().lower() in _TRUTHY
-    return v in _TRUTHY
+        return v.strip().casefold() in _TRUTHY
+    if isinstance(v, (int, float)) and not isinstance(v, bool):
+        return v == 1
+    return v is True
