@@ -9,6 +9,7 @@ from __future__ import annotations
 from typing import Protocol
 
 from ai_core.config import settings
+from ai_core.errors import AgentError
 from ai_core.schemas import (
     Answer,
     CancerType,
@@ -19,10 +20,6 @@ from ai_core.schemas import (
     RedFlagResult,
     ScreeningResult,
 )
-
-
-class AgentError(Exception):
-    """Lỗi nội bộ AI Core. Backend map → HTTP 502."""
 
 
 class ScreeningAgentProtocol(Protocol):
