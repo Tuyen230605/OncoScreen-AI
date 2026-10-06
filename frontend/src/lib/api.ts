@@ -68,14 +68,14 @@ export const api = {
   // sessions (patient)
   createSession: () => (USE_MOCK ? mock.createSession() : request<SessionOut>("/sessions", { method: "POST" })),
   listMySessions: (status?: string, page = 1) =>
-    USE_MOCK ? mock.listSessions() : request<Page<SessionSummary>>(`/sessions${qs({ status, page })}`),
+    USE_MOCK ? mock.listSessions(status) : request<Page<SessionSummary>>(`/sessions${qs({ status, page })}`),
   getSession: (id: string) => (USE_MOCK ? mock.getSession(id) : request<SessionOut>(`/sessions/${id}`)),
   submitAnswers: (id: string, b: AnswersIn) =>
     USE_MOCK ? mock.submitAnswers(id, b) : request<SessionOut>(`/sessions/${id}/answers`, { method: "POST", body: JSON.stringify(b) }),
 
   // doctor
   listAllSessions: (status?: string, page = 1) =>
-    USE_MOCK ? mock.listSessions() : request<Page<SessionSummary>>(`/doctor/sessions${qs({ status, page })}`),
+    USE_MOCK ? mock.listSessions(status) : request<Page<SessionSummary>>(`/doctor/sessions${qs({ status, page })}`),
   getPatientDetail: (id: string) => (USE_MOCK ? mock.getPatientDetail(id) : request<PatientDetail>(`/doctor/patients/${id}`)),
   review: (id: string, b: ReviewIn) =>
     USE_MOCK ? mock.review(id, b) : request<SessionOut>(`/sessions/${id}/review`, { method: "POST", body: JSON.stringify(b) }),

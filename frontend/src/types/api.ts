@@ -42,7 +42,9 @@ export interface Lifestyle {
   smoking?: boolean;
   pack_years?: number;
   alcohol?: "none" | "light" | "heavy";
-  bmi?: number;
+  height_cm?: number;
+  weight_kg?: number;
+  bmi?: number; // Vẫn giữ bmi nhưng sẽ tính tự động từ height/weight
   exercise?: "none" | "light" | "regular";
   [k: string]: unknown;
 }

@@ -12,7 +12,11 @@ export const getProfile = () => wait(profile);
 export const putProfile = (b: PatientProfileIn) => wait((profile = { ...profile, ...b, updated_at: new Date().toISOString() }));
 
 export const createSession = () => wait<SessionOut>({ ...sessions["s-collecting"], id: "s-new", questionnaire });
-export const listSessions = () => wait<Page<SessionSummary>>({ items: Object.values(sessions), total: 4, page: 1, page_size: 20 });
+export const listSessions = (status?: string) => {
+  const all = Object.values(sessions);
+  const filtered = status ? all.filter((s) => s.status === status) : all;
+  return wait<Page<SessionSummary>>({ items: filtered, total: filtered.length, page: 1, page_size: 20 });
+};
 export const getSession = (id: string) => wait<SessionOut>(sessions[id] ?? sessions["s-approved"]);
 export const submitAnswers = (id: string, b: AnswersIn) => {
   const redFlag = b.answers.some((a) => a.question_id.startsWith("symptom_") && (a.value === true || a.value === "true"));
