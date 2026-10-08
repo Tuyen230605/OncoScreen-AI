@@ -29,6 +29,8 @@ DEMO = [
 ]
 
 if __name__ == "__main__":
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     init_db()
     db = SessionLocal()
     for email, name, role, profile in DEMO:
@@ -40,4 +42,5 @@ if __name__ == "__main__":
             db.add(PatientProfile(user_id=user.id, **profile))
             db.commit()
     db.close()
-    print("Seed xong. Mật khẩu chung: 123456")
+    print("Seed xong. Mat khau chung: 123456")
+
