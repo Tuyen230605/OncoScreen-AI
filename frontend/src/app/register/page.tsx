@@ -4,7 +4,7 @@ import { FormEvent, Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import { getUser, homeFor, saveSession } from "@/lib/auth";
-import { anonymousConsultToken, clearConsult, getStoredConsult } from "@/lib/consult";
+import { anonymousConsultToken, clearConsult, getStoredConsult, saveConsult } from "@/lib/consult";
 import { errorMessage } from "@/lib/errors";
 import { Brand } from "@/components/Brand";
 import { InlineError } from "@/components/ui";
@@ -65,7 +65,11 @@ function RegisterForm() {
       });
       const res = await api.login({ email: email.trim(), password });
       saveSession(res.access_token, res.user);
-      if (linked) clearConsult(null);
+      if (linked) {
+        // Phiên đã gắn vào tài khoản: chuyển con trỏ sang khoá của tài khoản để /patient/chat tiếp tục cuộc trò chuyện
+        saveConsult({ id: linked.id, access_token: linked.token }, res.user.id);
+        clearConsult(null);
+      }
       setDone(true);
       router.replace(linked ? `/patient/book?consult=${encodeURIComponent(linked.id)}` : "/patient");
     } catch (err) {

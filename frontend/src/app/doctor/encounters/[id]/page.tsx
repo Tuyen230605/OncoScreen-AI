@@ -16,7 +16,7 @@ import { BriefPanel } from "@/components/doctor/BriefPanel";
 import { CopilotChat } from "@/components/doctor/CopilotChat";
 import { TraceEvents } from "@/components/doctor/TraceEvents";
 import { Disclaimer } from "@/components/Disclaimer";
-import { PlanTable } from "@/components/PlanTable";
+import { isValidInterval, PlanTable } from "@/components/PlanTable";
 import { ReminderList } from "@/components/RecordSections";
 import { RecordTimeline, timelineAnchor } from "@/components/RecordTimeline";
 import { EncounterStatusBadge, PriorityBadge } from "@/components/StatusBadge";
@@ -33,6 +33,10 @@ import {
   Sparkles,
   UserCircle,
 } from "@/components/icons";
+
+/** Giới hạn độ dài theo `FinalizeEncounterIn` của backend. */
+const MAX_CONCLUSION = 4000;
+const MAX_NOTES = 8000;
 
 const clonePlan = (p: ScreeningPlan | null): ScreeningPlan | null => (p ? (JSON.parse(JSON.stringify(p)) as ScreeningPlan) : null);
 const planKey = (p: ScreeningPlan | null) =>
@@ -74,6 +78,7 @@ export default function EncounterPage({ params }: { params: { id: string } }) {
   const [notes, setNotes] = useState("");
   const [highlight, setHighlight] = useState<string[]>([]);
   const [regenerating, setRegenerating] = useState(false);
+  const [confirmRegenerate, setConfirmRegenerate] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [finalizing, setFinalizing] = useState(false);
   const [formError, setFormError] = useState("");
@@ -124,8 +129,16 @@ export default function EncounterPage({ params }: { params: { id: string } }) {
   const finalized = enc?.status === "finalized";
   const dirty = planKey(plan) !== planKey(enc?.draft_plan ?? null);
 
+  /** Tạo lại tóm tắt thay luôn kế hoạch nháp: nếu bác sĩ đã sửa kế hoạch thì hỏi xác nhận trước. */
+  function requestRegenerate() {
+    setFormError("");
+    if (dirty) setConfirmRegenerate(true);
+    else void regenerate();
+  }
+
   async function regenerate() {
     if (!enc) return;
+    setConfirmRegenerate(false);
     setRegenerating(true);
     setNotice("");
     setFormError("");
@@ -159,10 +172,12 @@ export default function EncounterPage({ params }: { params: { id: string } }) {
 
   function validate(): string | null {
     if (!conclusion.trim()) return "Vui lòng nhập kết luận / lời dặn gửi bệnh nhân.";
+    if (conclusion.trim().length > MAX_CONCLUSION) return `Kết luận tối đa ${MAX_CONCLUSION} ký tự.`;
+    if (notes.trim().length > MAX_NOTES) return `Ghi chú lâm sàng tối đa ${MAX_NOTES} ký tự.`;
     if (includePlan) {
       if (!plan || plan.items.length === 0) return "Kế hoạch đang trống. Thêm mục từ gợi ý guideline hoặc bỏ chọn lập kế hoạch.";
-      const bad = plan.items.findIndex((i) => !i.method.trim() || !(i.interval_months >= 1));
-      if (bad >= 0) return `Mục ${bad + 1} của kế hoạch cần có phương pháp và chu kỳ ≥ 1 tháng.`;
+      const bad = plan.items.findIndex((i) => !i.method.trim() || !isValidInterval(i.interval_months));
+      if (bad >= 0) return `Mục ${bad + 1} của kế hoạch cần có phương pháp và chu kỳ là số nguyên tháng (tối thiểu 1).`;
       if (plan.items.some((i) => i.sources.length === 0)) return "Mỗi mục kế hoạch phải có ít nhất một nguồn guideline.";
     }
     return null;
@@ -270,13 +285,39 @@ export default function EncounterPage({ params }: { params: { id: string } }) {
             Hồ sơ đầy đủ
           </Link>
           {!finalized && (
-            <button type="button" className="btn-secondary" onClick={() => void regenerate()} disabled={regenerating}>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={requestRegenerate}
+              disabled={regenerating || confirmRegenerate}
+            >
               {regenerating ? <span className="spinner" aria-hidden="true" /> : <RefreshCw className="h-4 w-4" aria-hidden="true" />}
               {regenerating ? "Đang tạo lại…" : "Tạo lại tóm tắt"}
             </button>
           )}
         </div>
       </header>
+
+      {confirmRegenerate && !finalized && (
+        <div className="space-y-3 rounded-lg border border-amber-200 bg-amber-50 p-4" role="alertdialog" aria-labelledby="regen-title">
+          <p id="regen-title" className="text-sm font-semibold text-amber-950">
+            Tạo lại tóm tắt và bỏ các chỉnh sửa kế hoạch?
+          </p>
+          <p className="text-sm text-amber-900">
+            Kế hoạch nháp sẽ được thay bằng bản mới theo tóm tắt mới; những gì bạn đã sửa trong kế hoạch (phương pháp, chu kỳ,
+            ngày hẹn, lý do, mục thêm hoặc bỏ) sẽ mất. Kết luận và ghi chú lâm sàng đang soạn được giữ nguyên.
+          </p>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <button type="button" className="btn-doctor" onClick={() => void regenerate()} disabled={regenerating}>
+              <RefreshCw className="h-4 w-4" aria-hidden="true" />
+              Tạo lại và bỏ chỉnh sửa
+            </button>
+            <button type="button" className="btn-ghost" onClick={() => setConfirmRegenerate(false)} disabled={regenerating}>
+              Giữ kế hoạch đang sửa
+            </button>
+          </div>
+        </div>
+      )}
 
       <Disclaimer text={brief?.disclaimer ?? enc.disclaimer} variant={brief ? "copilot" : "patient"} />
       {notice && (
@@ -304,7 +345,12 @@ export default function EncounterPage({ params }: { params: { id: string } }) {
                 text="Tóm tắt có thể chưa tạo được do lỗi AI. Bạn vẫn có thể khám và kết luận bình thường."
                 action={
                   !finalized ? (
-                    <button type="button" className="btn-doctor" onClick={() => void regenerate()} disabled={regenerating}>
+                    <button
+                      type="button"
+                      className="btn-doctor"
+                      onClick={requestRegenerate}
+                      disabled={regenerating || confirmRegenerate}
+                    >
                       <RefreshCw className="h-4 w-4" aria-hidden="true" />
                       Tạo tóm tắt
                     </button>
@@ -426,6 +472,7 @@ export default function EncounterPage({ params }: { params: { id: string } }) {
                     id="conclusion"
                     rows={4}
                     required
+                    maxLength={MAX_CONCLUSION}
                     value={conclusion}
                     onChange={(e) => setConclusion(e.target.value)}
                     className="input resize-y focus:border-indigo-600 focus:ring-indigo-600/20"
@@ -439,6 +486,7 @@ export default function EncounterPage({ params }: { params: { id: string } }) {
                   <textarea
                     id="notes"
                     rows={3}
+                    maxLength={MAX_NOTES}
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     className="input resize-y focus:border-indigo-600 focus:ring-indigo-600/20"

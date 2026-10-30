@@ -337,7 +337,8 @@ export function redFlagFor(codes: string[]): RedFlagResult {
 // ---------------------------------------------------------------- eligibility
 function requirementMet(req: ScreeningRule["requires"][number], intake: IntakeProfile): boolean {
   if (req === "pack_years>=20") return Boolean(intake.smoking) && (intake.pack_years ?? 0) >= 20;
-  return Boolean(intake.hepatitis_b_or_c) || Boolean(intake.cirrhosis);
+  if (req === "cirrhosis") return Boolean(intake.cirrhosis);
+  return Boolean(intake.hepatitis_b_or_c) && !intake.cirrhosis;
 }
 
 export function evaluate(intake: IntakeProfile): {

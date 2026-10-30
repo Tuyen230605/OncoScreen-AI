@@ -92,6 +92,7 @@ export const EVENT_KIND_LABEL: Record<string, string> = {
   "appointment.requested": "Yêu cầu đặt lịch",
   "appointment.confirmed": "Lịch hẹn được xác nhận",
   "appointment.cancelled": "Lịch hẹn đã huỷ",
+  "appointment.escalated": "Lịch hẹn chuyển sang ưu tiên",
   "appointment.completed": "Hoàn tất lịch hẹn",
   "encounter.started": "Bắt đầu khám",
   "encounter.finalized": "Bác sĩ kết luận",
@@ -130,3 +131,7 @@ export function geneticsLabel(code: string): string {
 /** Hiển thị trước khi có phản hồi đầu tiên từ API (sau đó luôn dùng `disclaimer` do API trả về). */
 export const DEFAULT_DISCLAIMER =
   "Thông tin trong hệ thống này chỉ mang tính giáo dục và tham khảo về tầm soát ung thư, KHÔNG phải chẩn đoán y khoa và không thay thế ý kiến của bác sĩ. Kế hoạch tầm soát cá nhân chỉ có hiệu lực khi đã được bác sĩ xem xét và phê duyệt. Nếu bạn có triệu chứng bất thường, hãy đến cơ sở y tế để được khám trực tiếp.";
+
+/** Lưu ý cho bác sĩ (mirror `COPILOT_DISCLAIMER_VI` của backend) khi trang không có `disclaimer` từ API. */
+export const COPILOT_DEFAULT_DISCLAIMER =
+  "Công cụ hỗ trợ ra quyết định lâm sàng: tóm tắt hồ sơ và đối chiếu guideline có trích dẫn. AI không chẩn đoán và không diễn giải kết quả cận lâm sàng; bác sĩ chịu trách nhiệm chẩn đoán, chỉ định và phê duyệt kế hoạch trước khi gửi bệnh nhân.";

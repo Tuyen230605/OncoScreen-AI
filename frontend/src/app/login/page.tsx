@@ -4,7 +4,7 @@ import { FormEvent, Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api, USE_MOCK } from "@/lib/api";
 import { homeFor, safeNext, saveSession } from "@/lib/auth";
-import { anonymousConsultToken, clearConsult } from "@/lib/consult";
+import { anonymousConsultToken, clearConsult, saveConsult } from "@/lib/consult";
 import { errorMessage } from "@/lib/errors";
 import type { Role } from "@/types/api";
 import { Brand } from "@/components/Brand";
@@ -40,6 +40,8 @@ function LoginForm() {
         if (token) {
           try {
             await api.claimConsultation(consultId, token);
+            // Phiên đã thuộc tài khoản: /patient/chat tiếp tục đúng cuộc trò chuyện này
+            saveConsult({ id: consultId, access_token: token }, res.user.id);
             clearConsult(null);
           } catch {
             /* phiên không gắn được (đã gắn / hết hạn): vẫn cho đặt lịch bình thường */

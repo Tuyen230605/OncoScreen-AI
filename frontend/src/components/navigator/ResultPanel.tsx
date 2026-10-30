@@ -31,7 +31,7 @@ export function IntakeChips({ intake }: { intake: IntakeProfile }) {
     });
   }
   if (intake.personal_cancer_history !== null) {
-    chips.push({ key: "pch", node: intake.personal_cancer_history ? "Từng được chẩn đoán ung thư" : "Chưa từng mắc ung thư" });
+    chips.push({ key: "pch", node: intake.personal_cancer_history ? "Có tiền sử ung thư" : "Không có tiền sử ung thư" });
   }
   if (intake.smoking !== null) {
     chips.push({
@@ -159,17 +159,23 @@ export function ResultPanel({
         <RedFlagAlert
           result={redFlag}
           action={
-            <Link
-              href={
-                isPatient
-                  ? `/patient/book?consult=${encodeURIComponent(consultId)}`
-                  : `/register?consult=${encodeURIComponent(consultId)}`
-              }
-              className="btn-danger w-full sm:w-auto"
-            >
-              <CalendarPlus className="h-4 w-4" aria-hidden="true" />
-              {isPatient ? "Đặt lịch ưu tiên" : "Tạo tài khoản, đặt lịch ưu tiên"}
-            </Link>
+            isPatient ? (
+              <Link href={`/patient/book?consult=${encodeURIComponent(consultId)}`} className="btn-danger w-full sm:w-auto">
+                <CalendarPlus className="h-4 w-4" aria-hidden="true" />
+                Đặt lịch ưu tiên
+              </Link>
+            ) : (
+              <div className="flex flex-col gap-2 sm:flex-row">
+                <Link href={`/register?consult=${encodeURIComponent(consultId)}`} className="btn-danger w-full sm:w-auto">
+                  <CalendarPlus className="h-4 w-4" aria-hidden="true" />
+                  Tạo tài khoản, đặt lịch ưu tiên
+                </Link>
+                <Link href={`/login?consult=${encodeURIComponent(consultId)}`} className="btn-secondary w-full sm:w-auto">
+                  <LogIn className="h-4 w-4" aria-hidden="true" />
+                  Đã có tài khoản
+                </Link>
+              </div>
+            )
           }
         />
       )}

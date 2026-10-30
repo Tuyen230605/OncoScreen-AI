@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { UserOut } from "@/types/api";
-import { getUser, homeFor } from "@/lib/auth";
+import { getUser, homeFor, onSessionExpired } from "@/lib/auth";
 import { Brand } from "@/components/Brand";
 import { LayoutDashboard, LogIn, UserPlus } from "@/components/icons";
 
@@ -15,6 +15,9 @@ export function PublicHeader() {
     setUser(getUser());
     setReady(true);
   }, []);
+
+  // Phiên đăng nhập hết hạn khi đang ở trang công khai → hiện lại nút Đăng nhập / Đăng ký
+  useEffect(() => onSessionExpired(() => setUser(null)), []);
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/95 backdrop-blur-md">

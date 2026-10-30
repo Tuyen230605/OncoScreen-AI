@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import { errorMessage } from "@/lib/errors";
+import { errorMessage, isStatus } from "@/lib/errors";
 import type { AppointmentOut, PatientRecordOut } from "@/types/api";
 import { cancerLabel, DEFAULT_DISCLAIMER, GENDER_LABEL } from "@/lib/labels";
 import { daysUntil, formatDate, formatDateTime } from "@/lib/format";
@@ -51,6 +51,11 @@ export default function PatientDashboard() {
       load();
     } catch (err) {
       setActionError(errorMessage(err, "Chưa huỷ được lịch hẹn."));
+      if (isStatus(err, 409)) {
+        // Lịch đã chuyển trạng thái (vd. bác sĩ đã bắt đầu khám): tải lại để hiển thị trạng thái mới nhất
+        setConfirmCancel(null);
+        load();
+      }
     } finally {
       setCancelling(null);
     }
@@ -68,20 +73,24 @@ export default function PatientDashboard() {
     return <InlineError message={error || "Chưa tải được hồ sơ."} onRetry={load} />;
   }
 
-  const upcoming = record.appointments
-    .filter((a) => a.status === "requested" || a.status === "confirmed")
+  const openAppointments = record.appointments.filter((a) => a.status === "requested" || a.status === "confirmed");
+  // Lượt khám đang diễn ra: backend không trả encounter chưa hoàn tất cho bệnh nhân (S4) → nhận biết qua lịch hẹn
+  // còn mở đã có encounter_id.
+  const inExam = openAppointments.filter((a) => a.encounter_id);
+  const upcoming = openAppointments
+    .filter((a) => !a.encounter_id)
     .sort((a, b) => (a.scheduled_date ?? a.preferred_date).localeCompare(b.scheduled_date ?? b.preferred_date));
   const finalized = record.encounters.filter((e) => e.status === "finalized");
-  const inProgress = record.encounters.filter((e) => e.status === "in_progress");
   const dueReminders = record.reminders.filter((r) => r.status === "due");
   const soonReminders = record.reminders
     .filter((r) => r.status === "scheduled" && daysUntil(r.due_date) <= 60)
     .slice(0, 3);
   const serviceOf = (appointmentId: string) =>
     record.appointments.find((a) => a.id === appointmentId)?.service_name ?? "Lượt khám";
-  const hadRedFlag = record.consultations.some((c) => c.last_reply?.red_flag.detected);
+  // Phiên tư vấn có dấu hiệu cảnh báo gần nhất (consultations: mới nhất trước). Đặt lịch kèm đúng phiên này thì
+  // backend mới xếp ưu tiên; phiên mới nhất có thể không có red-flag.
+  const redFlagConsult = record.consultations.find((c) => c.last_reply?.red_flag.detected) ?? null;
   const hasUrgentBooking = record.appointments.some((a) => a.priority === "urgent" && a.status !== "cancelled");
-  const latestConsult = record.consultations[0];
   const firstName = record.user.full_name.trim().split(/\s+/).pop();
 
   return (
@@ -105,7 +114,7 @@ export default function PatientDashboard() {
         </div>
       </section>
 
-      {hadRedFlag && !hasUrgentBooking && (
+      {redFlagConsult && !hasUrgentBooking && (
         <section role="alert" className="rounded-xl border border-red-200 border-l-4 border-l-red-500 bg-red-50/60 p-4">
           <p className="flex items-start gap-2 text-sm text-red-900">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" aria-hidden="true" />
@@ -118,10 +127,7 @@ export default function PatientDashboard() {
               .
             </span>
           </p>
-          <Link
-            href={latestConsult ? `/patient/book?consult=${encodeURIComponent(latestConsult.id)}` : "/patient/book"}
-            className="btn-danger mt-3"
-          >
+          <Link href={`/patient/book?consult=${encodeURIComponent(redFlagConsult.id)}`} className="btn-danger mt-3">
             <CalendarPlus className="h-4 w-4" aria-hidden="true" />
             Đặt lịch ưu tiên
           </Link>
@@ -153,7 +159,7 @@ export default function PatientDashboard() {
               <InlineError message={actionError} />
             </div>
           )}
-          {upcoming.length === 0 && inProgress.length === 0 ? (
+          {upcoming.length === 0 && inExam.length === 0 ? (
             <EmptyState
               icon={CalendarClock}
               title="Chưa có lịch hẹn"
@@ -166,11 +172,11 @@ export default function PatientDashboard() {
             />
           ) : (
             <ul className="space-y-3">
-              {inProgress.map((e) => (
-                <li key={e.id} className="rounded-lg border border-indigo-200 bg-indigo-50/60 p-3.5 text-sm">
+              {inExam.map((a) => (
+                <li key={a.id} className="rounded-lg border border-indigo-200 bg-indigo-50/60 p-3.5 text-sm">
                   <p className="flex items-center gap-2 font-semibold text-slate-900">
                     <Stethoscope className="h-4 w-4 text-indigo-600" aria-hidden="true" />
-                    {serviceOf(e.appointment_id)}
+                    {a.service_name}
                   </p>
                   <p className="mt-1 text-slate-600">
                     Bác sĩ đang khám và hoàn tất kết luận. Bạn sẽ thấy kết quả ngay khi bác sĩ duyệt.

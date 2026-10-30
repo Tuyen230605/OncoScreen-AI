@@ -4,7 +4,9 @@ import { useCallback, useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { errorMessage, isStatus } from "@/lib/errors";
 import { formatDateTime } from "@/lib/format";
+import { COPILOT_DEFAULT_DISCLAIMER } from "@/lib/labels";
 import type { PatientRecordOut } from "@/types/api";
+import { Disclaimer } from "@/components/Disclaimer";
 import { RecordTimeline } from "@/components/RecordTimeline";
 import {
   AppointmentList,
@@ -93,6 +95,9 @@ export default function DoctorPatientRecordPage({ params }: { params: { id: stri
               {record.user.email}, tài khoản tạo {formatDateTime(record.user.created_at)}
             </p>
           </header>
+
+          {/* Hồ sơ có hội thoại Navigator & kết quả Copilot → luôn kèm lưu ý (S6) */}
+          <Disclaimer text={record.encounters[0]?.disclaimer ?? COPILOT_DEFAULT_DISCLAIMER} variant="copilot" compact />
 
           <section className="card-padded">
             <h2 className="mb-3 flex items-center gap-2 text-base font-semibold text-slate-900">

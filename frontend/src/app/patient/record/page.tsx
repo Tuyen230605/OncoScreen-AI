@@ -3,7 +3,9 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { errorMessage } from "@/lib/errors";
+import { DEFAULT_DISCLAIMER } from "@/lib/labels";
 import type { PatientRecordOut } from "@/types/api";
+import { Disclaimer } from "@/components/Disclaimer";
 import { RecordTimeline } from "@/components/RecordTimeline";
 import {
   AppointmentList,
@@ -116,6 +118,12 @@ export default function PatientRecordPage() {
             )}
             {tab === "consultations" && <ConsultationList consultations={record.consultations} />}
           </section>
+
+          {/* Hồ sơ chứa hội thoại & gợi ý của trợ lý → luôn kèm lưu ý y khoa (S6) */}
+          <Disclaimer
+            text={record.consultations.find((c) => c.last_reply)?.last_reply?.disclaimer ?? DEFAULT_DISCLAIMER}
+            compact
+          />
         </>
       )}
     </div>
