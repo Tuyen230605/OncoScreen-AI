@@ -57,7 +57,7 @@ Repo hiện đã có `.env`. Nếu tạo checkout mới và chưa có file này,
 
 ### 2. Chạy database
 
-Mặc định `.env.example` dùng PostgreSQL. Nếu máy đã cài Docker Engine và Docker Compose:
+Mặc định `.env.example` dùng PostgreSQL. Khi dùng PostgreSQL phải đặt `SECRET_KEY` ngẫu nhiên ≥ 32 ký tự trong `.env` (backend từ chối khởi động nếu để trống/mặc định): `python -c "import secrets; print(secrets.token_urlsafe(48))"`. Nếu máy đã cài Docker Engine và Docker Compose:
 
 ```bash
 docker compose up -d db
@@ -122,7 +122,7 @@ Có thể thay case bằng `python -m ai_core.cli demo --case lung` hoặc `pyth
 4. Quay lại tài khoản bệnh nhân → hồ sơ xuyên suốt, kết luận, kế hoạch, nhắc lịch, hỏi đáp về kế hoạch.
 5. Thử red-flag: *"Em sờ thấy một khối cứng ở vú"* → ngắt tư vấn, khuyên khám sớm, lịch ưu tiên.
 
-Đánh giá agent: `cd ai_core && python -m ai_core.cli eval` (golden set 20 ca; thêm `--real` để đo với LLM). Các kỹ thuật tăng độ tin cậy (RAG lai, guardrail, HITL, tracing, metrics): [docs/05_AGENT_RELIABILITY.md](docs/05_AGENT_RELIABILITY.md). Tài liệu sơ lược dự án dạng Word: `docs/report/`.
+Đánh giá agent: `cd ai_core && python -m ai_core.cli eval` (golden set 40 ca; thêm `--real` để đo với LLM). Các kỹ thuật tăng độ tin cậy (RAG lai, guardrail, HITL, tracing, metrics): [docs/05_AGENT_RELIABILITY.md](docs/05_AGENT_RELIABILITY.md). Tài liệu sơ lược dự án dạng Word: `docs/report/`.
 
 ## Nguyên tắc làm việc (bắt buộc)
 
