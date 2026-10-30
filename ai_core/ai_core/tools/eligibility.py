@@ -84,6 +84,12 @@ def _requirement_met(req: str, intake: IntakeProfile) -> bool | None:
         if intake.pack_years is None:
             return None if intake.smoking else False
         return intake.pack_years >= 20
+    if req == "cirrhosis":
+        return bool(intake.cirrhosis)
+    if req == "hepatitis_without_cirrhosis":
+        # AASLD 2023 ("Đối tượng"): chỉ một số người viêm gan B mạn cần giám sát; viêm gan C mạn cần đánh giá xơ hoá
+        # trước → không tự đặt chu kỳ, chỉ gợi ý trao đổi với bác sĩ.
+        return bool(intake.hepatitis_b_or_c) and not intake.cirrhosis
     if req == "hepatitis_or_cirrhosis":
         return bool(intake.hepatitis_b_or_c or intake.cirrhosis)
     raise ValueError(f"unknown requirement {req!r}")

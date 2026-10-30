@@ -23,10 +23,10 @@ from pydantic import BaseModel, Field
 
 from ai_core.guardrails.disclaimer import DISCLAIMER_VI
 from ai_core.guardrails.safety import (
-    find_diagnosis_language,
     is_out_of_scope_request,
     looks_like_prompt_injection,
     ungrounded_numbers,
+    unsafe_output,
 )
 from ai_core.observability import new_trace_id, traced
 from ai_core.prompts import NAVIGATOR_PROMPT, NAVIGATOR_SYSTEM_PROMPT
@@ -47,7 +47,7 @@ from ai_core.schemas import (
 )
 from ai_core.tools import intake as intake_tool
 from ai_core.tools.eligibility import LABEL_VI, evaluate
-from ai_core.tools.red_flag_detector import result_for_codes
+from ai_core.tools.red_flag_detector import flags_for_codes, relative_codes_from_text, result_for_codes
 from ai_core.tools.triage import triage
 
 logger = logging.getLogger(__name__)
@@ -55,6 +55,10 @@ AGENT = "navigator"
 
 _GENDER_VI = {Gender.female: "nữ", Gender.male: "nam", Gender.other: "giới tính khác"}
 _MISSING_VI = {"age": "tuổi", "gender": "giới tính", "pack_years": "số gói-năm đã hút (số gói/ngày × số năm)"}
+ABSTAIN_VI = (
+    "Mình chưa đủ thông tin từ các hướng dẫn hiện có để trả lời chính xác câu hỏi này; "
+    "bạn nên trao đổi trực tiếp với bác sĩ."
+)
 
 
 class NavigatorState(TypedDict, total=False):
@@ -67,6 +71,7 @@ class NavigatorState(TypedDict, total=False):
     out_of_scope: bool
     injection: bool
     red_flag: RedFlagResult
+    relative_flags: list[str]
     missing: list[str]
     suggestions: list[ScreeningSuggestion]
     risk_factors: list[RiskFactor]
@@ -163,7 +168,8 @@ class NavigatorAgent:
             NavigatorState(
                 message=(message or "").strip() or None,
                 answers=answers,
-                history=history[-8:],
+                # Lượt cũ có dấu hiệu injection không được đưa vào prompt (chống injection qua lịch sử).
+                history=[t for t in history if not looks_like_prompt_injection(t.content)][-8:],
                 intake=intake,
                 trace_id=new_trace_id("nav"),
                 trace_events=[],
@@ -208,15 +214,23 @@ class NavigatorAgent:
         message = state.get("message")
         if message:
             intake = intake_tool.from_text(intake, message)
-            if self.use_llm and not state.get("injection") and intake_tool.missing_info(intake):
-                extracted = self._llm_extract(message, state["trace_id"])
-                if extracted is not None:
-                    intake = intake_tool.merge(intake, extracted)
-                    extractor = "rules+llm"
+        # Red-flag tính từ luật TRƯỚC mọi lời gọi LLM (S3): có cờ thì không gọi LLM trích xuất.
         red_flag = result_for_codes(intake.symptom_codes)
+        if (
+            message
+            and self.use_llm
+            and not red_flag.detected
+            and not state.get("injection")
+            and intake_tool.missing_info(intake)
+        ):
+            extracted = self._llm_extract(message, state["trace_id"])
+            if extracted is not None:
+                intake = intake_tool.merge(intake, extracted)
+                extractor = "rules+llm"
         return {
             "intake": intake,
             "red_flag": red_flag,
+            "relative_flags": relative_codes_from_text(message) if message else [],
             "missing": intake_tool.missing_info(intake),
             "trace_attrs": {"extractor": extractor, "red_flag": red_flag.detected},
         }
@@ -240,26 +254,35 @@ class NavigatorAgent:
 
     def _respond(self, state: NavigatorState) -> dict:
         template, template_sources, insufficient = self._template(state)
+        note = self._relative_note(state)
         if not (self.use_llm and state.get("message")) or state.get("out_of_scope") or state.get("injection"):
             return {
-                "reply": template,
+                "reply": note + template,
                 "reply_sources": template_sources,
                 "insufficient": insufficient,
                 "trace_attrs": {"generator": "template"},
             }
         draft, problem = self._llm_reply(state)
+        if draft is None and problem == "insufficient_evidence":
+            # LLM tự nhận thiếu căn cứ → câu trả lời mẫu xác định, không dùng văn bản LLM.
+            return {
+                "reply": note + ABSTAIN_VI + "\n" + template,
+                "reply_sources": template_sources,
+                "insufficient": True,
+                "trace_attrs": {"generator": "template_abstain", "guard": problem},
+            }
         if draft is None:
             return {
-                "reply": template,
+                "reply": note + template,
                 "reply_sources": template_sources,
                 "insufficient": insufficient,
                 "trace_attrs": {"generator": "template_fallback", "guard": problem},
             }
-        reply, sources, llm_insufficient = draft
+        reply, sources = draft
         return {
-            "reply": reply,
+            "reply": note + reply,
             "reply_sources": sources,
-            "insufficient": llm_insufficient,
+            "insufficient": False,
             "trace_attrs": {"generator": "llm", "guard": "pass", "cited": len(sources)},
         }
 
@@ -277,6 +300,19 @@ class NavigatorAgent:
         return out
 
     # ------------------------------------------------------------------ helpers
+
+    @staticmethod
+    def _relative_note(state: NavigatorState) -> str:
+        """Người dùng kể dấu hiệu cảnh báo của NGƯỜI THÂN: không ngắt luồng của người dùng,
+        nhưng nhắc người thân đi khám sớm."""
+        flags = flags_for_codes(state.get("relative_flags", []))
+        if not flags:
+            return ""
+        symptoms = ", ".join(f.symptom.lower() for f in flags)
+        return (
+            f"Bạn có nhắc tới dấu hiệu ở người thân ({symptoms}): người thân nên được bác sĩ khám sớm, "
+            "không chờ lịch tầm soát định kỳ.\n"
+        )
 
     def _template(self, state: NavigatorState) -> tuple[str, list[Source], bool]:
         intake: IntakeProfile = state["intake"]
@@ -350,7 +386,7 @@ class NavigatorAgent:
             return None
         return IntakeProfile(**data.model_dump())
 
-    def _llm_reply(self, state: NavigatorState) -> tuple[tuple[str, list[Source], bool] | None, str]:
+    def _llm_reply(self, state: NavigatorState) -> tuple[tuple[str, list[Source]] | None, str]:
         from ai_core.llm import get_chat_model
 
         suggestions = state.get("suggestions", [])
@@ -384,11 +420,13 @@ class NavigatorAgent:
         citations = [allowed[d] for d in dict.fromkeys(draft.source_ids) if d in allowed]
         if not reply:
             return None, "empty"
-        if find_diagnosis_language(reply):
-            return None, "diagnosis_language"
-        if not draft.insufficient_evidence and not citations:
+        if problem := unsafe_output(reply):  # chẩn đoán / tư vấn điều trị / diễn giải kết quả
+            return None, problem
+        if draft.insufficient_evidence:
+            return None, "insufficient_evidence"
+        if not citations:
             return None, "uncited"
         evidence = [s.excerpt for s in allowed.values()] + [suggestions_json, intake_json, state["message"] or ""]
         if ungrounded_numbers(reply, evidence):
             return None, "ungrounded_number"
-        return (reply, citations, draft.insufficient_evidence), "pass"
+        return (reply, citations), "pass"

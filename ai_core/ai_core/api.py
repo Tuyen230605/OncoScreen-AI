@@ -78,7 +78,10 @@ class Agent:
     def navigator_questionnaire(self) -> Questionnaire:
         from ai_core.tools.questionnaire import load_questionnaire
 
-        return load_questionnaire()
+        try:
+            return load_questionnaire()
+        except Exception as exc:  # noqa: BLE001 — contract §1: lỗi nội bộ → AgentError
+            raise AgentError(str(exc)) from exc
 
     def navigate(
         self, *, message: str | None, answers: list[Answer], intake: IntakeProfile, history: list[ChatTurn]
@@ -91,7 +94,10 @@ class Agent:
     def check_red_flags(self, answers: list[Answer], text: str | None = None) -> RedFlagResult:
         from ai_core.tools.red_flag_detector import detect_red_flags
 
-        return detect_red_flags(answers, text)
+        try:
+            return detect_red_flags(answers, text)
+        except Exception as exc:  # noqa: BLE001
+            raise AgentError(str(exc)) from exc
 
     def build_brief(self, record: PatientRecord) -> ClinicalBrief:
         try:
@@ -108,12 +114,18 @@ class Agent:
     def answer_question(self, question: str, approved_plan: ScreeningPlan | None) -> QuestionAnswer:
         from ai_core.tools.patient_qa import answer_question
 
-        return answer_question(question, approved_plan, use_llm=self._use_llm)
+        try:
+            return answer_question(question, approved_plan, use_llm=self._use_llm)
+        except Exception as exc:  # noqa: BLE001
+            raise AgentError(str(exc)) from exc
 
     def get_education(self, cancer_type: CancerType) -> EducationContent:
         from ai_core.tools.education import get_education_content
 
-        return get_education_content(cancer_type)
+        try:
+            return get_education_content(cancer_type)
+        except Exception as exc:  # noqa: BLE001
+            raise AgentError(str(exc)) from exc
 
 
 # --------------------------------------------------------------------------- helpers cho backend

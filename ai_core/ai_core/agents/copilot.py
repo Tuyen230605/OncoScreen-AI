@@ -22,9 +22,9 @@ from pydantic import BaseModel, Field
 from ai_core.config import settings
 from ai_core.guardrails.disclaimer import COPILOT_DISCLAIMER_VI
 from ai_core.guardrails.safety import (
-    find_diagnosis_language,
     is_out_of_scope_request,
     ungrounded_numbers,
+    unsafe_output,
     validate_plan,
 )
 from ai_core.observability import new_trace_id, traced
@@ -49,11 +49,13 @@ from ai_core.schemas import (
 )
 from ai_core.tools import intake as intake_tool
 from ai_core.tools.eligibility import LABEL_VI, evaluate
-from ai_core.tools.red_flag_detector import result_for_codes
+from ai_core.tools.red_flag_detector import codes_from_text, result_for_codes
 
 logger = logging.getLogger(__name__)
 AGENT = "copilot"
 FACT_KINDS = {"consult.summary", "red_flag.detected", "appointment.requested", "encounter.finalized", "reminder.done"}
+# Kết luận bác sĩ đã viết (encounter.finalized) là đánh giá lâm sàng, không quét lại thành red-flag mới.
+_NO_RED_FLAG_SCAN = {"encounter.finalized"}
 _GENDER_VI = {Gender.female: "nữ", Gender.male: "nam", Gender.other: "giới tính khác"}
 
 
@@ -142,9 +144,13 @@ class ClinicalCopilot:
         from_profile = intake_tool.from_profile(record.profile) if record.profile else None
         intake = intake_tool.merge(from_profile, record.intake)
         codes = list(intake.symptom_codes)
+        # R2: triệu chứng nêu trong lý do khám hoặc tóm tắt hồ sơ (văn bản tự do) cũng là red-flag.
+        codes += codes_from_text(record.reason_for_visit or "")
         for event in record.events:
             if event.kind == "red_flag.detected":
                 codes += [str(c) for c in event.data.get("codes", [])]
+            if event.kind not in _NO_RED_FLAG_SCAN:
+                codes += codes_from_text(event.summary)
         red_flag = result_for_codes(codes)
         facts = [BriefFact(text=e.summary, event_ids=[e.id]) for e in record.events if e.kind in FACT_KINDS]
         return {
@@ -260,20 +266,37 @@ class ClinicalCopilot:
             logger.warning("copilot_llm_unavailable trace_id=%s error_type=%s", state["trace_id"], type(exc).__name__)
             return {"summary": summary, "trace_attrs": {"generator": "template_fallback", "guard": "llm_error"}}
         evidence = [e.summary for e in record.events] + [intake_json, suggestions_json, record.reason_for_visit or ""]
-        if find_diagnosis_language(draft.summary) or ungrounded_numbers(draft.summary, evidence):
+        if (
+            not draft.summary.strip()
+            or unsafe_output(draft.summary)
+            or ungrounded_numbers(draft.summary, evidence)
+        ):
             return {"summary": summary, "trace_attrs": {"generator": "template_fallback", "guard": "summary_blocked"}}
-        llm_facts = [
-            BriefFact(text=f.text, event_ids=[i for i in f.event_ids if i in known])
-            for f in draft.key_facts
-            if any(i in known for i in f.event_ids) and not find_diagnosis_language(f.text)
+        by_id = {e.id: e for e in record.events}
+        llm_facts: list[BriefFact] = []
+        for fact in draft.key_facts:
+            cited = [i for i in dict.fromkeys(fact.event_ids) if i in known]
+            # Mỗi con số trong fact phải có trong chính các mốc được trích (chống gán số bịa cho event có thật).
+            fact_evidence = [f"{by_id[i].summary} {json.dumps(by_id[i].data, ensure_ascii=False)}" for i in cited]
+            if cited and not unsafe_output(fact.text) and not ungrounded_numbers(fact.text, fact_evidence):
+                llm_facts.append(BriefFact(text=fact.text, event_ids=cited))
+        llm_questions = [
+            q
+            for q in draft.questions_to_clarify
+            if q.strip() and not unsafe_output(q) and not ungrounded_numbers(q, evidence)
         ]
         dropped = len(draft.key_facts) - len(llm_facts)
-        questions = list(dict.fromkeys([*draft.questions_to_clarify, *state.get("questions", [])]))[:8]
+        questions = list(dict.fromkeys([*llm_questions, *state.get("questions", [])]))[:8]
         return {
             "summary": draft.summary.strip(),
             "facts": llm_facts or state.get("facts", []),
             "questions": questions,
-            "trace_attrs": {"generator": "llm", "guard": "pass", "facts_dropped": dropped},
+            "trace_attrs": {
+                "generator": "llm",
+                "guard": "pass",
+                "facts_dropped": dropped,
+                "questions_dropped": len(draft.questions_to_clarify) - len(llm_questions),
+            },
         }
 
     def _draft_plan(self, state: CopilotState) -> dict:
@@ -349,10 +372,19 @@ class ClinicalCopilot:
             return fallback
         citations = [allowed[d] for d in dict.fromkeys(draft.source_ids) if d in allowed]
         evidence = [s.excerpt for s in ranked] + [question]
+        if draft.insufficient_evidence:
+            # LLM tự nhận thiếu căn cứ → trả căn cứ trích xuất (xác định), không dùng văn bản LLM.
+            return fallback.model_copy(
+                update={
+                    "answer": "Chưa đủ căn cứ để trả lời chắc chắn câu hỏi này. " + fallback.answer,
+                    "insufficient_evidence": True,
+                    "trace_events": [*fallback.trace_events, {"node": "output_guard", "status": "insufficient"}],
+                }
+            )
         if (
             not draft.answer.strip()
-            or find_diagnosis_language(draft.answer)
-            or (not citations and not draft.insufficient_evidence)
+            or unsafe_output(draft.answer)
+            or not citations
             or ungrounded_numbers(draft.answer, evidence)
         ):
             fallback.trace_events.append({"node": "output_guard", "status": "blocked"})
@@ -362,7 +394,7 @@ class ClinicalCopilot:
             sources=citations,
             disclaimer=COPILOT_DISCLAIMER_VI,
             trace_id=trace_id,
-            insufficient_evidence=draft.insufficient_evidence,
+            insufficient_evidence=False,
             trace_events=[*events, {"node": "respond", "status": "ok", "generator": "llm", "cited": len(citations)}],
         )
 

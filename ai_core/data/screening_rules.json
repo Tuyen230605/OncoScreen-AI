@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "rules": [
     {
       "id": "breast_40_74",
@@ -102,12 +102,29 @@
       "min_age": 18,
       "max_age": null,
       "requires": [
-        "hepatitis_or_cirrhosis"
+        "cirrhosis"
       ],
       "method": "Siêu âm gan kèm xét nghiệm AFP",
       "start_age": null,
       "interval_months": 6,
-      "applies_because": "Người viêm gan B/C mạn hoặc xơ gan (nhóm nguy cơ cao)",
+      "applies_because": "Người xơ gan (nhóm nguy cơ cao)",
+      "family_note": "Có người thân mắc ung thư gan: là yếu tố nguy cơ bổ sung khi bác sĩ đánh giá."
+    },
+    {
+      "id": "liver_hepatitis_specialist",
+      "cancer_type": "liver",
+      "doc_id": "liver_aasld_2023",
+      "section": "Đối tượng",
+      "gender": "any",
+      "min_age": 18,
+      "max_age": null,
+      "requires": [
+        "hepatitis_without_cirrhosis"
+      ],
+      "method": "Trao đổi với bác sĩ chuyên khoa gan mật về việc giám sát ung thư gan",
+      "start_age": null,
+      "interval_months": null,
+      "applies_because": "Người viêm gan B/C mạn chưa ghi nhận xơ gan: có cần giám sát và chu kỳ bao lâu do bác sĩ xác định",
       "family_note": "Có người thân mắc ung thư gan: là yếu tố nguy cơ bổ sung khi bác sĩ đánh giá."
     }
   ]

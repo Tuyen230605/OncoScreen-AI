@@ -1,4 +1,7 @@
-"""Hỏi đáp của bệnh nhân giới hạn ở kế hoạch đã được bác sĩ phê duyệt."""
+"""Hỏi đáp của bệnh nhân giới hạn ở kế hoạch đã được bác sĩ phê duyệt.
+
+Câu hỏi có dấu hiệu cảnh báo (red-flag) → luôn trả lời khuyên khám sớm trước mọi thứ khác (S3), kể cả khi
+chưa có kế hoạch; không bao giờ trả lời bằng lịch tầm soát định kỳ."""
 
 from __future__ import annotations
 
@@ -10,11 +13,12 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel, Field
 
 from ai_core.guardrails.disclaimer import DISCLAIMER_VI
-from ai_core.guardrails.safety import find_diagnosis_language, is_out_of_scope_request, ungrounded_numbers
+from ai_core.guardrails.safety import is_out_of_scope_request, ungrounded_numbers, unsafe_output
 from ai_core.observability import new_trace_id
 from ai_core.prompts import PATIENT_QA_PROMPT, PATIENT_QA_SYSTEM_PROMPT
 from ai_core.schemas import QuestionAnswer, ScreeningPlan, Source
 from ai_core.text import fold
+from ai_core.tools.red_flag_detector import detect_red_flags, urgent_guidance
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +42,15 @@ def _fallback(trace_id: str, message: str = NO_ANSWER) -> QuestionAnswer:
 
 def answer_question(question: str, plan: ScreeningPlan | None, use_llm: bool = True) -> QuestionAnswer:
     trace_id = new_trace_id("qa")
+    red_flag = detect_red_flags([], question)
+    if red_flag.detected:
+        return QuestionAnswer(
+            answer=urgent_guidance(red_flag),
+            disclaimer=DISCLAIMER_VI,
+            trace_id=trace_id,
+            insufficient_evidence=True,
+            trace_events=[{"node": "input_guard", "status": "ok", "red_flag": True}],
+        )
     if plan is None or needs_clinical_review(question):
         return _fallback(trace_id)
     source_map: dict[str, Source] = {source.doc_id: source for item in plan.items for source in item.sources}
@@ -75,7 +88,7 @@ def answer_question(question: str, plan: ScreeningPlan | None, use_llm: bool = T
         draft.insufficient_evidence
         or not citations
         or not draft.answer.strip()
-        or find_diagnosis_language(draft.answer)
+        or unsafe_output(draft.answer)
         or ungrounded_numbers(draft.answer, evidence)
     ):
         return _fallback(trace_id)
