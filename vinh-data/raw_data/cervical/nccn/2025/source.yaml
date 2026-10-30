@@ -1,0 +1,12 @@
+# Metadata nguồn theo chuẩn OncoScreen-AI
+publisher: "NCCN (National Comprehensive Cancer Network) / MedGUIDE"
+title: "MedGUIDE NCCN Decision Guidelines — Cervical"
+url: "https://huggingface.co/datasets/MedGUIDE/MedGUIDE-MCQA-8K"
+publication_date: "2025-05-15"
+version: "MCQA-8K"
+accessed_on: "2026-10-28"
+jurisdiction: "US"
+language: "en"
+license: "Research and Educational Guideline Dataset"
+reuse_notes: "Lưu đồ quyết định lâm sàng NCCN cho chẩn đoán và phân tầng nguy cơ ung thư"
+sha256: "6620308de01102e06c9684237de5bfc10ffd2daa56308870c1d57366672abaa4"

@@ -1,0 +1,12 @@
+# Metadata nguồn theo chuẩn OncoScreen-AI
+publisher: "NCCN (National Comprehensive Cancer Network) / MedGUIDE"
+title: "MedGUIDE NCCN Decision Guidelines — Lung"
+url: "https://huggingface.co/datasets/MedGUIDE/MedGUIDE-MCQA-8K"
+publication_date: "2025-05-15"
+version: "MCQA-8K"
+accessed_on: "2026-10-28"
+jurisdiction: "US"
+language: "en"
+license: "Research and Educational Guideline Dataset"
+reuse_notes: "Lưu đồ quyết định lâm sàng NCCN cho chẩn đoán và phân tầng nguy cơ ung thư"
+sha256: "a950942537abb70da5b88c378d34ef8cdace0440eae9053092f4a5017379475a"

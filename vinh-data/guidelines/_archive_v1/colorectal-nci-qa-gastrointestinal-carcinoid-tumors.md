@@ -1,0 +1,13 @@
+---
+cancer_type: colorectal
+source: NCI PDQ — Câu hỏi và giải đáp tầm soát Ung Thư Đại Trực Tràng
+url: https://www.cancer.gov/ (document_id=0000010_1)
+gender: any
+risk_level: high
+language: vi
+---
+## Các yếu tố nguy cơ của ung thư đại trực tràng
+Health history can affect the risk of gastrointestinal carcinoid tumors. Anything that increases a person's chance of developing a disease is called a risk factor. Having a risk factor does not mean that you will get cancer; not having risk factors doesnt mean that you will not get cancer. Talk to your doctor if you think you may be at risk. Risk factors for GI carcinoid tumors include the following: - Having a family history of multiple endocrine neoplasia type 1 (MEN1) syndrome or neurofibromatosis type 1 (NF1) syndrome. - Having certain conditions that affect the stomach's ability to make stomach acid, such as atrophic gastritis, pernicious anemia, or Zollinger-Ellison syndrome.
+
+## Dấu hiệu và triệu chứng cảnh báo sớm của ung thư đại trực tràng
+Some gastrointestinal carcinoid tumors have no signs or symptoms in the early stages.Signs and symptoms may be caused by the growth of the tumor and/or the hormones the tumor makes. Some tumors, especially tumors of the stomach or appendix, may not cause signs or symptoms. Carcinoid tumors are often found during tests or treatments for other conditions. Carcinoid tumors in the small intestine (duodenum, jejunum, and ileum), colon, and rectum sometimes cause signs or symptoms as they grow or because of the hormones they make. Other conditions may cause the same signs or symptoms. Check with your doctor if you have any of the following: - Duodenum Signs and symptoms of GI carcinoid tumors in the duodenum (first part of the small intestine, that connects to the stomach) may include the following: - Abdominal pain. - Constipation. - Diarrhea. - Change in stool color. - Nausea. - Vomiting. - Jaundice (yellowing of the skin and whites of the eyes). - Heartburn. - Jejunum and ileum Signs and symptoms of GI carcinoid tumors in the jejunum (middle part of the small intestine) and ileum (last part of the small intestine, that connects to the colon) may include the following: - Abdominal pain. - Weight loss for no known reason. - Feeling very tired. - Feeling bloated - Diarrhea. - Nausea. - Vomiting. - Colon Signs and symptoms of GI carcinoid tumors in the colon may include the following: - Abdominal pain. - Weight loss for no known reason. - Rectum Signs and symptoms of GI carcinoid tumors in the rectum may include the following: - Blood in the stool. - Pain in the rectum. - Constipation.

@@ -1,0 +1,1490 @@
+{
+  "metadata": {
+    "title": "Knowledge Base - Triệu chứng lâm sàng ung bướu",
+    "source": "Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu - Bộ Y tế Việt Nam",
+    "legal_reference": "Quyết định số 1514/QĐ-BYT ngày 01/04/2020",
+    "publisher": "Nhà xuất bản Y học Hà Nội",
+    "year": 2020,
+    "extraction_standard": "HL7 FHIR R4 - Oncology Knowledge Representation",
+    "chunking_strategy": "Disease-level semantic chunking with clinical symptom decomposition",
+    "schema_version": "1.0.0",
+    "created_at": "2026-10-27T21:10:27.942665",
+    "page_range": "115-738",
+    "total_pdf_pages": 737,
+    "language": "vi",
+    "description": "Knowledge base chứa các triệu chứng lâm sàng (clinical signs & symptoms) được trích xuất từ mục 2.1.1 Lâm sàng của từng bệnh ung bướu, tối ưu hóa cho hệ thống AI RAG (Retrieval-Augmented Generation).",
+    "statistics": {
+      "total_diseases": 61,
+      "total_symptom_chunks": 61,
+      "total_characters": 64071,
+      "avg_chars_per_disease": 1050.3,
+      "avg_chunks_per_disease": 1.0
+    }
+  },
+  "diseases": [
+    {
+      "chunk_id": "MOH_VN_2020_BAI17_CLINICAL",
+      "bai_number": 17,
+      "disease_name_vi": "U NÃO NGUYÊN PHÁT",
+      "disease_name_en": "Primary Brain Tumor",
+      "icd10_code": "C71",
+      "organ_system": "Thần kinh trung ương",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "U não có biểu hiện lâm sàng phong phú, có thể có triệu chứng âm thầm diễn ra\nnhiều tháng hoặc nhiều năm, có thể biệu hiện đột ngột như tai biến mạch máu não.\nBiểu hiện lâm sàng đặc trưng của u não là hội chứng tăng áp lực nội sọ: đau đầu,\nnôn. Các dấu hiệu khác phụ thuộc vào vị trí, giai đoạn của u não.\n2.1.1. Đau đầu\nĐau đầu là triệu chứng thường gặp nhất của u não. Biểu hiện nhức đầu âm ỉ kéo dài\nvà có tính chất tăng dần. Đau đầu thường tăng vào đêm và gần sáng. Đầu tiên, biểu hiện\nnhức đầu có thể khu trú một vị trí sau đó lan tỏa toàn bộ đầu. Triệu chứng nhức đầu có\ngiảm nhưng không khỏi với các thuốc giảm đau thông thường.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI17_SX01",
+          "sub_heading": "",
+          "text": "U não có biểu hiện lâm sàng phong phú, có thể có triệu chứng âm thầm diễn ra\nnhiều tháng hoặc nhiều năm, có thể biệu hiện đột ngột như tai biến mạch máu não.\nBiểu hiện lâm sàng đặc trưng của u não là hội chứng tăng áp lực nội sọ: đau đầu,\nnôn. Các dấu hiệu khác phụ thuộc vào vị trí, giai đoạn của u não.\n2.1.1. Đau đầu\nĐau đầu là triệu chứng thường gặp nhất của u não. Biểu hiện nhức đầu âm ỉ kéo dài\nvà có tính chất tăng dần. Đau đầu thường tăng vào đêm và gần sáng. Đầu tiên, biểu hiện\nnhức đầu có thể khu trú một vị trí sau đó lan tỏa toàn bộ đầu. Triệu chứng nhức đầu có\ngiảm nhưng không khỏi với các thuốc giảm đau thông thường.",
+          "char_count": 634,
+          "word_count": 142
+        }
+      ],
+      "source_reference": "Bài 17, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 634,
+      "total_word_count": 142
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI18_CLINICAL",
+      "bai_number": 18,
+      "disease_name_vi": "UNG THƯ DI CĂN NÃO",
+      "disease_name_en": "Brain Metastasis",
+      "icd10_code": "C79.3",
+      "organ_system": "Thần kinh trung ương",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Bệnh nhân đang điều trị bất kỳ khối u ở vị trí nào, có biểu hiện triệu chứng thần\nkinh hoặc bệnh nhân chưa được phát hiện bệnh ung thư nhưng biểu hiện đầu tiên là các\ntriệu chứng sọ não gồm:\nĐau đầu: xảy ra trong khoảng 40 đến 50% bệnh nhân di căn não. Tỷ lệ càng cao khi\ndi căn đa ổ, kích thước u di căn lớn hoặc di căn não hố sau. Đau đầu cũng tăng lên theo\nsau các động tác làm tăng áp lực nội sọ như ho, hắt hơi. Đau đầu buổi sáng sớm kinh\nđiển không phổ biến. Các đặc điểm của bệnh nhân đau đầu hướng tới khối u não bao\ngồm buồn nôn và nôn, sự thay đổi kiểu đau đầu trước đó, khám thấy dấu hiệu thần kinh\nbất thường và triệu chứng nặng hơn.\nHội chứng tăng áp lực nội sọ: đau đầu, buồn nôn, phù gai thị, rối loạn ý thức…\nDấu hiệu thần kinh khu trú: biểu hiện trong khoảng 20 đến 40% bệnh nhân, gồm liệt\nvận động, rối loạn cảm giác, liệt dây thần kinh sọ, thất ngôn….\nThay đổi tính cách, hành vi: đây là dấu hiệu kín đáo, bệnh nhân thường hay cáu giận,\nhay quên… Thay đổi tâm trạng hoặc tính cách biểu hiện trong 30 đến 35% bệnh nhân.\nĐộng kinh: Cơn động kinh mới khởi phát là triệu chứng biểu hiện trong 10 đến 20%\nbệnh nhân.\nĐột qụy: Khoảng 5 đến 10% biểu hiện đột quỵ cấp gây bởi chảy máu trong khối\ndi căn, tăng đông, xâm lấn hoặc chèn ép động mạch bởi khối u, hoặc huyết khối do tế\nbào u.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI18_SX01",
+          "sub_heading": "",
+          "text": "Bệnh nhân đang điều trị bất kỳ khối u ở vị trí nào, có biểu hiện triệu chứng thần\nkinh hoặc bệnh nhân chưa được phát hiện bệnh ung thư nhưng biểu hiện đầu tiên là các\ntriệu chứng sọ não gồm:\nĐau đầu: xảy ra trong khoảng 40 đến 50% bệnh nhân di căn não. Tỷ lệ càng cao khi\ndi căn đa ổ, kích thước u di căn lớn hoặc di căn não hố sau. Đau đầu cũng tăng lên theo\nsau các động tác làm tăng áp lực nội sọ như ho, hắt hơi. Đau đầu buổi sáng sớm kinh\nđiển không phổ biến. Các đặc điểm của bệnh nhân đau đầu hướng tới khối u não bao\ngồm buồn nôn và nôn, sự thay đổi kiểu đau đầu trước đó, khám thấy dấu hiệu thần kinh\nbất thường và triệu chứng nặng hơn.\nHội chứng tăng áp lực nội sọ: đau đầu, buồn nôn, phù gai thị, rối loạn ý thức…\nDấu hiệu thần kinh khu trú: biểu hiện trong khoảng 20 đến 40% bệnh nhân, gồm liệt\nvận động, rối loạn cảm giác, liệt dây thần kinh sọ, thất ngôn….\nThay đổi tính cách, hành vi: đây là dấu hiệu kín đáo, bệnh nhân thường hay cáu giận,\nhay quên… Thay đổi tâm trạng hoặc tính cách biểu hiện trong 30 đến 35% bệnh nhân.\nĐộng kinh: Cơn động kinh mới khởi phát là triệu chứng biểu hiện trong 10 đến 20%\nbệnh nhân.\nĐột qụy: Khoảng 5 đến 10% biểu hiện đột quỵ cấp gây bởi chảy máu trong khối\ndi căn, tăng đông, xâm lấn hoặc chèn ép động mạch bởi khối u, hoặc huyết khối do tế\nbào u.",
+          "char_count": 1296,
+          "word_count": 287
+        }
+      ],
+      "source_reference": "Bài 18, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1296,
+      "total_word_count": 287
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI20_CLINICAL",
+      "bai_number": 20,
+      "disease_name_vi": "U MÀNG NÃO",
+      "disease_name_en": "Meningioma",
+      "icd10_code": "C70",
+      "organ_system": "Thần kinh trung ương",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "2.1.1. Yếu tố nguy cơ\n- Chấn thương sọ não\n- Phơi nhiễm phóng xạ\n- Bệnh lý rối loạn nhiễm sắc thể: bất thường ở nhiễm sắc thể 22\n- Liên quan đến nội tiết sinh dục: u màng não hay gặp ở phụ nữ có thai hoặc ung\nthư vú.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI20_SX01",
+          "sub_heading": "Yếu tố nguy cơ",
+          "text": "2.1.1. Yếu tố nguy cơ\n- Chấn thương sọ não\n- Phơi nhiễm phóng xạ\n- Bệnh lý rối loạn nhiễm sắc thể: bất thường ở nhiễm sắc thể 22\n- Liên quan đến nội tiết sinh dục: u màng não hay gặp ở phụ nữ có thai hoặc ung\nthư vú.",
+          "char_count": 216,
+          "word_count": 52
+        }
+      ],
+      "source_reference": "Bài 20, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 216,
+      "total_word_count": 52
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI21_CLINICAL",
+      "bai_number": 21,
+      "disease_name_vi": "U VÙNG TUYẾN TÙNG",
+      "disease_name_en": "Pineal Region Tumor",
+      "icd10_code": "C75.3",
+      "organ_system": "Thần kinh trung ương",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Các triệu chứng u não vùng tuyến tùng thường diễn biến chậm từ nhiều tuần đến\nnhiều năm trong bệnh sử:\nĐau đầu, rồi loạn thăng bằng\nĐại đa số bệnh nhân có khối u vùng tuyến tùng có hội chứng tăng áp lực nội sọ do\ngiãn não thất: đau đầu, buồn nôn và nôn, lơ mơ...\nTriệu chứng chèn ép thân não dẫn đến hội chứng Parinaud:\n- Liệt nhìn lên: thường còn khả năng nhìn xuống.\n- Giả đồng tử Argyll Robertson: mất khả năng điều tiết và đồng tử trở nên hơi giãn\nnhư đang nhìn gần.\n- Rung giật nhãn cầu co, hội tụ: thường xảy ra khi cố gắng nhìn lên. Khi nhìn lên\nnhanh, mắt giật lại và đồng tử co lại.\n- Co mí mắt rút (dấu hiệu Collier).\n- Dấu hiệu mặt trời lặn: mắt thường ở tư thế nhìn xuống.\n- Dậy thì sớm: thường gặp ở nữ giới.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI21_SX01",
+          "sub_heading": "",
+          "text": "Các triệu chứng u não vùng tuyến tùng thường diễn biến chậm từ nhiều tuần đến\nnhiều năm trong bệnh sử:\nĐau đầu, rồi loạn thăng bằng\nĐại đa số bệnh nhân có khối u vùng tuyến tùng có hội chứng tăng áp lực nội sọ do\ngiãn não thất: đau đầu, buồn nôn và nôn, lơ mơ...\nTriệu chứng chèn ép thân não dẫn đến hội chứng Parinaud:\n- Liệt nhìn lên: thường còn khả năng nhìn xuống.\n- Giả đồng tử Argyll Robertson: mất khả năng điều tiết và đồng tử trở nên hơi giãn\nnhư đang nhìn gần.\n- Rung giật nhãn cầu co, hội tụ: thường xảy ra khi cố gắng nhìn lên. Khi nhìn lên\nnhanh, mắt giật lại và đồng tử co lại.\n- Co mí mắt rút (dấu hiệu Collier).\n- Dấu hiệu mặt trời lặn: mắt thường ở tư thế nhìn xuống.\n- Dậy thì sớm: thường gặp ở nữ giới.",
+          "char_count": 721,
+          "word_count": 159
+        }
+      ],
+      "source_reference": "Bài 21, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 721,
+      "total_word_count": 159
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI22_CLINICAL",
+      "bai_number": 22,
+      "disease_name_vi": "U MÀNG NỘI TỦY TRONG SỌ",
+      "disease_name_en": "Intracranial Ependymoma",
+      "icd10_code": "C72.0",
+      "organ_system": "Thần kinh trung ương",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng lâm sàng phụ thuộc vào vị trí của khối u:\nHầu hết u nằm ở hố sọ sau, với biểu hiện lâm sàng là hội chứng tăng áp lực nội sọ\ndo làm tắc nghẽn hệ thống não thất (đau đầu, nôn, phù gai thị, rối loạn tri giác). Triệu\nchứng của khối u vùng tiểu não: chóng mặt, rối loạn thăng bằng. Liệt dây thần kinh sọ\nsố VI đến X là triệu chứng của khối u thâm nhiễm vào dây thần kinh sọ. Có thể gây liệt\nnửa người, liệt nhiều dây thần kinh sọ nếu u chèn ép vào thân não.\nĐộng kinh hoặc dấu hiệu thần kinh khu trú (liệt, tê bì, nói khó, thay đổi hành vi…)\nnếu khối u mọc ở vùng trên lều tiểu não.\nU xâm lấn vào tủy sống có biểu hiện thiếu hụt chức năng thần kinh: yếu chi, rối\nloạn cảm giác, rối loạn cơ tròn.\nChẩn đoán dựa chủ yếu vào lứa tuổi, vị trí khối u, hình ảnh cộng hưởng từ sọ não,\ntủy sống.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI22_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng lâm sàng phụ thuộc vào vị trí của khối u:\nHầu hết u nằm ở hố sọ sau, với biểu hiện lâm sàng là hội chứng tăng áp lực nội sọ\ndo làm tắc nghẽn hệ thống não thất (đau đầu, nôn, phù gai thị, rối loạn tri giác). Triệu\nchứng của khối u vùng tiểu não: chóng mặt, rối loạn thăng bằng. Liệt dây thần kinh sọ\nsố VI đến X là triệu chứng của khối u thâm nhiễm vào dây thần kinh sọ. Có thể gây liệt\nnửa người, liệt nhiều dây thần kinh sọ nếu u chèn ép vào thân não.\nĐộng kinh hoặc dấu hiệu thần kinh khu trú (liệt, tê bì, nói khó, thay đổi hành vi…)\nnếu khối u mọc ở vùng trên lều tiểu não.\nU xâm lấn vào tủy sống có biểu hiện thiếu hụt chức năng thần kinh: yếu chi, rối\nloạn cảm giác, rối loạn cơ tròn.\nChẩn đoán dựa chủ yếu vào lứa tuổi, vị trí khối u, hình ảnh cộng hưởng từ sọ não,\ntủy sống.",
+          "char_count": 794,
+          "word_count": 180
+        }
+      ],
+      "source_reference": "Bài 22, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 794,
+      "total_word_count": 180
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI23_CLINICAL",
+      "bai_number": 23,
+      "disease_name_vi": "UNG THƯ VÒM MŨI HỌNG",
+      "disease_name_en": "Nasopharyngeal Cancer",
+      "icd10_code": "C11",
+      "organ_system": "Đầu cổ",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "2.1.1. Triệu chứng cơ năng\n- Giai đoạn sớm:\n+ Nhức đầu: lan tỏa, âm ỉ, thường ở một bên.\n+ Ù tai: đa số một bên, ù như tiếng ve kêu.\n+ Ngạt mũi một bên lúc nặng lúc nhẹ, đôi khi xì ra máu mũi.\n- Giai đoạn muộn:\n+ Nhức đầu liên tục có lúc dữ dội, có điểm đau khu trú.\n+ Ù tai tăng, nghe kém, giảm thính lực, có thể điếc.\n+ Ngạt mũi liên tục, kèm chảy máu mũi, không đáp ứng với điều trị thông thường.\n+ Triệu chứng mắt: do u chèn ép, tổn thương thần kinh chi phối vận động của\nnhãn cầu: lác, nhìn đôi, sụp mi, giảm hoặc mất thị lực.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI23_SX01",
+          "sub_heading": "Triệu chứng cơ năng",
+          "text": "2.1.1. Triệu chứng cơ năng\n- Giai đoạn sớm:\n+ Nhức đầu: lan tỏa, âm ỉ, thường ở một bên.\n+ Ù tai: đa số một bên, ù như tiếng ve kêu.\n+ Ngạt mũi một bên lúc nặng lúc nhẹ, đôi khi xì ra máu mũi.\n- Giai đoạn muộn:\n+ Nhức đầu liên tục có lúc dữ dội, có điểm đau khu trú.\n+ Ù tai tăng, nghe kém, giảm thính lực, có thể điếc.\n+ Ngạt mũi liên tục, kèm chảy máu mũi, không đáp ứng với điều trị thông thường.\n+ Triệu chứng mắt: do u chèn ép, tổn thương thần kinh chi phối vận động của\nnhãn cầu: lác, nhìn đôi, sụp mi, giảm hoặc mất thị lực.",
+          "char_count": 531,
+          "word_count": 123
+        }
+      ],
+      "source_reference": "Bài 23, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 531,
+      "total_word_count": 123
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI24_CLINICAL",
+      "bai_number": 24,
+      "disease_name_vi": "UNG THƯ THANH QUẢN - HẠ HỌNG",
+      "disease_name_en": "Laryngeal & Hypopharyngeal Cancer",
+      "icd10_code": "C32/C13",
+      "organ_system": "Đầu cổ",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Nuốt: vướng, nghẹn, đau.\n- Khàn tiếng kéo dài, tăng dần, không khỏi sau điều trị kháng viêm, nặng mất tiếng.\n- Tiếng nói ông ổng như có cộng hưởng - “nói qua ống thổi”.\n- Khó thở nhẹ - nặng dần, khó thở thì thở vào.\n- Nổi hạch cổ cùng bên tổn thương. Giai đoạn muộn lan sang cả hai bên. Gặp\nnhiều hạch cổ giữa và dưới, hạch rắn chắc, lúc sớm còn di động sau hạch cố định.\n- Giai đoạn muộn thấy vùng sụn giáp to chắc, nổi gồ như sờ vào mai rùa. Toàn\nthân gầy, sút cân, da xanh tái.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI24_SX01",
+          "sub_heading": "",
+          "text": "- Nuốt: vướng, nghẹn, đau.\n- Khàn tiếng kéo dài, tăng dần, không khỏi sau điều trị kháng viêm, nặng mất tiếng.\n- Tiếng nói ông ổng như có cộng hưởng - “nói qua ống thổi”.\n- Khó thở nhẹ - nặng dần, khó thở thì thở vào.\n- Nổi hạch cổ cùng bên tổn thương. Giai đoạn muộn lan sang cả hai bên. Gặp\nnhiều hạch cổ giữa và dưới, hạch rắn chắc, lúc sớm còn di động sau hạch cố định.\n- Giai đoạn muộn thấy vùng sụn giáp to chắc, nổi gồ như sờ vào mai rùa. Toàn\nthân gầy, sút cân, da xanh tái.",
+          "char_count": 482,
+          "word_count": 108
+        }
+      ],
+      "source_reference": "Bài 24, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 482,
+      "total_word_count": 108
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI25_CLINICAL",
+      "bai_number": 25,
+      "disease_name_vi": "UNG THƯ KHÍ QUẢN",
+      "disease_name_en": "Tracheal Cancer",
+      "icd10_code": "C33",
+      "organ_system": "Hô hấp",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "a. Giai đoạn sớm\nBiểu hiện khó thở nhẹ, khò khè, ho khạc dây máu dễ nhầm lẫn với các bệnh lý của\nthanh quản và phổi.\nb. Giai đoạn muộn\n- Khó thở tăng dần, có thể gây suy hô hấp cấp tính tiến triển dữ dội nếu khối u\nkèm theo viêm, hoặc kèm theo sặc đờm\n- Khò khè, cò cử tăng dần\n- Có thể ho khạc ra máu tươi.\nU có thể chèn ép thực quản gây khó nuốt; chèn ép xâm lấn các dây thần kinh và\nmạch máu vùng cổ.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI25_SX01",
+          "sub_heading": "Giai đoạn sớm",
+          "text": "a. Giai đoạn sớm\nBiểu hiện khó thở nhẹ, khò khè, ho khạc dây máu dễ nhầm lẫn với các bệnh lý của\nthanh quản và phổi.\nb. Giai đoạn muộn\n- Khó thở tăng dần, có thể gây suy hô hấp cấp tính tiến triển dữ dội nếu khối u\nkèm theo viêm, hoặc kèm theo sặc đờm\n- Khò khè, cò cử tăng dần\n- Có thể ho khạc ra máu tươi.\nU có thể chèn ép thực quản gây khó nuốt; chèn ép xâm lấn các dây thần kinh và\nmạch máu vùng cổ.",
+          "char_count": 403,
+          "word_count": 97
+        }
+      ],
+      "source_reference": "Bài 25, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 403,
+      "total_word_count": 97
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI26_CLINICAL",
+      "bai_number": 26,
+      "disease_name_vi": "UNG THƯ TUYẾN NƯỚC BỌT",
+      "disease_name_en": "Salivary Gland Cancer",
+      "icd10_code": "C07-C08",
+      "organ_system": "Đầu cổ",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Các dấu hiệu chỉ điểm đặc hiệu\n+ Đau liên tục vùng mặt bên bệnh\n+ Liệt mặt\n+ Loét sùi vùng tuyến có u\n- Biểu hiện lâm sàng điển hình\n+ U vùng tuyến mang tai\n+ U to gây biến dạng mặt\n+ U dính với mô xung quanh\n+ Da bề mặt tuyến sùi loét\n- Hạch vùng dưới hàm, cạnh cổ\n- Ở giai đoạn muộn, khối u to gây chèn ép và rối loạn các chức năng.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI26_SX01",
+          "sub_heading": "",
+          "text": "- Các dấu hiệu chỉ điểm đặc hiệu\n+ Đau liên tục vùng mặt bên bệnh\n+ Liệt mặt\n+ Loét sùi vùng tuyến có u\n- Biểu hiện lâm sàng điển hình\n+ U vùng tuyến mang tai\n+ U to gây biến dạng mặt\n+ U dính với mô xung quanh\n+ Da bề mặt tuyến sùi loét\n- Hạch vùng dưới hàm, cạnh cổ\n- Ở giai đoạn muộn, khối u to gây chèn ép và rối loạn các chức năng.",
+          "char_count": 336,
+          "word_count": 84
+        }
+      ],
+      "source_reference": "Bài 26, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 336,
+      "total_word_count": 84
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI27_CLINICAL",
+      "bai_number": 27,
+      "disease_name_vi": "UNG THƯ KHOANG MIỆNG",
+      "disease_name_en": "Oral Cavity Cancer",
+      "icd10_code": "C00-C06",
+      "organ_system": "Đầu cổ",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Các triệu chứng của ung thư khoang miệng thường biểu hiện khi khối u đã xâm lấn\nrộng và đôi khi ở giai đoạn muộn.\n2.1.1. Triệu chứng cơ năng\nGiai đoạn sớm:\n- Cảm giác vướng trong khoang miệng, có thể kèm theo nuốt đau.\n- Tăng tiết nước bọt, đôi khi có máu.\n- Nói khó.\n- Nhức đầu: lan tỏa, âm ỉ, thường ở một bên, đau lan lên tai.\n- Có thể phát hiện tình cờ khi đi khám một bệnh lí khác mà không có triệu chứng\nlâm sàng.\nGiai đoạn muộn:\n- Nhức đầu liên tục có lúc dữ dội, đau nhói lên tai.\n- Nói khó và đau.\n- Khạc ra đờm lẫn máu và có mùi hôi.\n- Nhiều bệnh nhân đến khám vì có hạch cổ.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI27_SX01",
+          "sub_heading": "",
+          "text": "Các triệu chứng của ung thư khoang miệng thường biểu hiện khi khối u đã xâm lấn\nrộng và đôi khi ở giai đoạn muộn.\n2.1.1. Triệu chứng cơ năng\nGiai đoạn sớm:\n- Cảm giác vướng trong khoang miệng, có thể kèm theo nuốt đau.\n- Tăng tiết nước bọt, đôi khi có máu.\n- Nói khó.\n- Nhức đầu: lan tỏa, âm ỉ, thường ở một bên, đau lan lên tai.\n- Có thể phát hiện tình cờ khi đi khám một bệnh lí khác mà không có triệu chứng\nlâm sàng.\nGiai đoạn muộn:\n- Nhức đầu liên tục có lúc dữ dội, đau nhói lên tai.\n- Nói khó và đau.\n- Khạc ra đờm lẫn máu và có mùi hôi.\n- Nhiều bệnh nhân đến khám vì có hạch cổ.",
+          "char_count": 585,
+          "word_count": 135
+        }
+      ],
+      "source_reference": "Bài 27, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 585,
+      "total_word_count": 135
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI28_CLINICAL",
+      "bai_number": 28,
+      "disease_name_vi": "UNG THƯ XOANG MẶT",
+      "disease_name_en": "Paranasal Sinus Cancer",
+      "icd10_code": "C31",
+      "organ_system": "Đầu cổ",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Dựa vào vị trí xuất phát của khối u, chia ung thư sàng hàm thành 3 tầng:\n- Ung thư thượng tầng cấu trúc: chủ yếu là các khối u ở vùng xoang sàng: bao\ngồm sàng trước và sàng sau. Ung thư xoang sàng trước thường lan vào xoang trán,\nxoang bướm. Ung thư xoang sàng sau lan vào màng não cứng và não.\n- Ung thư trung tầng cấu trúc là ung thư của xoang hàm: tổn thương xuất phát từ\nxoang hàm và vách của xoang.\n- Ung thư hạ tầng cấu trúc: ung thư chủ yếu xuất phát từ ổ răng của xương hàm trên.\nTương ứng với vị trí tổn thương giải phẫu trên, bệnh nhân sẽ có biểu hiện tổn\nthương thành các hội chứng sau:\n- Hội chứng mắt:\n+ Chảy nước mắt, phù nề mi mắt.\n+ Viêm kết mạc, viêm tuyến lệ, giảm thị lực.\n+ Lác mắt, sụp mi mắt, đau nhức hốc mắt.\n+ Nhãn cầu bị đẩy lồi ra ngoài hoặc ra trước.\n- Hội chứng mũi xoang:\n+ Ngạt, tắc mũi.\n+ Chảy mủ, chảy máu mũi.\n+ Giảm và mất khứu giác.\n+ Đau nhức vùng mũi xoang.\n+ Mất rãnh mũi má.\n+ U sùi lan rộng trong hốc mũi, xoang.\n- Hội chứng miệng:\n+ Đầy rãnh lợi môi.\n+ Phồng và thủng hàm ếch.\n+ Màn hầu bị đẩy phồng.\n+ Sùi loét ở vùng chân răng hàm trên.\n- Hội chứng thần kinh:\n+ Nhức đầu âm ỉ, không thành cơn, làm cho bệnh nhân luôn có vẻ mặt u buồn.\n+ Tê bì nửa mặt do tổn thương dây thần kinh số V.\n+ Liệt các dây thần kinh sọ não.\n- Giai đoạn lan tràn:\n+ Ở giai đoạn muộn: khối u lan tràn ra phía sau, về phía vòm khẩu cái mềm, đẩy\nphồng màn hầu. Lan tràn về phía hố chân bướm hàm gây khít hàm.\n+ Ung thư ở giai đoạn muộn có thể lan tràn ra cả 3 tầng.\n- Di căn hạch: ung thư sàng hàm ít di căn đến hạch và khi di căn hạch thì thường\nlà giai đoạn muộn.\n- Di căn xa: thường vào phổi và xương.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI28_SX01",
+          "sub_heading": "",
+          "text": "Dựa vào vị trí xuất phát của khối u, chia ung thư sàng hàm thành 3 tầng:\n- Ung thư thượng tầng cấu trúc: chủ yếu là các khối u ở vùng xoang sàng: bao\ngồm sàng trước và sàng sau. Ung thư xoang sàng trước thường lan vào xoang trán,\nxoang bướm. Ung thư xoang sàng sau lan vào màng não cứng và não.\n- Ung thư trung tầng cấu trúc là ung thư của xoang hàm: tổn thương xuất phát từ\nxoang hàm và vách của xoang.\n- Ung thư hạ tầng cấu trúc: ung thư chủ yếu xuất phát từ ổ răng của xương hàm trên.\nTương ứng với vị trí tổn thương giải phẫu trên, bệnh nhân sẽ có biểu hiện tổn\nthương thành các hội chứng sau:\n- Hội chứng mắt:\n+ Chảy nước mắt, phù nề mi mắt.\n+ Viêm kết mạc, viêm tuyến lệ, giảm thị lực.\n+ Lác mắt, sụp mi mắt, đau nhức hốc mắt.\n+ Nhãn cầu bị đẩy lồi ra ngoài hoặc ra trước.\n- Hội chứng mũi xoang:\n+ Ngạt, tắc mũi.\n+ Chảy mủ, chảy máu mũi.\n+ Giảm và mất khứu giác.\n+ Đau nhức vùng mũi xoang.\n+ Mất rãnh mũi má.\n+ U sùi lan rộng trong hốc mũi, xoang.\n- Hội chứng miệng:\n+ Đầy rãnh lợi môi.\n+ Phồng và thủng hàm ếch.\n+ Màn hầu bị đẩy phồng.\n+ Sùi loét ở vùng chân răng hàm trên.\n- Hội chứng thần kinh:\n+ Nhức đầu âm ỉ, không thành cơn, làm cho bệnh nhân luôn có vẻ mặt u buồn.\n+ Tê bì nửa mặt do tổn thương dây thần kinh số V.\n+ Liệt các dây thần kinh sọ não.\n- Giai đoạn lan tràn:\n+ Ở giai đoạn muộn: khối u lan tràn ra phía sau, về phía vòm khẩu cái mềm, đẩy\nphồng màn hầu. Lan tràn về phía hố chân bướm hàm gây khít hàm.\n+ Ung thư ở giai đoạn muộn có thể lan tràn ra cả 3 tầng.\n- Di căn hạch: ung thư sàng hàm ít di căn đến hạch và khi di căn hạch thì thường\nlà giai đoạn muộn.\n- Di căn xa: thường vào phổi và xương.",
+          "char_count": 1621,
+          "word_count": 376
+        }
+      ],
+      "source_reference": "Bài 28, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1621,
+      "total_word_count": 376
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI29_CLINICAL",
+      "bai_number": 29,
+      "disease_name_vi": "UNG THƯ TUYẾN GIÁP",
+      "disease_name_en": "Thyroid Cancer",
+      "icd10_code": "C73",
+      "organ_system": "Nội tiết",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng ung thư tuyến giáp thường nghèo nàn, bệnh nhân thường đến viện\nvới triệu chứng đầu tiên là nhìn thấy hoặc sờ thấy khối u vùng cổ hoặc phát hiện\ntình cờ qua siêu âm tuyến giáp. Cũng có khi bệnh nhân đến viện vì sờ thấy hạch\ncổ hoặc di căn xa trước khi sờ thấy u tuyến giáp.\n2.1.1. Triệu chứng cơ năng\n- Trong giai đoạn đầu: Triệu chứng cơ năng thường nghèo nàn, ít có giá trị.\nTình huống lâm sàng thường gặp nhất là bệnh nhân tự phát hiện hoặc đi khám sức\nkhoẻ định kỳ thấy u.\n- Ở giai đoạn muộn hoặc khối u xâm lấn có thể xuất hiện triệu chứng như: chèn\nép, xâm lấn dây thần kinh quặt ngược gây nói khàn. Đây là đặc điểm có thể gợi ý khối u\ngiáp là ung thư, bởi khối u giáp lành tính hiếm khi gây khàn tiếng. Chèn ép thực quản\ngây khó nuốt. Khó thở do u xâm lấn vào khí quản. Một số bệnh nhân đến viện vì triệu\nchứng của di căn xa, qua thăm khám mới phát hiện được u tuyến giáp.\n\n\n\n\n\n218",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI29_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng ung thư tuyến giáp thường nghèo nàn, bệnh nhân thường đến viện\nvới triệu chứng đầu tiên là nhìn thấy hoặc sờ thấy khối u vùng cổ hoặc phát hiện\ntình cờ qua siêu âm tuyến giáp. Cũng có khi bệnh nhân đến viện vì sờ thấy hạch\ncổ hoặc di căn xa trước khi sờ thấy u tuyến giáp.\n2.1.1. Triệu chứng cơ năng\n- Trong giai đoạn đầu: Triệu chứng cơ năng thường nghèo nàn, ít có giá trị.\nTình huống lâm sàng thường gặp nhất là bệnh nhân tự phát hiện hoặc đi khám sức\nkhoẻ định kỳ thấy u.\n- Ở giai đoạn muộn hoặc khối u xâm lấn có thể xuất hiện triệu chứng như: chèn\nép, xâm lấn dây thần kinh quặt ngược gây nói khàn. Đây là đặc điểm có thể gợi ý khối u\ngiáp là ung thư, bởi khối u giáp lành tính hiếm khi gây khàn tiếng. Chèn ép thực quản\ngây khó nuốt. Khó thở do u xâm lấn vào khí quản. Một số bệnh nhân đến viện vì triệu\nchứng của di căn xa, qua thăm khám mới phát hiện được u tuyến giáp.",
+          "char_count": 890,
+          "word_count": 198
+        }
+      ],
+      "source_reference": "Bài 29, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 899,
+      "total_word_count": 199
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI30_CLINICAL",
+      "bai_number": 30,
+      "disease_name_vi": "U PHYLLODE",
+      "disease_name_en": "Phyllodes Tumor",
+      "icd10_code": "D48.6",
+      "organ_system": "Vú",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Phần lớn biểu hiện khối u nhẵn, nhiều khối, bờ rõ, mật độ chắc đôi khi mềm do\nchứa các khối dịch ở những u có kích thước lớn, di động và không đau. Kích thước khối\nu thay đổi, có thể dao động từ 1-41cm (trung bình từ 4-7cm).\n- Co kéo gây tụt núm vú, loét, cố định thành ngực hay u vú cả hai bên hiếm gặp.\n- Các khối u phyllode có thể tiến triển chậm hoặc nhanh hoặc có thể phát triển hai\npha nhanh và chậm. Khi khối u phát triển to có thể gây biến dạng tuyến vú hoặc gây loét\nbề mặt do chèn ép gây hoại tử.\n- Mặc dù có thể sờ thấy hạch trên lâm sàng tuy nhiên di căn hạch thường hiếm gặp.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI30_SX01",
+          "sub_heading": "",
+          "text": "- Phần lớn biểu hiện khối u nhẵn, nhiều khối, bờ rõ, mật độ chắc đôi khi mềm do\nchứa các khối dịch ở những u có kích thước lớn, di động và không đau. Kích thước khối\nu thay đổi, có thể dao động từ 1-41cm (trung bình từ 4-7cm).\n- Co kéo gây tụt núm vú, loét, cố định thành ngực hay u vú cả hai bên hiếm gặp.\n- Các khối u phyllode có thể tiến triển chậm hoặc nhanh hoặc có thể phát triển hai\npha nhanh và chậm. Khi khối u phát triển to có thể gây biến dạng tuyến vú hoặc gây loét\nbề mặt do chèn ép gây hoại tử.\n- Mặc dù có thể sờ thấy hạch trên lâm sàng tuy nhiên di căn hạch thường hiếm gặp.",
+          "char_count": 590,
+          "word_count": 136
+        }
+      ],
+      "source_reference": "Bài 30, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 590,
+      "total_word_count": 136
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI31_CLINICAL",
+      "bai_number": 31,
+      "disease_name_vi": "UNG THƯ TUYẾN ỨC",
+      "disease_name_en": "Thymic Cancer",
+      "icd10_code": "C37",
+      "organ_system": "Lồng ngực",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "2.1.1. Triệu chứng lâm sàng\n- Các biểu hiện lâm sàng rất đa dạng, có thể từ không có triệu chứng đến có các\ntriệu chứng liên quan đến sự xâm lấn, chèn ép của khối u vào các tạng lân cận cùng với\ncác triệu chứng toàn thân.\n- Các triệu chứng lâm sàng: đau ngực, ho, sốt, khó thở, nhược cơ…\n- Tuyến ức khá gần với tĩnh mạch chủ trên nên bệnh nhân cũng có thể có các biểu\nhiện của hội chứng chèn ép tĩnh mạch chủ trên như: sưng nề vùng mặt, đau đầu, chóng\nmặt…\n- U tuyến ức có thể được chẩn đoán gián tiếp sau khi bệnh nhân vào viện vì các\ntriệu chứng của: nhược cơ, thiếu máu do bất sản hồng cầu, một số bệnh tự miễn…",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI31_SX01",
+          "sub_heading": "Triệu chứng lâm sàng",
+          "text": "2.1.1. Triệu chứng lâm sàng\n- Các biểu hiện lâm sàng rất đa dạng, có thể từ không có triệu chứng đến có các\ntriệu chứng liên quan đến sự xâm lấn, chèn ép của khối u vào các tạng lân cận cùng với\ncác triệu chứng toàn thân.\n- Các triệu chứng lâm sàng: đau ngực, ho, sốt, khó thở, nhược cơ…\n- Tuyến ức khá gần với tĩnh mạch chủ trên nên bệnh nhân cũng có thể có các biểu\nhiện của hội chứng chèn ép tĩnh mạch chủ trên như: sưng nề vùng mặt, đau đầu, chóng\nmặt…\n- U tuyến ức có thể được chẩn đoán gián tiếp sau khi bệnh nhân vào viện vì các\ntriệu chứng của: nhược cơ, thiếu máu do bất sản hồng cầu, một số bệnh tự miễn…",
+          "char_count": 614,
+          "word_count": 137
+        }
+      ],
+      "source_reference": "Bài 31, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 614,
+      "total_word_count": 137
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI32_CLINICAL",
+      "bai_number": 32,
+      "disease_name_vi": "U TRUNG THẤT",
+      "disease_name_en": "Mediastinal Tumor",
+      "icd10_code": "C38",
+      "organ_system": "Lồng ngực",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "U trung thất có thể chỉ biểu hiện trên hình ảnh Xquang hoặc CT scan mà không có\ntriệu chứng lâm sàng và ngược lại có khi có triệu chứng lâm sàng chưa hẳn là do bị u\ntrung thất mà có thể do bệnh lý tràn dịch hoặc viêm trong trung thất, triệu chứng lâm\nsàng phụ thuộc vào vị trí và bản chất của khối u trung thất.\n- Toàn thân: mệt mỏi, gày sút, sốt...\n- Hô hấp: ho, khó thở, thở rít, khò khè, có thể ho máu.\n- Tiêu hóa: nuốt nghẹn do u chèn thực quản, sặc do u xâm lấn gây dò khí quản\nthực quản.\n- Thần kinh:\n+ Hội chứng Claude Bernard Horner: co đồng tử, hẹp khe mi, sụp mi, đỏ mặt một\nbên do chèn ép hạch giao cảm cổ.\n+ Khàn tiếng (giọng đôi): do chèn ép dây thần kinh quặt ngược gây liệt thanh\nquản (thường bên trái do dây quặt ngược đi xuống sâu qua quai động mạch chủ).\n+ Nấc, liệt cơ hoành gây khó thở do chèn ép xâm lấn thần kinh hoành.\n- Tim mạch:\n+ Chèn ép tĩnh mạch chủ trên: gây phù áo khoác, tuần hoàn bàng hệ, khó thở\ntăng lên khi nằm và về sáng sớm, mặt đỏ tĩnh mạch cổ nổi.\n+ Chèn ép tĩnh mạch chủ dưới: phù chi dưới, gan to, cổ trướng... tuần hoàn\nbàng hệ.\n+ Xâm lấn tràn dịch màng tìm: triệu chứng ép tim, huyết áp kẹt, mạch đảo... (gan\nto tĩnh mạch cổ nổi..) khó thở tăng khi nằm.\n+ Chèn ép ống ngực: ít gặp, có thể gây tràn dịch màng phổi dưỡng chấp.\n- U xâm lấn thành ngực gây đau, sưng tại chỗ, xâm lấn cột sống gây đau chèn ép\ntủy gây liệt tủy.\n- Hạch to vùng cổ, thượng đòn.\n- Hội chứng Pierre Marie: ngón tay dùi trống, dày cốt mạc đầu chi, đau khớp cổ\nchân, bàn chân, bàn tay.\nGiai đoạn muộn khi đã có di căn, trên lâm sàng có các triệu chứng của di căn tùy vị\ntrí, giai đoạn bệnh.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI32_SX01",
+          "sub_heading": "",
+          "text": "U trung thất có thể chỉ biểu hiện trên hình ảnh Xquang hoặc CT scan mà không có\ntriệu chứng lâm sàng và ngược lại có khi có triệu chứng lâm sàng chưa hẳn là do bị u\ntrung thất mà có thể do bệnh lý tràn dịch hoặc viêm trong trung thất, triệu chứng lâm\nsàng phụ thuộc vào vị trí và bản chất của khối u trung thất.\n- Toàn thân: mệt mỏi, gày sút, sốt...\n- Hô hấp: ho, khó thở, thở rít, khò khè, có thể ho máu.\n- Tiêu hóa: nuốt nghẹn do u chèn thực quản, sặc do u xâm lấn gây dò khí quản\nthực quản.\n- Thần kinh:\n+ Hội chứng Claude Bernard Horner: co đồng tử, hẹp khe mi, sụp mi, đỏ mặt một\nbên do chèn ép hạch giao cảm cổ.\n+ Khàn tiếng (giọng đôi): do chèn ép dây thần kinh quặt ngược gây liệt thanh\nquản (thường bên trái do dây quặt ngược đi xuống sâu qua quai động mạch chủ).\n+ Nấc, liệt cơ hoành gây khó thở do chèn ép xâm lấn thần kinh hoành.\n- Tim mạch:\n+ Chèn ép tĩnh mạch chủ trên: gây phù áo khoác, tuần hoàn bàng hệ, khó thở\ntăng lên khi nằm và về sáng sớm, mặt đỏ tĩnh mạch cổ nổi.\n+ Chèn ép tĩnh mạch chủ dưới: phù chi dưới, gan to, cổ trướng... tuần hoàn\nbàng hệ.\n+ Xâm lấn tràn dịch màng tìm: triệu chứng ép tim, huyết áp kẹt, mạch đảo... (gan\nto tĩnh mạch cổ nổi..) khó thở tăng khi nằm.\n+ Chèn ép ống ngực: ít gặp, có thể gây tràn dịch màng phổi dưỡng chấp.\n- U xâm lấn thành ngực gây đau, sưng tại chỗ, xâm lấn cột sống gây đau chèn ép\ntủy gây liệt tủy.\n- Hạch to vùng cổ, thượng đòn.\n- Hội chứng Pierre Marie: ngón tay dùi trống, dày cốt mạc đầu chi, đau khớp cổ\nchân, bàn chân, bàn tay.\nGiai đoạn muộn khi đã có di căn, trên lâm sàng có các triệu chứng của di căn tùy vị\ntrí, giai đoạn bệnh.",
+          "char_count": 1604,
+          "word_count": 360
+        }
+      ],
+      "source_reference": "Bài 32, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1604,
+      "total_word_count": 360
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI33_CLINICAL",
+      "bai_number": 33,
+      "disease_name_vi": "UNG THƯ PHỔI TẾ BÀO NHỎ",
+      "disease_name_en": "Small Cell Lung Cancer",
+      "icd10_code": "C34",
+      "organ_system": "Hô hấp",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "a. Giai đoạn sớm\n- Bệnh phát triển âm thầm, triệu chứng nghèo nàn hoặc không có triệu chứng.\n- Dấu hiệu gợi ý: thường là nam giới trên 40 tuổi, nghiện thuốc lá, thuốc lào, ho\nkhan kéo dài, có thể có đờm lẫn máu, điều trị kháng sinh không có kết quả.\nb. Giai đoạn tiến triển\nTriệu chứng đa dạng tùy theo vị trí u, mức độ lan rộng của tổn thương:\n- Đau ngực, đau dai dẳng, cố định một vị trí.\n- Khó thở khi khối u to, chèn ép, bít tắc đường hô hấp.\n- Hội chứng trung thất:\n+ Chèn ép tĩnh mạch chủ trên: phù áo khoác, truyền tĩnh mạch cổ nổi to, tuần\nhoàn bàng hệ.\n+ Chèn ép thực quản: khó nuốt, nuốt đau.\n+ Chèn ép thần kinh quặt ngược trái: khàn tiếng, giọng đôi\n+ Chèn ép thần kinh giao cảm cổ: khe mắt hẹp, đồng tử co nhỏ, gò má đỏ bên\ntổn thương.\n+ Chèn ép thần kinh phế vị: hồi hộp, tim đập nhanh.\n+ Chèn ép thần kinh hoành: nấc, đau vùng hoành, khó thở.\n+ Chèn ép đám rối cánh tay: đau vai lan mặt trong cánh tay, rối loạn cảm giác.\n+ Chèn ép ống ngực chủ: tràn dưỡng chấp màng phổi.\n- Tràn dịch màng tim, rối loạn nhịp tim.\n- Tràn dịch màng phổi.\n- Toàn thân: mệt mỏi, gầy sút, sốt.\n- Các dấu hiệu do di căn: hạch thượng đòn, nốt di căn da thành ngực. Di căn não:\nhội chứng tăng áp lực nội sọ, liệt thần kinh khu trú. Di căn xương: đau, gãy xương bệnh\nlý. Di căn phổi đối bên, di căn gan: thường không có triệu chứng lâm sàng.\n- Các hội chứng cận ung thư: thường gặp hơn trong ung thư phổi không tế bào\nnhỏ. Bao gồm: ngón tay dùi trống, đái tháo nhạt do khối u bài tiết chất giống ADH, hội\nchứng Cushing do khối u bài tiết chất giống ACTH, tăng calci máu do khối u bài tiết\nchất giống PTH, vú to, giọng cao, teo tinh hoàn do khối u bài tiết chất giống\ngonadotropin, hội chứng giả nhược cơ, viêm da cơ (bệnh tự miễn gặp trong một số bệnh\nung thư).",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI33_SX01",
+          "sub_heading": "Giai đoạn sớm",
+          "text": "a. Giai đoạn sớm\n- Bệnh phát triển âm thầm, triệu chứng nghèo nàn hoặc không có triệu chứng.\n- Dấu hiệu gợi ý: thường là nam giới trên 40 tuổi, nghiện thuốc lá, thuốc lào, ho\nkhan kéo dài, có thể có đờm lẫn máu, điều trị kháng sinh không có kết quả.\nb. Giai đoạn tiến triển\nTriệu chứng đa dạng tùy theo vị trí u, mức độ lan rộng của tổn thương:\n- Đau ngực, đau dai dẳng, cố định một vị trí.\n- Khó thở khi khối u to, chèn ép, bít tắc đường hô hấp.\n- Hội chứng trung thất:\n+ Chèn ép tĩnh mạch chủ trên: phù áo khoác, truyền tĩnh mạch cổ nổi to, tuần\nhoàn bàng hệ.\n+ Chèn ép thực quản: khó nuốt, nuốt đau.\n+ Chèn ép thần kinh quặt ngược trái: khàn tiếng, giọng đôi\n+ Chèn ép thần kinh giao cảm cổ: khe mắt hẹp, đồng tử co nhỏ, gò má đỏ bên\ntổn thương.\n+ Chèn ép thần kinh phế vị: hồi hộp, tim đập nhanh.\n+ Chèn ép thần kinh hoành: nấc, đau vùng hoành, khó thở.\n+ Chèn ép đám rối cánh tay: đau vai lan mặt trong cánh tay, rối loạn cảm giác.\n+ Chèn ép ống ngực chủ: tràn dưỡng chấp màng phổi.\n- Tràn dịch màng tim, rối loạn nhịp tim.\n- Tràn dịch màng phổi.\n- Toàn thân: mệt mỏi, gầy sút, sốt.\n- Các dấu hiệu do di căn: hạch thượng đòn, nốt di căn da thành ngực. Di căn não:\nhội chứng tăng áp lực nội sọ, liệt thần kinh khu trú. Di căn xương: đau, gãy xương bệnh\nlý. Di căn phổi đối bên, di căn gan: thường không có triệu chứng lâm sàng.\n- Các hội chứng cận ung thư: thường gặp hơn trong ung thư phổi không tế bào\nnhỏ. Bao gồm: ngón tay dùi trống, đái tháo nhạt do khối u bài tiết chất giống ADH, hội\nchứng Cushing do khối u bài tiết chất giống ACTH, tăng calci máu do khối u bài tiết\nchất giống PTH, vú to, giọng cao, teo tinh hoàn do khối u bài tiết chất giống\ngonadotropin, hội chứng giả nhược cơ, viêm da cơ (bệnh tự miễn gặp trong một số bệnh\nung thư).",
+          "char_count": 1751,
+          "word_count": 386
+        }
+      ],
+      "source_reference": "Bài 33, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1751,
+      "total_word_count": 386
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI34_CLINICAL",
+      "bai_number": 34,
+      "disease_name_vi": "UNG THƯ MÀNG PHỔI",
+      "disease_name_en": "Pleural Mesothelioma",
+      "icd10_code": "C45",
+      "organ_system": "Hô hấp",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "2.1.1. Triệu chứng lâm sàng\n- Các triệu chứng cơ năng của bệnh không đặc hiệu và có thể giống nhiều bệnh lý\nhô hấp khác, phần lớn các bệnh nhân đến đến khám vì: khó thở, đau ngực, ho kéo dài,…\n- Bệnh ở giai đoạn muộn có thể có các biểu hiện của u đã di căn như di căn gan,\nxương, hệ thần kinh trung ương.\n- Khám thực thể lâm sàng: thường là triệu chứng của tràn dịch màng phổi, hội\nchứng 3 giảm.\n- Các triệu chứng toàn thân: da niêm mạc nhợt, gầy sút cân…",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI34_SX01",
+          "sub_heading": "Triệu chứng lâm sàng",
+          "text": "2.1.1. Triệu chứng lâm sàng\n- Các triệu chứng cơ năng của bệnh không đặc hiệu và có thể giống nhiều bệnh lý\nhô hấp khác, phần lớn các bệnh nhân đến đến khám vì: khó thở, đau ngực, ho kéo dài,…\n- Bệnh ở giai đoạn muộn có thể có các biểu hiện của u đã di căn như di căn gan,\nxương, hệ thần kinh trung ương.\n- Khám thực thể lâm sàng: thường là triệu chứng của tràn dịch màng phổi, hội\nchứng 3 giảm.\n- Các triệu chứng toàn thân: da niêm mạc nhợt, gầy sút cân…",
+          "char_count": 455,
+          "word_count": 101
+        }
+      ],
+      "source_reference": "Bài 34, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 455,
+      "total_word_count": 101
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI35_CLINICAL",
+      "bai_number": 35,
+      "disease_name_vi": "UNG THƯ THỰC QUẢN",
+      "disease_name_en": "Esophageal Cancer",
+      "icd10_code": "C15",
+      "organ_system": "Tiêu hóa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Giai đoạn sớm các triệu chứng không đặc hiệu, thỉnh thoảng có nuốt vướng\n- Nuốt nghẹn tăng dần, thường tiến triển từ từ sau 3-4 tháng.\n- Đau khi nuốt: thường gặp, đau sau xương ức. Nếu khối u ở thực quản thấp thì có\nthể gặp đau bụng. Đau có thể lan ra sau lưng giữa hai vai, lên cằm, ra sau tai hay ra\nvùng trước tim. Khi đau lan ra sau lưng thì cần nghi ngờ xâm lấn cột sống.\n- Các triệu chứng phối hợp khác như ợ hơi, nôn mửa, tăng tiết nước bọt, sặc cũng\ncó khi là triệu chứng hoặc biến chứng của rò thực - khí phế quản.\n- Các dấu hiệu tiến triển, xâm lấn:\n+ Chảy máu thực quản: biểu hiện nôn ra máu, đi ngoài phân đen.\n+ Viêm phổi: có thể là triệu chứng song cũng có khi là biến chứng.\n+ Ho dai dẳng: do rò thực - phế quản.\n+ Nói khó: do xâm lấn dây thần kinh quặt ngược thanh quản.\n+ Hội chứng Horner.\n+ Chèn ép tĩnh mạch chủ trên.\n+ Chảy máu dữ dội do ung thư thực quản xâm lấn vào động mạch chủ.\n- Các dấu hiệu di căn: tràn dịch màng phổi ác tính, gan to, hạch cổ, đau xương,\nđái máu.\n- Triệu chứng toàn thân có thể gặp: gầy sút trên 90% bệnh nhân, da sạm, khô do\nthiếu dinh dưỡng lâu ngày, thiếu máu, mệt mỏi...",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI35_SX01",
+          "sub_heading": "",
+          "text": "- Giai đoạn sớm các triệu chứng không đặc hiệu, thỉnh thoảng có nuốt vướng\n- Nuốt nghẹn tăng dần, thường tiến triển từ từ sau 3-4 tháng.\n- Đau khi nuốt: thường gặp, đau sau xương ức. Nếu khối u ở thực quản thấp thì có\nthể gặp đau bụng. Đau có thể lan ra sau lưng giữa hai vai, lên cằm, ra sau tai hay ra\nvùng trước tim. Khi đau lan ra sau lưng thì cần nghi ngờ xâm lấn cột sống.\n- Các triệu chứng phối hợp khác như ợ hơi, nôn mửa, tăng tiết nước bọt, sặc cũng\ncó khi là triệu chứng hoặc biến chứng của rò thực - khí phế quản.\n- Các dấu hiệu tiến triển, xâm lấn:\n+ Chảy máu thực quản: biểu hiện nôn ra máu, đi ngoài phân đen.\n+ Viêm phổi: có thể là triệu chứng song cũng có khi là biến chứng.\n+ Ho dai dẳng: do rò thực - phế quản.\n+ Nói khó: do xâm lấn dây thần kinh quặt ngược thanh quản.\n+ Hội chứng Horner.\n+ Chèn ép tĩnh mạch chủ trên.\n+ Chảy máu dữ dội do ung thư thực quản xâm lấn vào động mạch chủ.\n- Các dấu hiệu di căn: tràn dịch màng phổi ác tính, gan to, hạch cổ, đau xương,\nđái máu.\n- Triệu chứng toàn thân có thể gặp: gầy sút trên 90% bệnh nhân, da sạm, khô do\nthiếu dinh dưỡng lâu ngày, thiếu máu, mệt mỏi...",
+          "char_count": 1121,
+          "word_count": 252
+        }
+      ],
+      "source_reference": "Bài 35, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1121,
+      "total_word_count": 252
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI37_CLINICAL",
+      "bai_number": 37,
+      "disease_name_vi": "UNG THƯ BÓNG VATER",
+      "disease_name_en": "Ampulla of Vater Cancer",
+      "icd10_code": "C24.1",
+      "organ_system": "Tiêu hóa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "2.1.1. Triệu chứng cơ năng\nKhối u chặn đường mật, tụy sẽ cản trở sự dẫn lưu của dịch tiết tuyến tụy và đường\nmật vào ruột vì vậy nó gây ra một số các triệu chứng sau:\n- Vàng da, đó là kết quả việc dẫn lưu dịch mật vào tá tràng bị chặn khiến billirubin\ntích tụ trong máu. Vàng da, thường là một trong những triệu chứng đầu tiên xuất hiện\nvới ung thư bóng Vater.\n- Ngứa: hay ngứa da, liên quan đến vàng da\n- Nôn: khi khối u có kích thước lớn gây tắc tá tràng (tắc ruột cao), bệnh nhân có\nthể nôn vọt ngay sau khi ăn.\n- Xuất huyết tiêu hóa cao cũng hay gặp khi khối u xâm lấn mạch máu\n- Đau vùng thượng vị: Triệu chứng xuất hiện khi khối u xâm lấn vào tụy hoặc các\ncơ quan xung quanh.\n- Bụng chướng ăn khó tiêu hoặc bụng có thể có dịch tự do vì di căn phúc mạc\n- Đau lưng\n- Đau dạ dày và nôn\n- Tiêu chảy\n- Viêm tụy\n- Phân nhợt nhạt, nhiều dầu mỡ.\n\n\n\n\n\n296",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI37_SX01",
+          "sub_heading": "Triệu chứng cơ năng",
+          "text": "2.1.1. Triệu chứng cơ năng\nKhối u chặn đường mật, tụy sẽ cản trở sự dẫn lưu của dịch tiết tuyến tụy và đường\nmật vào ruột vì vậy nó gây ra một số các triệu chứng sau:\n- Vàng da, đó là kết quả việc dẫn lưu dịch mật vào tá tràng bị chặn khiến billirubin\ntích tụ trong máu. Vàng da, thường là một trong những triệu chứng đầu tiên xuất hiện\nvới ung thư bóng Vater.\n- Ngứa: hay ngứa da, liên quan đến vàng da\n- Nôn: khi khối u có kích thước lớn gây tắc tá tràng (tắc ruột cao), bệnh nhân có\nthể nôn vọt ngay sau khi ăn.\n- Xuất huyết tiêu hóa cao cũng hay gặp khi khối u xâm lấn mạch máu\n- Đau vùng thượng vị: Triệu chứng xuất hiện khi khối u xâm lấn vào tụy hoặc các\ncơ quan xung quanh.\n- Bụng chướng ăn khó tiêu hoặc bụng có thể có dịch tự do vì di căn phúc mạc\n- Đau lưng\n- Đau dạ dày và nôn\n- Tiêu chảy\n- Viêm tụy\n- Phân nhợt nhạt, nhiều dầu mỡ.",
+          "char_count": 843,
+          "word_count": 194
+        }
+      ],
+      "source_reference": "Bài 37, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 852,
+      "total_word_count": 195
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI38_CLINICAL",
+      "bai_number": 38,
+      "disease_name_vi": "UNG THƯ TỤY",
+      "disease_name_en": "Pancreatic Cancer",
+      "icd10_code": "C25",
+      "organ_system": "Tiêu hóa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Biểu hiện lâm sàng của ung thư tuyến tụy thường phụ thuộc vào vị trí của khối u,\ncác triệu chứng ban đầu xuất hiện mơ hồ và không đặc hiệu.\n- Vàng da là triệu chứng phổ biến.\n- Đau bụng, chán ăn.\n- Đau lưng là gợi ý của sự xâm nhập của khối u vào sau phúc mạc.\n- Viêm tụy cấp do tắc nghẽn ống tụy.\n- Gầy sút cân.\n- Các triệu chứng khác: tắc mạch, chán ăn, đổ mồ hôi đêm, mệt mỏi, cổ trướng,\nsuy kiệt.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI38_SX01",
+          "sub_heading": "",
+          "text": "Biểu hiện lâm sàng của ung thư tuyến tụy thường phụ thuộc vào vị trí của khối u,\ncác triệu chứng ban đầu xuất hiện mơ hồ và không đặc hiệu.\n- Vàng da là triệu chứng phổ biến.\n- Đau bụng, chán ăn.\n- Đau lưng là gợi ý của sự xâm nhập của khối u vào sau phúc mạc.\n- Viêm tụy cấp do tắc nghẽn ống tụy.\n- Gầy sút cân.\n- Các triệu chứng khác: tắc mạch, chán ăn, đổ mồ hôi đêm, mệt mỏi, cổ trướng,\nsuy kiệt.",
+          "char_count": 400,
+          "word_count": 93
+        }
+      ],
+      "source_reference": "Bài 38, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 400,
+      "total_word_count": 93
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI39_CLINICAL",
+      "bai_number": 39,
+      "disease_name_vi": "UNG THƯ THẬN",
+      "disease_name_en": "Renal Cell Carcinoma",
+      "icd10_code": "C64",
+      "organ_system": "Tiết niệu",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Đái máu toàn bãi, đái buốt.\n- Đau lưng, có khối u ở bụng, sụt cân, thiếu máu, sốt, có thể âm thầm không\ntriệu chứng.\n- Giai đoạn muộn khi đã có di căn, trên lâm sàng có các triệu chứng của di căn tùy\nvị trí, giai đoạn bệnh.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI39_SX01",
+          "sub_heading": "",
+          "text": "- Đái máu toàn bãi, đái buốt.\n- Đau lưng, có khối u ở bụng, sụt cân, thiếu máu, sốt, có thể âm thầm không\ntriệu chứng.\n- Giai đoạn muộn khi đã có di căn, trên lâm sàng có các triệu chứng của di căn tùy\nvị trí, giai đoạn bệnh.",
+          "char_count": 225,
+          "word_count": 52
+        }
+      ],
+      "source_reference": "Bài 39, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 225,
+      "total_word_count": 52
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI40_CLINICAL",
+      "bai_number": 40,
+      "disease_name_vi": "UNG THƯ BIỂU MÔ ĐƯỜNG NIỆU TRÊN",
+      "disease_name_en": "Upper Urinary Tract Carcinoma",
+      "icd10_code": "C65-C66",
+      "organ_system": "Tiết niệu",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Ung thư biểu mô đường tiết niệu trên có thể được phát hiện tình cờ qua thăm khám\nhoặc có các dấu hiệu gợi ý bệnh bao gồm:\nTiểu máu là triệu chứng xuất hiện phổ biến nhất, xảy ra ở 75-95% bệnh nhân. Tiểu\nmáu vi thể xảy ra ở 3-11% bệnh nhân.\nKhoảng 14-37% bệnh nhân biểu hiện đau. Đau thường âm ỉ và được gây ra bởi sự\ntắc nghẽn dần dần của hệ thống đường niệu. Đau bụng cũng có thể xảy ra với sự di\nchuyển của cục máu đông.\nBệnh nhân có thể sốt do nhiễm trùng đường tiết niệu đi kèm.\nDấu hiệu toàn thân như: mệt mỏi, chán ăn, gầy sút cân...\nCác triệu chứng di căn xa:\n- Di căn xương: Đau xương, gãy xương\n- Di căn phổi: Ho kéo dài, đau tức ngực\n- Di căn gan: Gan to, đau hạ sườn phải.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI40_SX01",
+          "sub_heading": "",
+          "text": "Ung thư biểu mô đường tiết niệu trên có thể được phát hiện tình cờ qua thăm khám\nhoặc có các dấu hiệu gợi ý bệnh bao gồm:\nTiểu máu là triệu chứng xuất hiện phổ biến nhất, xảy ra ở 75-95% bệnh nhân. Tiểu\nmáu vi thể xảy ra ở 3-11% bệnh nhân.\nKhoảng 14-37% bệnh nhân biểu hiện đau. Đau thường âm ỉ và được gây ra bởi sự\ntắc nghẽn dần dần của hệ thống đường niệu. Đau bụng cũng có thể xảy ra với sự di\nchuyển của cục máu đông.\nBệnh nhân có thể sốt do nhiễm trùng đường tiết niệu đi kèm.\nDấu hiệu toàn thân như: mệt mỏi, chán ăn, gầy sút cân...\nCác triệu chứng di căn xa:\n- Di căn xương: Đau xương, gãy xương\n- Di căn phổi: Ho kéo dài, đau tức ngực\n- Di căn gan: Gan to, đau hạ sườn phải.",
+          "char_count": 683,
+          "word_count": 154
+        }
+      ],
+      "source_reference": "Bài 40, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 683,
+      "total_word_count": 154
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI41_CLINICAL",
+      "bai_number": 41,
+      "disease_name_vi": "UNG THƯ TUYẾN THƯỢNG THẬN",
+      "disease_name_en": "Adrenal Cancer",
+      "icd10_code": "C74",
+      "organ_system": "Nội tiết",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "2.1.1. Triệu chứng cơ năng (loại u nội tiết hoạt động chiếm 30-40% loại u ở\nngười trưởng thành)\nCác triệu chứng hội chứng về nội tiết: bao gồm hội chứng Cushing, hội chứng nam\nhóa ở nữ và chứng nữ hóa ở nam. Có khoảng 40-60% UT vỏ thượng thận có biểu hiện\ntriệu chứng về nội tiết, mức độ và tính chất của các triệu chứng này tùy thuộc vào tuổi\nvà giới của bệnh nhân.\nCác biểu hiện lâm sàng như béo thân, mặt tròn đỏ, u mỡ sau gáy, rậm lông mi, tóc\nmai, râu, ria mép ở nữ, tóc sau gáy; tăng huyết áp, trứng cá ở mặt, lưng; rạn da màu\ntím đỏ, sờ vào thấy mịn như lụa và lõm dưới mặt da. Vị trí thường gặp ở vùng bụng\ndưới hai bên, mặt trong của đùi 2 bên, khoeo chân, nếp lằn nách, lưng; tăng cân, mệt\nmỏi, mất kinh ở nữ, âm vật to; rối loạn tâm lý, yếu cơ gốc chi, loãng xương, sỏi thận,\nđái tháo đường.\nSự tăng quá mức androgen do mọi nguyên nhân làm phát triển lông giới tính (cằm,\nmôi dưới, bụng và ngực) và tăng hoạt động các tuyến bã gây trứng cá. Hay gặp rối loạn\nkinh nguyệt, không rụng noãn, vô kinh ở nữ và có hiện tượng nam hóa ở nữ giới như\n(hói đầu phía trước, phì đại âm vật, bắp thịt nở nang, giọng nói trầm hơn). Nếu có sự bài\ntiết quá mức androgen thì sẽ mất nữ tính ở nam giới như (giảm kích thước tuyến vú, mất\nmô mỡ).\n\n\n\n\n\n333",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI41_SX01",
+          "sub_heading": "Triệu chứng cơ năng (loại u nội tiết hoạt động chiếm 30-40% loại u ở",
+          "text": "2.1.1. Triệu chứng cơ năng (loại u nội tiết hoạt động chiếm 30-40% loại u ở\nngười trưởng thành)\nCác triệu chứng hội chứng về nội tiết: bao gồm hội chứng Cushing, hội chứng nam\nhóa ở nữ và chứng nữ hóa ở nam. Có khoảng 40-60% UT vỏ thượng thận có biểu hiện\ntriệu chứng về nội tiết, mức độ và tính chất của các triệu chứng này tùy thuộc vào tuổi\nvà giới của bệnh nhân.\nCác biểu hiện lâm sàng như béo thân, mặt tròn đỏ, u mỡ sau gáy, rậm lông mi, tóc\nmai, râu, ria mép ở nữ, tóc sau gáy; tăng huyết áp, trứng cá ở mặt, lưng; rạn da màu\ntím đỏ, sờ vào thấy mịn như lụa và lõm dưới mặt da. Vị trí thường gặp ở vùng bụng\ndưới hai bên, mặt trong của đùi 2 bên, khoeo chân, nếp lằn nách, lưng; tăng cân, mệt\nmỏi, mất kinh ở nữ, âm vật to; rối loạn tâm lý, yếu cơ gốc chi, loãng xương, sỏi thận,\nđái tháo đường.\nSự tăng quá mức androgen do mọi nguyên nhân làm phát triển lông giới tính (cằm,\nmôi dưới, bụng và ngực) và tăng hoạt động các tuyến bã gây trứng cá. Hay gặp rối loạn\nkinh nguyệt, không rụng noãn, vô kinh ở nữ và có hiện tượng nam hóa ở nữ giới như\n(hói đầu phía trước, phì đại âm vật, bắp thịt nở nang, giọng nói trầm hơn). Nếu có sự bài\ntiết quá mức androgen thì sẽ mất nữ tính ở nam giới như (giảm kích thước tuyến vú, mất\nmô mỡ).",
+          "char_count": 1235,
+          "word_count": 273
+        }
+      ],
+      "source_reference": "Bài 41, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1244,
+      "total_word_count": 274
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI42_CLINICAL",
+      "bai_number": 42,
+      "disease_name_vi": "UNG THƯ BÀNG QUANG",
+      "disease_name_en": "Bladder Cancer",
+      "icd10_code": "C67",
+      "organ_system": "Tiết niệu",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Lâm sàng:\n+ Đái máu, đái nhiều lần, đái khó.\n+ Đái buốt, có dấu hiệu tắc nghẽn đường niệu.\n+ Giai đoạn muộn khi đã có di căn, trên lâm sàng có các triệu chứng của di căn\ntùy theo vị trí, giai đoạn bệnh.\n+ Biểu hiện toàn thân: sốt, sút cân, thiếu máu…\n- Cận lâm sàng:\n+ Nội soi bàng quang: cho hình ảnh trực tiếp khối u sùi loét chảy máu… Nội soi\ngiúp sinh thiết chẩn đoán mô bệnh học.\n+ Các xét nghiệm huyết học, sinh hóa, Xquang… giúp đánh giá chung.\n+ Xét nghiệm chất chỉ điểm khối u (tumor marker): CEA, CA 19-9, BTA\n(bladder tumor antigen); NMP 22 (nuclear matrix protein 22), TPA (tissue polypeptide\nantigen), Cyfra 21-1 tăng cao trong một số trường hợp. Có giá trị theo dõi đáp ứng điều\ntrị, phát hiện bệnh tái phát, di căn xa.\n+ Chẩn đoán hình ảnh: siêu âm, CT, MRI giúp xác định khối u, vị trí, kích thước,\nđánh giá tình trạng tổ chức u thâm nhiễm xung quang, hạch, di căn tiểu khung ổ bụng.\n+ Chụp thận tiết niệu có cản quang tĩnh mạch UIV đánh giá hình thể và chức\nnăng thận, niệu quản.\n+ Xạ hình xương bằng máy SPECT, SPECT/CT với 99mTc-MDP để đánh giá tổn\nthương di căn xương, chẩn đoán giai đoạn bệnh trước điều trị, theo dõi đáp ứng điều trị,\nđánh giá tái phát và di căn.\n+ Xạ hình thận chức năng bằng máy SPECT, SPECT/CT với 99mTc-DTPA để\nđánh giá chức năng thận trước điều trị và sau điều trị.\n+ Chụp UIV: đánh giá tổn thương tại bàng quang và hệ tiết niệu.\n+ Nội soi bàng quang: đánh giá tổn thương và sinh thiết u làm chẩn đoán xác định.\n+ Chụp PET/CT với 18F-FDG trước điều trị để chẩn đoán u nguyên phát, chẩn\nđoán giai đoạn bệnh; chụp sau điều trị để theo dõi đáp ứng điều trị, đánh giá tái phát và\ndi căn; mô phỏng lập kế hoạch xạ trị.\n+ Xét nghiệm nước tiểu: tìm hồng cầu (đái máu vi thể), tìm tế bào ung thư.\n+ Sinh thiết u xét nghiệm mô bệnh học là tiêu chuẩn để chẩn đoán xác định. Đa\nsố là ung thư biểu mô tế bào chuyển tiếp đường niệu.\n+ Xét nghiệm sinh học phân tử: giải trình tự nhiều gen.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI42_SX01",
+          "sub_heading": "",
+          "text": "- Lâm sàng:\n+ Đái máu, đái nhiều lần, đái khó.\n+ Đái buốt, có dấu hiệu tắc nghẽn đường niệu.\n+ Giai đoạn muộn khi đã có di căn, trên lâm sàng có các triệu chứng của di căn\ntùy theo vị trí, giai đoạn bệnh.\n+ Biểu hiện toàn thân: sốt, sút cân, thiếu máu…\n- Cận lâm sàng:\n+ Nội soi bàng quang: cho hình ảnh trực tiếp khối u sùi loét chảy máu… Nội soi\ngiúp sinh thiết chẩn đoán mô bệnh học.\n+ Các xét nghiệm huyết học, sinh hóa, Xquang… giúp đánh giá chung.\n+ Xét nghiệm chất chỉ điểm khối u (tumor marker): CEA, CA 19-9, BTA\n(bladder tumor antigen); NMP 22 (nuclear matrix protein 22), TPA (tissue polypeptide\nantigen), Cyfra 21-1 tăng cao trong một số trường hợp. Có giá trị theo dõi đáp ứng điều\ntrị, phát hiện bệnh tái phát, di căn xa.\n+ Chẩn đoán hình ảnh: siêu âm, CT, MRI giúp xác định khối u, vị trí, kích thước,\nđánh giá tình trạng tổ chức u thâm nhiễm xung quang, hạch, di căn tiểu khung ổ bụng.\n+ Chụp thận tiết niệu có cản quang tĩnh mạch UIV đánh giá hình thể và chức\nnăng thận, niệu quản.\n+ Xạ hình xương bằng máy SPECT, SPECT/CT với 99mTc-MDP để đánh giá tổn\nthương di căn xương, chẩn đoán giai đoạn bệnh trước điều trị, theo dõi đáp ứng điều trị,\nđánh giá tái phát và di căn.\n+ Xạ hình thận chức năng bằng máy SPECT, SPECT/CT với 99mTc-DTPA để\nđánh giá chức năng thận trước điều trị và sau điều trị.\n+ Chụp UIV: đánh giá tổn thương tại bàng quang và hệ tiết niệu.\n+ Nội soi bàng quang: đánh giá tổn thương và sinh thiết u làm chẩn đoán xác định.\n+ Chụp PET/CT với 18F-FDG trước điều trị để chẩn đoán u nguyên phát, chẩn\nđoán giai đoạn bệnh; chụp sau điều trị để theo dõi đáp ứng điều trị, đánh giá tái phát và\ndi căn; mô phỏng lập kế hoạch xạ trị.\n+ Xét nghiệm nước tiểu: tìm hồng cầu (đái máu vi thể), tìm tế bào ung thư.\n+ Sinh thiết u xét nghiệm mô bệnh học là tiêu chuẩn để chẩn đoán xác định. Đa\nsố là ung thư biểu mô tế bào chuyển tiếp đường niệu.\n+ Xét nghiệm sinh học phân tử: giải trình tự nhiều gen.",
+          "char_count": 1921,
+          "word_count": 409
+        }
+      ],
+      "source_reference": "Bài 42, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1921,
+      "total_word_count": 409
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI43_CLINICAL",
+      "bai_number": 43,
+      "disease_name_vi": "UNG THƯ BUỒNG TRỨNG",
+      "disease_name_en": "Ovarian Cancer",
+      "icd10_code": "C56",
+      "organ_system": "Phụ khoa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Ung thư buồng trứng ở giai đoạn sớm: triệu chứng mơ hồ, không đặc hiệu dễ nhầm\nlẫn với các bệnh nội khoa, sản phụ khoa khác: khó tiêu, mệt mỏi, chán ăn.\nMột số triệu chứng của UTBT giai đoạn muộn hơn có thể gặp:\n- Cảm giác khó chịu, ậm ạch vùng bụng dưới, đau bụng\n- Bụng chướng\n- Sờ thấy khối ổ bụng\n- Chảy máu âm đạo\n- Các triệu chứng về ruột, tiết niệu (do u chèn ép, xâm lấn).",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI43_SX01",
+          "sub_heading": "",
+          "text": "Ung thư buồng trứng ở giai đoạn sớm: triệu chứng mơ hồ, không đặc hiệu dễ nhầm\nlẫn với các bệnh nội khoa, sản phụ khoa khác: khó tiêu, mệt mỏi, chán ăn.\nMột số triệu chứng của UTBT giai đoạn muộn hơn có thể gặp:\n- Cảm giác khó chịu, ậm ạch vùng bụng dưới, đau bụng\n- Bụng chướng\n- Sờ thấy khối ổ bụng\n- Chảy máu âm đạo\n- Các triệu chứng về ruột, tiết niệu (do u chèn ép, xâm lấn).",
+          "char_count": 380,
+          "word_count": 86
+        }
+      ],
+      "source_reference": "Bài 43, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 380,
+      "total_word_count": 86
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI44_CLINICAL",
+      "bai_number": 44,
+      "disease_name_vi": "UNG THƯ CỔ TỬ CUNG",
+      "disease_name_en": "Cervical Cancer",
+      "icd10_code": "C53",
+      "organ_system": "Phụ khoa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Ra máu bất thường ở âm đạo: ra máu sau giao hợp, giữa hai kỳ kinh, sau mãn\nkinh, sau đại tiện gắng sức.\n- Ra khí hư nhiều, khí hư lẫn máu, có mùi hôi.\n- Đau vùng hạ vị, đau ngang cột sống thắt lưng.\n- Có thể biếng ăn, sút cân, suy thận, phù hai chân, rò phân và nước tiểu qua đường\nâm đạo… khi bệnh ở giai đoạn muộn.\n- Khám lâm sàng:\n+ Thăm khám âm đạo bằng tay và mỏ vịt: đánh giá tổn thương cổ tử cung, mức\nđộ lan tràn của khối u ra vùng túi cùng và thành âm đạo. Quan sát trực tiếp tổn thương\nvà sinh thiết tổn thương để có chẩn đoán mô bệnh học: hình ảnh tổn thương tại cổ tử\ncung: u thể sùi, loét, sùi loét, thâm nhiễm. Cần đánh giá kích thước khối u và mức độ\nxâm lấn của khối u vào âm đạo, túi cùng. Sinh thiết tổn thương u: sinh thiết tại rìa\nkhối u.\n+ Thăm trực tràng: đánh giá mức độ xâm lấn vào dây chằng rộng, trực tràng\n(nếu có).\n+ Nếu khối u không rõ ràng cần kiểm tra bên trong ống cổ tử cung, có thể nạo\nhoặc hút ống cổ tử cung để lấy bệnh phẩm.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI44_SX01",
+          "sub_heading": "",
+          "text": "- Ra máu bất thường ở âm đạo: ra máu sau giao hợp, giữa hai kỳ kinh, sau mãn\nkinh, sau đại tiện gắng sức.\n- Ra khí hư nhiều, khí hư lẫn máu, có mùi hôi.\n- Đau vùng hạ vị, đau ngang cột sống thắt lưng.\n- Có thể biếng ăn, sút cân, suy thận, phù hai chân, rò phân và nước tiểu qua đường\nâm đạo… khi bệnh ở giai đoạn muộn.\n- Khám lâm sàng:\n+ Thăm khám âm đạo bằng tay và mỏ vịt: đánh giá tổn thương cổ tử cung, mức\nđộ lan tràn của khối u ra vùng túi cùng và thành âm đạo. Quan sát trực tiếp tổn thương\nvà sinh thiết tổn thương để có chẩn đoán mô bệnh học: hình ảnh tổn thương tại cổ tử\ncung: u thể sùi, loét, sùi loét, thâm nhiễm. Cần đánh giá kích thước khối u và mức độ\nxâm lấn của khối u vào âm đạo, túi cùng. Sinh thiết tổn thương u: sinh thiết tại rìa\nkhối u.\n+ Thăm trực tràng: đánh giá mức độ xâm lấn vào dây chằng rộng, trực tràng\n(nếu có).\n+ Nếu khối u không rõ ràng cần kiểm tra bên trong ống cổ tử cung, có thể nạo\nhoặc hút ống cổ tử cung để lấy bệnh phẩm.",
+          "char_count": 963,
+          "word_count": 223
+        }
+      ],
+      "source_reference": "Bài 44, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 963,
+      "total_word_count": 223
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI45_CLINICAL",
+      "bai_number": 45,
+      "disease_name_vi": "UNG THƯ NỘI MẠC TỬ CUNG",
+      "disease_name_en": "Endometrial Cancer",
+      "icd10_code": "C54",
+      "organ_system": "Phụ khoa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng hay gặp nhất là ra máu âm đạo bất thường ngoài chu kỳ kinh (chiếm tới\n90% các trường hợp). Vì vậy, tất cả phụ nữ đã mãn kinh có chảy máu âm đạo cần được\nkhám phụ khoa kỹ lưỡng để chẩn đoán bệnh. Các phụ nữ chưa mãn kinh có kinh nguyệt\nkéo dài hoặc ra máu nhiều hơn bình thường hoặc ra máu giữa kỳ kinh cũng cần được\nkiểm tra (sinh thiết nội mạc tử cung). Phụ nữ đang điều trị tamoxifen có ra máu âm đạo\ncũng cần được sinh thiết nội mạc tử cung.\nĐôi khi bệnh nhân có biểu hiện đau bụng dưới (thường ở giai đoạn muộn hơn).\nCác biểu hiện ở giai đoạn rất muộn bao gồm tắc ruột, vàng da, dịch ổ bụng…",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI45_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng hay gặp nhất là ra máu âm đạo bất thường ngoài chu kỳ kinh (chiếm tới\n90% các trường hợp). Vì vậy, tất cả phụ nữ đã mãn kinh có chảy máu âm đạo cần được\nkhám phụ khoa kỹ lưỡng để chẩn đoán bệnh. Các phụ nữ chưa mãn kinh có kinh nguyệt\nkéo dài hoặc ra máu nhiều hơn bình thường hoặc ra máu giữa kỳ kinh cũng cần được\nkiểm tra (sinh thiết nội mạc tử cung). Phụ nữ đang điều trị tamoxifen có ra máu âm đạo\ncũng cần được sinh thiết nội mạc tử cung.\nĐôi khi bệnh nhân có biểu hiện đau bụng dưới (thường ở giai đoạn muộn hơn).\nCác biểu hiện ở giai đoạn rất muộn bao gồm tắc ruột, vàng da, dịch ổ bụng…",
+          "char_count": 607,
+          "word_count": 135
+        }
+      ],
+      "source_reference": "Bài 45, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 607,
+      "total_word_count": 135
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI46_CLINICAL",
+      "bai_number": 46,
+      "disease_name_vi": "UNG THƯ ÂM HỘ",
+      "disease_name_en": "Vulvar Cancer",
+      "icd10_code": "C51",
+      "organ_system": "Phụ khoa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "* Triệu chứng chủ quan:\nTriệu chứng sớm hay gặp là ngứa âm hộ trong thời gian dài. Về sau bệnh nhân có\nthể có chảy máu, chảy dịch khi có loét bề mặt, muộn hơn có đái khó và đau. Bệnh nhân\nthường tự sờ thấy khối u, khi để muộn có thể sùi thành khối lớn.\n* Khám thực thể:\n- Khám thấy tổn thương nổi gồ, có thể đỏ tươi hoặc có những mảng trắng hoặc có\nnhững nụ sùi. Hầu hết UTAH biểu hiện đơn ổ trên bệnh nhân đã mãn kinh thường liên\nquan đến các tổn thương mạn tính ở âm hộ. Có khoảng 5% biểu hiện đa ổ thường ở\nnhững phụ nữ trẻ.\n- Vị trí thường gặp ở môi lớn (50%), sau đó là môi nhỏ (15-20%), hiếm gặp ở vị\ntrí âm vật.\n- Cần khám phụ khoa toàn diện, khám hạch bẹn, các cơ quan xung quanh đánh giá\nmức độ xâm lấn của bệnh.\n- Để chẩn đoán sớm trước một tổn thương âm hộ, thầy thuốc cần bấm sinh thiết.\nSử dụng máy soi cổ tử cung sau khi chấm acid acetic 3-6% giúp quan sát tốt hơn để\nchọn vị trí sinh thiết, đặc biệt ở những phụ nữ có tổn thương rộng.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI46_SX01",
+          "sub_heading": "",
+          "text": "* Triệu chứng chủ quan:\nTriệu chứng sớm hay gặp là ngứa âm hộ trong thời gian dài. Về sau bệnh nhân có\nthể có chảy máu, chảy dịch khi có loét bề mặt, muộn hơn có đái khó và đau. Bệnh nhân\nthường tự sờ thấy khối u, khi để muộn có thể sùi thành khối lớn.\n* Khám thực thể:\n- Khám thấy tổn thương nổi gồ, có thể đỏ tươi hoặc có những mảng trắng hoặc có\nnhững nụ sùi. Hầu hết UTAH biểu hiện đơn ổ trên bệnh nhân đã mãn kinh thường liên\nquan đến các tổn thương mạn tính ở âm hộ. Có khoảng 5% biểu hiện đa ổ thường ở\nnhững phụ nữ trẻ.\n- Vị trí thường gặp ở môi lớn (50%), sau đó là môi nhỏ (15-20%), hiếm gặp ở vị\ntrí âm vật.\n- Cần khám phụ khoa toàn diện, khám hạch bẹn, các cơ quan xung quanh đánh giá\nmức độ xâm lấn của bệnh.\n- Để chẩn đoán sớm trước một tổn thương âm hộ, thầy thuốc cần bấm sinh thiết.\nSử dụng máy soi cổ tử cung sau khi chấm acid acetic 3-6% giúp quan sát tốt hơn để\nchọn vị trí sinh thiết, đặc biệt ở những phụ nữ có tổn thương rộng.",
+          "char_count": 949,
+          "word_count": 217
+        }
+      ],
+      "source_reference": "Bài 46, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 949,
+      "total_word_count": 217
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI47_CLINICAL",
+      "bai_number": 47,
+      "disease_name_vi": "UNG THƯ TINH HOÀN",
+      "disease_name_en": "Testicular Cancer",
+      "icd10_code": "C62",
+      "organ_system": "Nam khoa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Thể tích tinh hoàn tăng lên.\n- Cảm giác căng tức.\n- U thường không đau hoặc đau ít.\n- Khám và so sánh hai tinh hoàn để phát hiện bất thường, ngoài ra chú ý thăm\nkhám phát hiện hạch bẹn. Đôi khi chỉ khám thấy một tinh hoàn, còn một tinh hoàn lạc\nchỗ nằm trong ổ bụng.\n- Khám lâm sàng có thể phát hiện u khu trú một bên hay đã xâm lấn sang bên kia\nhoặc u đã xâm lấn thừng tinh.\n- Trong giai đoạn muộn, ung thư có thể vỡ ra trong hoặc ngoài bìu. Trong trường\nhợp tinh hoàn lạc chỗ trong ổ bụng, khối u có thể vỡ và xâm lấn các tổ chức xung quanh\nổ bụng.\n- Ung thư tế bào mầm hay di căn theo đường bạch mạch tới hạch chủ lưng, hạch\nchậu hoặc hạch bẹn, có thể đi vào phổi gan não và xương (biểu hiện các triệu chứng\ntương ứng). Đôi khi phù bạch huyết chi dưới.\n- Khi thấy tinh hoàn sưng to, đau hoặc khám thấy không đủ hai tinh hoàn hoặc có\nkèm theo các dấu hiệu di căn, phải theo dõi ung thư tinh hoàn.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI47_SX01",
+          "sub_heading": "",
+          "text": "- Thể tích tinh hoàn tăng lên.\n- Cảm giác căng tức.\n- U thường không đau hoặc đau ít.\n- Khám và so sánh hai tinh hoàn để phát hiện bất thường, ngoài ra chú ý thăm\nkhám phát hiện hạch bẹn. Đôi khi chỉ khám thấy một tinh hoàn, còn một tinh hoàn lạc\nchỗ nằm trong ổ bụng.\n- Khám lâm sàng có thể phát hiện u khu trú một bên hay đã xâm lấn sang bên kia\nhoặc u đã xâm lấn thừng tinh.\n- Trong giai đoạn muộn, ung thư có thể vỡ ra trong hoặc ngoài bìu. Trong trường\nhợp tinh hoàn lạc chỗ trong ổ bụng, khối u có thể vỡ và xâm lấn các tổ chức xung quanh\nổ bụng.\n- Ung thư tế bào mầm hay di căn theo đường bạch mạch tới hạch chủ lưng, hạch\nchậu hoặc hạch bẹn, có thể đi vào phổi gan não và xương (biểu hiện các triệu chứng\ntương ứng). Đôi khi phù bạch huyết chi dưới.\n- Khi thấy tinh hoàn sưng to, đau hoặc khám thấy không đủ hai tinh hoàn hoặc có\nkèm theo các dấu hiệu di căn, phải theo dõi ung thư tinh hoàn.",
+          "char_count": 900,
+          "word_count": 205
+        }
+      ],
+      "source_reference": "Bài 47, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 900,
+      "total_word_count": 205
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI48_CLINICAL",
+      "bai_number": 48,
+      "disease_name_vi": "UNG THƯ DƯƠNG VẬT",
+      "disease_name_en": "Penile Cancer",
+      "icd10_code": "C60",
+      "organ_system": "Nam khoa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "a. Triệu chứng cơ năng\n- Quy đầu ngứa, tiết dịch hôi kéo dài, đau khi va chạm, khi giao hợp, thậm chí khi\nđi tiểu. Bệnh nhân thường né tránh quan hệ tình dục.\n- Chảy máu khi vệ sinh sinh dục, khi va chạm hoặc khi giao hợp.\n- Sốt do tổn thương bội nhiễm, nhiễm trùng.\n- Tùy thuộc vị trí số lượng cơ quan di căn biểu hiện đau, gầy sút, mệt mỏi…\nb. Triệu chứng thực thể\n- Trường hợp không hẹp bao quy đầu khối u xuất hiện ở mặt trong bao quy đầu\nhoặc ở rãnh bao quy đầu. Đầu tiên, u biểu hiện là một nốt sùi, dễ chảy máu khi va chạm.\n- Trường hợp có hẹp bao quy đầu, ung thư bị che lấp, khó chẩn đoán sớm. Giai\nđoạn đầu u nhỏ, kín đáo. Đến khám, thầy thuốc phải mở bao quy đầu mới thấy khối u\ndạng sùi, dạng loét, hoặc loét sùi. Tổn thương dễ chảy máu, có mùi hôi đặc biệt khó\nchịu. Cần sinh thiết chẩn đoán giải phẫu bệnh, không nên cắt bỏ u hoặc cắt bao quy đầu\nmà không xét nghiệm mô bệnh học.\n- Giai đoạn muộn hơn, khối u lớn, dương vật như quả lắc chuông. Khối u chiếm\nchỗ, đẩy căng bao quy đầu. Đầu dương vật trở nên to và nặng, kéo thõng dương vật\nxuống dưới như một chiếc dùi trống. Khối u có thể xâm lấn, phá huỷ một phần bao quy\nđầu, sùi loét dễ chảy máu, tiết dịch hôi. Da dương vật bị bội nhiễm, nề đỏ, rối loạn vận\nmạch tại chỗ làm cho dương vật ứ máu, to và dài hơn bình thường trong tình trạng\nkhông cương cứng. Chẩn đoán giai đoạn này dễ nhưng có thể đánh giá nhầm. Một số\ntrường hợp u rất lớn nhưng thực ra u chỉ chiếm gần hết bao quy đầu, chưa lan đến quy\nđầu. Khối u là một khối lớn, đẩy quy đầu qua một bên. Nếu nhầm là ung thư phá huỷ\ntoàn bộ quy đầu, có thể chỉ định cắt cụt không hợp lý. Vì vậy, khi có hẹp bao quy đầu\nche lấp u thì nên mở bao đánh giá đúng ung thư lan rộng ở mức độ nào để chỉ định cắt\ncụt hay không.\n- Ung thư xâm lấn thân dương vật bằng hai hình thái lâm sàng khác nhau. Hình\nthái thứ nhất, u lan theo da dương vật, thường là thể sùi, phát triển nhanh hay chậm tuỳ\nmức độ ác tính. Khi lan hết da dương vật, u xâm lấn tiếp đến da bìu và da mu. Khối sùi\nto, hôi hám, dễ chảy máu, thậm chí có hoại tử cụt dần đầu dương vật. Hình thái thứ hai,\nu gây đông máu trong vật hang, làm cho dương vật cứng thành một khối từ ngọn cho\nđến tận gốc. U thường phát triển nhanh, độ ác tính cao. Khi lan hết thân dương vật, u\nxâm lấn tiếp đến tuyến tiền liệt, thậm chí đến cổ bàng quang. Nên thăm trực tràng đánh\ngiá mức độ tổn thương vùng tuyến tiền liệt.\n- Trong mọi trường hợp, niệu đạo và vật xốp của dương vật ít bị xâm lấn hơn vật\nhang và da. Điều này khó giải thích nhưng cần quan tâm khi đánh giá tổn thương trong\nphẫu thuật và kiểm tra diện cắt.\n- Hạch khu vực của dương vật thuộc các nhóm hạch bẹn nông, hạch bẹn sâu, hạch\nchậu ngoài. Thông thường, ung thư xâm nhập vào chặng hạch thứ nhất là hạch bẹn\nnông. Đến chặng hai, ung thư xâm nhập hạch bẹn sâu hoặc vào hạch chậu ngoài. Tuỳ\ntheo u khu trú bên nào của dương vật mà có hạch bên đó sớm bị di căn hơn bên kia. Độ\nác tính về mặt mô học càng cao thì càng sớm di căn hạch, càng di căn nhiều hạch và\nnhiều chặng hạch. Không nhất thiết khối u càng lớn thì càng nhiều di căn hạch.\n- Chẩn đoán di căn hạch bẹn trong UTDV bằng lâm sàng khá dễ dàng khi hạch to,\nchắc, vỡ ra ngoài da. Trường hợp hạch to vừa, đơn độc, di động thì khó chẩn đoán hơn,\nkhó phân biệt hạch to phản ứng với viêm nhiễm tại dương vật hay hạch to do di căn\nhạch. Không nên chọc hút chẩn đoán tế bào hạch vì giá trị chẩn đoán thấp, tác hại nhiều\ndo chọc vỡ vỏ hạch, lan tràn tế bào ung thư ra ngoài hạch.\n- Di căn hạch bẹn sâu và hạch chậu ít khi sờ thấy được. Trường hợp hạch chậu bị\ndi căn nhiều, dính thành đám, ôm chặt, thậm chí xâm lấn vào lòng tĩnh mạch chậu và hệ\nbạch mạch chậu gây nên phù chân 1 hoặc 2 bên. Triệu chứng phù chân có thể kín đáo,\nnhưng cần phát hiện vì đó là dấu hiệu chống chỉ định phẫu thuật. Siêu âm đánh giá hạch\nchậu là cần thiết.\n\n\n\n\n\n395",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI48_SX01",
+          "sub_heading": "Triệu chứng cơ năng",
+          "text": "a. Triệu chứng cơ năng\n- Quy đầu ngứa, tiết dịch hôi kéo dài, đau khi va chạm, khi giao hợp, thậm chí khi\nđi tiểu. Bệnh nhân thường né tránh quan hệ tình dục.\n- Chảy máu khi vệ sinh sinh dục, khi va chạm hoặc khi giao hợp.\n- Sốt do tổn thương bội nhiễm, nhiễm trùng.\n- Tùy thuộc vị trí số lượng cơ quan di căn biểu hiện đau, gầy sút, mệt mỏi…\nb. Triệu chứng thực thể\n- Trường hợp không hẹp bao quy đầu khối u xuất hiện ở mặt trong bao quy đầu\nhoặc ở rãnh bao quy đầu. Đầu tiên, u biểu hiện là một nốt sùi, dễ chảy máu khi va chạm.\n- Trường hợp có hẹp bao quy đầu, ung thư bị che lấp, khó chẩn đoán sớm. Giai\nđoạn đầu u nhỏ, kín đáo. Đến khám, thầy thuốc phải mở bao quy đầu mới thấy khối u\ndạng sùi, dạng loét, hoặc loét sùi. Tổn thương dễ chảy máu, có mùi hôi đặc biệt khó\nchịu. Cần sinh thiết chẩn đoán giải phẫu bệnh, không nên cắt bỏ u hoặc cắt bao quy đầu\nmà không xét nghiệm mô bệnh học.\n- Giai đoạn muộn hơn, khối u lớn, dương vật như quả lắc chuông. Khối u chiếm\nchỗ, đẩy căng bao quy đầu. Đầu dương vật trở nên to và nặng, kéo thõng dương vật\nxuống dưới như một chiếc dùi trống. Khối u có thể xâm lấn, phá huỷ một phần bao quy\nđầu, sùi loét dễ chảy máu, tiết dịch hôi. Da dương vật bị bội nhiễm, nề đỏ, rối loạn vận\nmạch tại chỗ làm cho dương vật ứ máu, to và dài hơn bình thường trong tình trạng\nkhông cương cứng. Chẩn đoán giai đoạn này dễ nhưng có thể đánh giá nhầm. Một số\ntrường hợp u rất lớn nhưng thực ra u chỉ chiếm gần hết bao quy đầu, chưa lan đến quy\nđầu. Khối u là một khối lớn, đẩy quy đầu qua một bên. Nếu nhầm là ung thư phá huỷ\ntoàn bộ quy đầu, có thể chỉ định cắt cụt không hợp lý. Vì vậy, khi có hẹp bao quy đầu\nche lấp u thì nên mở bao đánh giá đúng ung thư lan rộng ở mức độ nào để chỉ định cắt\ncụt hay không.\n- Ung thư xâm lấn thân dương vật bằng hai hình thái lâm sàng khác nhau. Hình\nthái thứ nhất, u lan theo da dương vật, thường là thể sùi, phát triển nhanh hay chậm tuỳ\nmức độ ác tính. Khi lan hết da dương vật, u xâm lấn tiếp đến da bìu và da mu. Khối sùi\nto, hôi hám, dễ chảy máu, thậm chí có hoại tử cụt dần đầu dương vật. Hình thái thứ hai,\nu gây đông máu trong vật hang, làm cho dương vật cứng thành một khối từ ngọn cho\nđến tận gốc. U thường phát triển nhanh, độ ác tính cao. Khi lan hết thân dương vật, u\nxâm lấn tiếp đến tuyến tiền liệt, thậm chí đến cổ bàng quang. Nên thăm trực tràng đánh\ngiá mức độ tổn thương vùng tuyến tiền liệt.\n- Trong mọi trường hợp, niệu đạo và vật xốp của dương vật ít bị xâm lấn hơn vật\nhang và da. Điều này khó giải thích nhưng cần quan tâm khi đánh giá tổn thương trong\nphẫu thuật và kiểm tra diện cắt.\n- Hạch khu vực của dương vật thuộc các nhóm hạch bẹn nông, hạch bẹn sâu, hạch\nchậu ngoài. Thông thường, ung thư xâm nhập vào chặng hạch thứ nhất là hạch bẹn\nnông. Đến chặng hai, ung thư xâm nhập hạch bẹn sâu hoặc vào hạch chậu ngoài. Tuỳ\ntheo u khu trú bên nào của dương vật mà có hạch bên đó sớm bị di căn hơn bên kia. Độ\nác tính về mặt mô học càng cao thì càng sớm di căn hạch, càng di căn nhiều hạch và\nnhiều chặng hạch. Không nhất thiết khối u càng lớn thì càng nhiều di căn hạch.\n- Chẩn đoán di căn hạch bẹn trong UTDV bằng lâm sàng khá dễ dàng khi hạch to,\nchắc, vỡ ra ngoài da. Trường hợp hạch to vừa, đơn độc, di động thì khó chẩn đoán hơn,\nkhó phân biệt hạch to phản ứng với viêm nhiễm tại dương vật hay hạch to do di căn\nhạch. Không nên chọc hút chẩn đoán tế bào hạch vì giá trị chẩn đoán thấp, tác hại nhiều\ndo chọc vỡ vỏ hạch, lan tràn tế bào ung thư ra ngoài hạch.\n- Di căn hạch bẹn sâu và hạch chậu ít khi sờ thấy được. Trường hợp hạch chậu bị\ndi căn nhiều, dính thành đám, ôm chặt, thậm chí xâm lấn vào lòng tĩnh mạch chậu và hệ\nbạch mạch chậu gây nên phù chân 1 hoặc 2 bên. Triệu chứng phù chân có thể kín đáo,\nnhưng cần phát hiện vì đó là dấu hiệu chống chỉ định phẫu thuật. Siêu âm đánh giá hạch\nchậu là cần thiết.",
+          "char_count": 3808,
+          "word_count": 860
+        }
+      ],
+      "source_reference": "Bài 48, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 3817,
+      "total_word_count": 861
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI49_CLINICAL",
+      "bai_number": 49,
+      "disease_name_vi": "UNG THƯ XƯƠNG NGUYÊN PHÁT",
+      "disease_name_en": "Primary Bone Cancer",
+      "icd10_code": "C40-C41",
+      "organ_system": "Cơ xương khớp",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Đau: chiếm 85%-95% các trường hợp. Lúc đầu có thể đau ít sau đau tăng dần\nliên tục.\n- Khối u xương thường có dạng hình cầu, hình thoi cứng chắc ranh giới rõ, không\ndi động, u ở sâu, hay gặp nhất là đầu dưới xương đùi, đầu trên xương chày, đầu trên\nxương cánh tay, đầu trên xương đùi. Các xương dẹt hay gặp là xương chậu và xương\nbả vai.\n- Có thể gãy xương bệnh lý do va chạm hoặc tiến triển tự nhiên của bệnh.\n- Các tổn thương phần mềm: teo cơ, sưng nề.\n- Hạn chế vận động.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI49_SX01",
+          "sub_heading": "",
+          "text": "- Đau: chiếm 85%-95% các trường hợp. Lúc đầu có thể đau ít sau đau tăng dần\nliên tục.\n- Khối u xương thường có dạng hình cầu, hình thoi cứng chắc ranh giới rõ, không\ndi động, u ở sâu, hay gặp nhất là đầu dưới xương đùi, đầu trên xương chày, đầu trên\nxương cánh tay, đầu trên xương đùi. Các xương dẹt hay gặp là xương chậu và xương\nbả vai.\n- Có thể gãy xương bệnh lý do va chạm hoặc tiến triển tự nhiên của bệnh.\n- Các tổn thương phần mềm: teo cơ, sưng nề.\n- Hạn chế vận động.",
+          "char_count": 475,
+          "word_count": 106
+        }
+      ],
+      "source_reference": "Bài 49, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 475,
+      "total_word_count": 106
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI50_CLINICAL",
+      "bai_number": 50,
+      "disease_name_vi": "SARCOMA MÔ MỀM",
+      "disease_name_en": "Soft Tissue Sarcoma",
+      "icd10_code": "C49",
+      "organ_system": "Cơ xương khớp",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- U nguyên phát:\n+ Giai đoạn đầu: Khối u nhỏ nằm trong mô mềm, di động không đau không cản\ntrở vận động.\n+ Giai đoạn sau: Khối u phát triển to dần gây biến dạng hình thái và ảnh hưởng\nchức năng vận động của các cơ quan. Cũng có thể hoại tử trong khối, chảy máu, bội\nnhiễm...\n- Hạch khu vực: Hạch di căn thường to và chắc.\n- Di căn xa:\n+ Chủ yếu là di căn phổi: với các triệu chứng khó thở do tràn dịch màng phổi, ho\nkhan kéo dài dai dẳng, đau tức ngực, đôi khi ho khạc đờm máu.\n+ Một số trường hợp di căn gan: hình nốt ranh giới rõ, ngấm thuốc.\n+ Di căn hạch ngoài khu vực: hạch to, chắc, thâm nhiễm.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI50_SX01",
+          "sub_heading": "",
+          "text": "- U nguyên phát:\n+ Giai đoạn đầu: Khối u nhỏ nằm trong mô mềm, di động không đau không cản\ntrở vận động.\n+ Giai đoạn sau: Khối u phát triển to dần gây biến dạng hình thái và ảnh hưởng\nchức năng vận động của các cơ quan. Cũng có thể hoại tử trong khối, chảy máu, bội\nnhiễm...\n- Hạch khu vực: Hạch di căn thường to và chắc.\n- Di căn xa:\n+ Chủ yếu là di căn phổi: với các triệu chứng khó thở do tràn dịch màng phổi, ho\nkhan kéo dài dai dẳng, đau tức ngực, đôi khi ho khạc đờm máu.\n+ Một số trường hợp di căn gan: hình nốt ranh giới rõ, ngấm thuốc.\n+ Di căn hạch ngoài khu vực: hạch to, chắc, thâm nhiễm.",
+          "char_count": 600,
+          "word_count": 136
+        }
+      ],
+      "source_reference": "Bài 50, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 600,
+      "total_word_count": 136
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI51_CLINICAL",
+      "bai_number": 51,
+      "disease_name_vi": "ĐA U TỦY XƯƠNG",
+      "disease_name_en": "Multiple Myeloma",
+      "icd10_code": "C90.0",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Có thể thấy các triệu chứng toàn thân: mệt mỏi, suy sụp, giảm cân, gày sút, sốt\nkéo dài.\n- Đau xương: triệu chứng đau tự nhiên, tăng dần, ít đáp ứng với thuốc giảm đau\nthông thường. Vị trí: thường gặp ở các xương sườn, xương chậu, cột sống. Có thể gặp\ngãy xương tự nhiên. Có thể xuất hiện các u tương bào.\n- Thiếu máu: thường ở mức độ nhẹ và vừa: da xanh niêm mạc nhợt, mệt mỏi.\n- Nhiễm trùng: sốt, môi khô lưỡi bẩn.\n- Có thể có xuất huyết dưới da do giảm tiểu cầu.\n- Gan lách to: thường ít gặp.\n- Suy thận: bệnh nhân có thể có biểu hiện phù, đái ít…\n- Biểu hiện của tăng calci máu: khát, đái nhiều, nôn, táo bón, rối loạn tâm thần.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI51_SX01",
+          "sub_heading": "",
+          "text": "- Có thể thấy các triệu chứng toàn thân: mệt mỏi, suy sụp, giảm cân, gày sút, sốt\nkéo dài.\n- Đau xương: triệu chứng đau tự nhiên, tăng dần, ít đáp ứng với thuốc giảm đau\nthông thường. Vị trí: thường gặp ở các xương sườn, xương chậu, cột sống. Có thể gặp\ngãy xương tự nhiên. Có thể xuất hiện các u tương bào.\n- Thiếu máu: thường ở mức độ nhẹ và vừa: da xanh niêm mạc nhợt, mệt mỏi.\n- Nhiễm trùng: sốt, môi khô lưỡi bẩn.\n- Có thể có xuất huyết dưới da do giảm tiểu cầu.\n- Gan lách to: thường ít gặp.\n- Suy thận: bệnh nhân có thể có biểu hiện phù, đái ít…\n- Biểu hiện của tăng calci máu: khát, đái nhiều, nôn, táo bón, rối loạn tâm thần.",
+          "char_count": 634,
+          "word_count": 140
+        }
+      ],
+      "source_reference": "Bài 51, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 634,
+      "total_word_count": 140
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI52_CLINICAL",
+      "bai_number": 52,
+      "disease_name_vi": "BỆNH HODGKIN",
+      "disease_name_en": "Hodgkin Lymphoma",
+      "icd10_code": "C81",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Biểu hiện lâm sàng không đặc hiệu và thường có biểu hiện giống như tình trạng\nnhiễm khuẩn hơn là bệnh lý ác tính.\nKhoảng 70% bệnh nhân có biểu hiện hạch to. Hạch thường mềm, di động hoặc\ncứng, di động khó khi có xơ hóa. Hạch thường gặp ở vùng đầu cổ, trung thất, nách, bẹn,\nhạch sau phúc mạc, dưới cơ hoành...\nBiểu hiện toàn thân thường gặp là hội chứng B: sốt >380C không rõ nguyên nhân,\ngiảm >10% trọng lượng cơ thể trong 6 tháng, ra mồ hôi đêm.\nBệnh lan tràn thường theo đường bạch huyết, đặc biệt là ống ngực, sau đó là các cơ\nquan khác.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI52_SX01",
+          "sub_heading": "",
+          "text": "Biểu hiện lâm sàng không đặc hiệu và thường có biểu hiện giống như tình trạng\nnhiễm khuẩn hơn là bệnh lý ác tính.\nKhoảng 70% bệnh nhân có biểu hiện hạch to. Hạch thường mềm, di động hoặc\ncứng, di động khó khi có xơ hóa. Hạch thường gặp ở vùng đầu cổ, trung thất, nách, bẹn,\nhạch sau phúc mạc, dưới cơ hoành...\nBiểu hiện toàn thân thường gặp là hội chứng B: sốt >380C không rõ nguyên nhân,\ngiảm >10% trọng lượng cơ thể trong 6 tháng, ra mồ hôi đêm.\nBệnh lan tràn thường theo đường bạch huyết, đặc biệt là ống ngực, sau đó là các cơ\nquan khác.",
+          "char_count": 541,
+          "word_count": 114
+        }
+      ],
+      "source_reference": "Bài 52, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 541,
+      "total_word_count": 114
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI53_CLINICAL",
+      "bai_number": 53,
+      "disease_name_vi": "U LYMPHO ÁC TÍNH KHÔNG HODGKIN",
+      "disease_name_en": "Non-Hodgkin Lymphoma",
+      "icd10_code": "C82-C85",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Hạch to (gặp ở 60-100% trường hợp): là triệu chứng điển hình, có thể gặp ở các\nvị trí cổ, thượng đòn, nách, bẹn, ổ bụng, trung thất. Với tính chất hạch to, nhiều hạch\nnhưng thường không có biểu hiện đau, viêm.\n- Biểu hiện u ngoài hạch: có thể nguyên phát hoặc gặp trong quá trình diễn biến\nbệnh. Vị trí tổn thương ngoài hạch có thể biểu hiện ở bất kỳ cơ quan nào như: vùng tai-\nmũi-họng (ngạt mũi, amidan sưng to, u ở thành họng…); da (ban sẩn, u ngoài da); mắt\n(lồi mắt, giảm thị lực); đường tiêu hóa (đau bụng, rối loạn phân…); thần kinh trung\nương (đau đầu, buồn nôn, liệt vận động…)…\n- Biểu hiện toàn thân (hội chứng B): có một trong ba dấu hiệu sau: sốt >38oC\nkhông rõ nguyên nhân; ra mồ hôi đêm; giảm cân trên 10% trọng lượng cơ thể trong 6\ntháng. Bệnh nhân có hội chứng B thì xếp vào nhóm có tiên lượng xấu.\n- Khi bệnh ở giai đoạn tiến triển, có thể xuất hiện các biểu hiện chèn ép, xâm lấn\ncủa tổ chức lympho như: hội chứng trung thất (phù áo khoác, liệt thần kinh quặt\nngược...); lồi mắt; tê, liệt vận động, liệt do chèn ép tủy sống; tắc ruột nếu u thuộc ống\ntiêu hóa…..",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI53_SX01",
+          "sub_heading": "",
+          "text": "- Hạch to (gặp ở 60-100% trường hợp): là triệu chứng điển hình, có thể gặp ở các\nvị trí cổ, thượng đòn, nách, bẹn, ổ bụng, trung thất. Với tính chất hạch to, nhiều hạch\nnhưng thường không có biểu hiện đau, viêm.\n- Biểu hiện u ngoài hạch: có thể nguyên phát hoặc gặp trong quá trình diễn biến\nbệnh. Vị trí tổn thương ngoài hạch có thể biểu hiện ở bất kỳ cơ quan nào như: vùng tai-\nmũi-họng (ngạt mũi, amidan sưng to, u ở thành họng…); da (ban sẩn, u ngoài da); mắt\n(lồi mắt, giảm thị lực); đường tiêu hóa (đau bụng, rối loạn phân…); thần kinh trung\nương (đau đầu, buồn nôn, liệt vận động…)…\n- Biểu hiện toàn thân (hội chứng B): có một trong ba dấu hiệu sau: sốt >38oC\nkhông rõ nguyên nhân; ra mồ hôi đêm; giảm cân trên 10% trọng lượng cơ thể trong 6\ntháng. Bệnh nhân có hội chứng B thì xếp vào nhóm có tiên lượng xấu.\n- Khi bệnh ở giai đoạn tiến triển, có thể xuất hiện các biểu hiện chèn ép, xâm lấn\ncủa tổ chức lympho như: hội chứng trung thất (phù áo khoác, liệt thần kinh quặt\nngược...); lồi mắt; tê, liệt vận động, liệt do chèn ép tủy sống; tắc ruột nếu u thuộc ống\ntiêu hóa…..",
+          "char_count": 1081,
+          "word_count": 228
+        }
+      ],
+      "source_reference": "Bài 53, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1081,
+      "total_word_count": 228
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI54_CLINICAL",
+      "bai_number": 54,
+      "disease_name_vi": "LƠ XÊ MI CẤP",
+      "disease_name_en": "Acute Leukemia",
+      "icd10_code": "C91-C95",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Tùy theo từng bệnh nhân và từng thể bệnh có thể gặp 1 triệu chứng, một số hay đầy\nđủ các biểu hiện lâm sàng sau:\nHội chứng thiếu máu: xảy ra nhanh, nặng dần với các biểu hiện da xanh, mệt mỏi,\nhoa mắt chóng mặt, nhịp tim nhanh. Mức độ thiếu máu thường không cân xứng với tình\ntrạng xuất huyết do cơ chế chủ yếu gây thiếu máu ở đây là giảm tổng hợp hồng cầu\ntrong tủy xương.\nHội chứng xuất huyết: xuất huyết tự nhiên, hay gặp ở da và niêm mạc (chấm, nốt,\nđám, mảng xuất huyết, chảy máu mũi, chảy máu chân răng…) có thể ở các tạng (xuất\nhuyết đường tiêu hoá, tiết niệu, sinh dục, não - màng não...).\nHội chứng nhiễm trùng: sốt, viêm loét miệng họng, viêm phổi, nhiễm trùng da.\nHội chứng thâm nhiễm: gan to, lách to, hạch to, phì đại lợi, thâm nhiễm da, đau\nxương, thâm nhiễm thần kinh trung ương với các dấu hiệu thần kinh khu trú...\nBiểu hiện toàn thân: mệt mỏi gày sút, chán ăn, thể trạng suy sụp nhanh.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI54_SX01",
+          "sub_heading": "",
+          "text": "Tùy theo từng bệnh nhân và từng thể bệnh có thể gặp 1 triệu chứng, một số hay đầy\nđủ các biểu hiện lâm sàng sau:\nHội chứng thiếu máu: xảy ra nhanh, nặng dần với các biểu hiện da xanh, mệt mỏi,\nhoa mắt chóng mặt, nhịp tim nhanh. Mức độ thiếu máu thường không cân xứng với tình\ntrạng xuất huyết do cơ chế chủ yếu gây thiếu máu ở đây là giảm tổng hợp hồng cầu\ntrong tủy xương.\nHội chứng xuất huyết: xuất huyết tự nhiên, hay gặp ở da và niêm mạc (chấm, nốt,\nđám, mảng xuất huyết, chảy máu mũi, chảy máu chân răng…) có thể ở các tạng (xuất\nhuyết đường tiêu hoá, tiết niệu, sinh dục, não - màng não...).\nHội chứng nhiễm trùng: sốt, viêm loét miệng họng, viêm phổi, nhiễm trùng da.\nHội chứng thâm nhiễm: gan to, lách to, hạch to, phì đại lợi, thâm nhiễm da, đau\nxương, thâm nhiễm thần kinh trung ương với các dấu hiệu thần kinh khu trú...\nBiểu hiện toàn thân: mệt mỏi gày sút, chán ăn, thể trạng suy sụp nhanh.",
+          "char_count": 903,
+          "word_count": 189
+        }
+      ],
+      "source_reference": "Bài 54, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 903,
+      "total_word_count": 189
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI55_CLINICAL",
+      "bai_number": 55,
+      "disease_name_vi": "LƠ XÊ MI KINH DÒNG BẠCH CẦU HẠT",
+      "disease_name_en": "Chronic Myeloid Leukemia",
+      "icd10_code": "C92.1",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "a. Giai đoạn mạn tính\n- Lách to là triệu chứng điển hình, gặp ở 85-90% người bệnh. Lách trong lơ xê mi\nkinh dòng bạch cầu hạt thường rất to (15-20cm dưới bờ sườn). Gan to gặp trên 50%\nngười bệnh.\n- Người bệnh có các triệu chứng chung của các bệnh ác tính như mệt mỏi, kém ăn,\nsụt cân, ra mồ hôi đêm.\n- Biểu hiện thiếu máu mức độ nhẹ hoặc vừa. Một số ít người bệnh có thể có biểu\nhiện xuất huyết do bất thường về chức năng tiểu cầu hoặc chức năng sản xuất các yếu tố\nđông máu của gan.\n- Hội chứng tăng bạch cầu với biểu hiện tắc mạch và tăng độ quánh máu tương đối\nthường gặp trong lơ xê mi kinh dòng bạch cầu hạt (tắc mạch lách, tắc mạch chi, tắc tĩnh\nmạch dương vật, các biểu hiện thần kinh như phù gai thị, giảm hoặc mất thị giác một\nbên, giảm thính giác, liệt v.v...).\n- Các biểu hiện của bệnh gút do tăng acid uric máu gặp trên một số người bệnh.\nb. Giai đoạn tăng tốc\n- Người bệnh có biểu hiện lâm sàng nặng lên (thiếu máu, xuất huyết, nhiễm trùng).\n- Lách to không đáp ứng với điều trị.\nc. Giai đoạn chuyển lơ xê mi cấp\n- Trong giai đoạn này thường gặp biểu hiện lâm sàng đặc trưng cho lơ xê mi cấp\nnhư triệu chứng thiếu máu, xuất huyết, nhiễm trùng, hội chứng thâm nhiễm.\n- Tiên lượng của lơ xê mi kinh dòng bạch cầu hạt chuyển cấp rất xấu, thời gian\nsống thêm ngắn (trung bình từ 3 tháng đến 2 năm kể cả khi điều trị đa hoá trị liệu tích\ncực).",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI55_SX01",
+          "sub_heading": "Giai đoạn mạn tính",
+          "text": "a. Giai đoạn mạn tính\n- Lách to là triệu chứng điển hình, gặp ở 85-90% người bệnh. Lách trong lơ xê mi\nkinh dòng bạch cầu hạt thường rất to (15-20cm dưới bờ sườn). Gan to gặp trên 50%\nngười bệnh.\n- Người bệnh có các triệu chứng chung của các bệnh ác tính như mệt mỏi, kém ăn,\nsụt cân, ra mồ hôi đêm.\n- Biểu hiện thiếu máu mức độ nhẹ hoặc vừa. Một số ít người bệnh có thể có biểu\nhiện xuất huyết do bất thường về chức năng tiểu cầu hoặc chức năng sản xuất các yếu tố\nđông máu của gan.\n- Hội chứng tăng bạch cầu với biểu hiện tắc mạch và tăng độ quánh máu tương đối\nthường gặp trong lơ xê mi kinh dòng bạch cầu hạt (tắc mạch lách, tắc mạch chi, tắc tĩnh\nmạch dương vật, các biểu hiện thần kinh như phù gai thị, giảm hoặc mất thị giác một\nbên, giảm thính giác, liệt v.v...).\n- Các biểu hiện của bệnh gút do tăng acid uric máu gặp trên một số người bệnh.\nb. Giai đoạn tăng tốc\n- Người bệnh có biểu hiện lâm sàng nặng lên (thiếu máu, xuất huyết, nhiễm trùng).\n- Lách to không đáp ứng với điều trị.\nc. Giai đoạn chuyển lơ xê mi cấp\n- Trong giai đoạn này thường gặp biểu hiện lâm sàng đặc trưng cho lơ xê mi cấp\nnhư triệu chứng thiếu máu, xuất huyết, nhiễm trùng, hội chứng thâm nhiễm.\n- Tiên lượng của lơ xê mi kinh dòng bạch cầu hạt chuyển cấp rất xấu, thời gian\nsống thêm ngắn (trung bình từ 3 tháng đến 2 năm kể cả khi điều trị đa hoá trị liệu tích\ncực).",
+          "char_count": 1351,
+          "word_count": 296
+        }
+      ],
+      "source_reference": "Bài 55, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1351,
+      "total_word_count": 296
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI56_CLINICAL",
+      "bai_number": 56,
+      "disease_name_vi": "LƠ XÊ MI KINH DÒNG LYMPHO",
+      "disease_name_en": "Chronic Lymphocytic Leukemia",
+      "icd10_code": "C91.1",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Khoảng 20% người bệnh không có triệu chứng gì tại thời điểm chẩn đoán, mà\nthường được phát hiện tình cờ bởi sự tăng tế bào lympho trong máu ngoại vi không giải\nthích được. Một số trường hợp khác chỉ có dấu hiệu mệt mỏi hoặc hạn chế hoạt động\nthể lực. Ở giai đoạn muộn, người bệnh có thể sụt cân, nhiễm trùng tái diễn, xuất huyết\ndo giảm tiểu cầu và thiếu máu.\n- Trên 80% số người bệnh có hạch to, phần lớn ở vùng cổ, thượng đòn và nách.\nKích thước hạch rất đa dạng, có thể từ một hạch rất nhỏ cho đến nhiều hạch lớn. Các\nhạch không đau, không dính với nhau, mật độ chắc. Một tỷ lệ khá lớn người bệnh có\nhạch ổ bụng có thể phát hiện được trên siêu âm hay khi chụp cắt lớp vi tính.\n- Lách to xuất hiện ở 50% số người bệnh, lách to mức độ nhẹ đến vừa. Đôi khi\nlách to có thể gây cường lách biểu hiện thiếu máu và giảm tiểu cầu.\n- Gan to ít gặp hơn, một số trường hợp dẫn đến suy giảm chức năng gan.\n- Thâm nhiễm ngoài hạch là triệu chứng ít gặp, một số trường hợp có biểu hiện viêm\nmũi mạn tính do hiện tượng thâm nhiễm của các tế bào lơ xê mi kinh dòng lympho.\n- Thường có thiếu máu, nhưng xuất hiện muộn hơn và nặng dần nên người bệnh ít\nđể ý.\n- Xuất huyết do giảm số lượng tiểu cầu.\n- Nhiễm trùng do suy giảm miễn dịch, giảm bạch cầu hạt trung tính. Người bệnh\ndễ bị nhiễm các loại virus, nấm tái diễn.\nNhìn chung, các triệu chứng lâm sàng tiến triển từ từ trong một thời gian dài, rất mờ\nnhạt, người bệnh ít để ý tới.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI56_SX01",
+          "sub_heading": "",
+          "text": "- Khoảng 20% người bệnh không có triệu chứng gì tại thời điểm chẩn đoán, mà\nthường được phát hiện tình cờ bởi sự tăng tế bào lympho trong máu ngoại vi không giải\nthích được. Một số trường hợp khác chỉ có dấu hiệu mệt mỏi hoặc hạn chế hoạt động\nthể lực. Ở giai đoạn muộn, người bệnh có thể sụt cân, nhiễm trùng tái diễn, xuất huyết\ndo giảm tiểu cầu và thiếu máu.\n- Trên 80% số người bệnh có hạch to, phần lớn ở vùng cổ, thượng đòn và nách.\nKích thước hạch rất đa dạng, có thể từ một hạch rất nhỏ cho đến nhiều hạch lớn. Các\nhạch không đau, không dính với nhau, mật độ chắc. Một tỷ lệ khá lớn người bệnh có\nhạch ổ bụng có thể phát hiện được trên siêu âm hay khi chụp cắt lớp vi tính.\n- Lách to xuất hiện ở 50% số người bệnh, lách to mức độ nhẹ đến vừa. Đôi khi\nlách to có thể gây cường lách biểu hiện thiếu máu và giảm tiểu cầu.\n- Gan to ít gặp hơn, một số trường hợp dẫn đến suy giảm chức năng gan.\n- Thâm nhiễm ngoài hạch là triệu chứng ít gặp, một số trường hợp có biểu hiện viêm\nmũi mạn tính do hiện tượng thâm nhiễm của các tế bào lơ xê mi kinh dòng lympho.\n- Thường có thiếu máu, nhưng xuất hiện muộn hơn và nặng dần nên người bệnh ít\nđể ý.\n- Xuất huyết do giảm số lượng tiểu cầu.\n- Nhiễm trùng do suy giảm miễn dịch, giảm bạch cầu hạt trung tính. Người bệnh\ndễ bị nhiễm các loại virus, nấm tái diễn.\nNhìn chung, các triệu chứng lâm sàng tiến triển từ từ trong một thời gian dài, rất mờ\nnhạt, người bệnh ít để ý tới.",
+          "char_count": 1420,
+          "word_count": 315
+        }
+      ],
+      "source_reference": "Bài 56, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1420,
+      "total_word_count": 315
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI57_CLINICAL",
+      "bai_number": 57,
+      "disease_name_vi": "UNG THƯ CHƯA RÕ NGUYÊN PHÁT",
+      "disease_name_en": "Cancer of Unknown Primary",
+      "icd10_code": "C80",
+      "organ_system": "Khác",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Ung thư chưa rõ nguyên phát thường biểu hiện với các triệu chứng gây nên bởi\ntổn thương di căn. Nhiều bệnh nhân có các triệu chứng không đặc hiệu như chán ăn, gầy\nsút cân. Ngoài việc khai thác bệnh sử liên quan đến diễn biến của các tổn thương di căn\ncần hỏi đến các triệu chứng ở các cơ quan khác có khả năng liên quan đến u nguyên\nphát hoặc di căn ở nơi khác.\n- Khi khai thác tiền sử cần lưu ý về ung thư hoặc khối u trước đây đã sinh thiết,\nphẫu thuật (lấy u, cắt bỏ).\n- Khai thác về các khối u hoặc các tổn thương tự nhiên mất đi.\n- Cần khám thực thể toàn thân để đánh giá phát hiện các tổn thương bất thường tại\ntất cả các cơ quan.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI57_SX01",
+          "sub_heading": "",
+          "text": "- Ung thư chưa rõ nguyên phát thường biểu hiện với các triệu chứng gây nên bởi\ntổn thương di căn. Nhiều bệnh nhân có các triệu chứng không đặc hiệu như chán ăn, gầy\nsút cân. Ngoài việc khai thác bệnh sử liên quan đến diễn biến của các tổn thương di căn\ncần hỏi đến các triệu chứng ở các cơ quan khác có khả năng liên quan đến u nguyên\nphát hoặc di căn ở nơi khác.\n- Khi khai thác tiền sử cần lưu ý về ung thư hoặc khối u trước đây đã sinh thiết,\nphẫu thuật (lấy u, cắt bỏ).\n- Khai thác về các khối u hoặc các tổn thương tự nhiên mất đi.\n- Cần khám thực thể toàn thân để đánh giá phát hiện các tổn thương bất thường tại\ntất cả các cơ quan.",
+          "char_count": 638,
+          "word_count": 144
+        }
+      ],
+      "source_reference": "Bài 57, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 638,
+      "total_word_count": 144
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI58_CLINICAL",
+      "bai_number": 58,
+      "disease_name_vi": "UNG THƯ HẮC TỐ",
+      "disease_name_en": "Melanoma",
+      "icd10_code": "C43",
+      "organ_system": "Da",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "* Khối u: 70% u xuất hiện trên các nốt ruồi bẩm sinh thường gặp ở vùng thân mình\n(24%), đầu cổ (20%), chi (10%).\n- U thường xuất hiện trên mặt da thành cục hoặc thành nấm, ít khi là mảng phẳng.\n- Mặt u loét, chảy nước vàng, máu, hôi do bội nhiễm.\n- Màu u đen nhánh, có khi đỏ…\n- Vùng quanh u thấy có vùng thâm nhiễm, chuyển tiếp giữa u và tổ chức da lành.\n* Hạch: Ung thư hắc tố rất hay di căn hạch, bị di căn sớm thường to nhanh, nhiều\nkhi hạch lớn gấp nhiều lần u nguyên phát. Hạch di căn có thể đứng thành chùm, chèn ép\ngây đau.\n* Di căn xa:\n- Bên cạnh u có thể thấy những cục nổi dưới da.\n- Phổi, gan, não, là những cơ quan hay bị di căn, tuỳ theo từng bộ phận và giai\nđoạn mà có thể thấy các hình ảnh lâm sàng khác nhau: khó thở, đau tức hạ sườn phải,\nđau đầu.\nLưu ý: Khi lâm sàng nghi ngờ là ung thư hắc tố thì quá trình thăm khám phải hết\nsức nhẹ nhàng, không được làm sinh thiết hoặc chọc hút tế bào để tránh tạo điều kiện\nthuận lợi cho tế bào ung thư di căn, bởi tế bào ung thư rất nhỏ, liên kết tế bào rất lỏng\nlẻo nên rất dễ bị dời khỏi tổ chức u nguyên phát và di bào đến các tạng, cơ quan khác.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI58_SX01",
+          "sub_heading": "",
+          "text": "* Khối u: 70% u xuất hiện trên các nốt ruồi bẩm sinh thường gặp ở vùng thân mình\n(24%), đầu cổ (20%), chi (10%).\n- U thường xuất hiện trên mặt da thành cục hoặc thành nấm, ít khi là mảng phẳng.\n- Mặt u loét, chảy nước vàng, máu, hôi do bội nhiễm.\n- Màu u đen nhánh, có khi đỏ…\n- Vùng quanh u thấy có vùng thâm nhiễm, chuyển tiếp giữa u và tổ chức da lành.\n* Hạch: Ung thư hắc tố rất hay di căn hạch, bị di căn sớm thường to nhanh, nhiều\nkhi hạch lớn gấp nhiều lần u nguyên phát. Hạch di căn có thể đứng thành chùm, chèn ép\ngây đau.\n* Di căn xa:\n- Bên cạnh u có thể thấy những cục nổi dưới da.\n- Phổi, gan, não, là những cơ quan hay bị di căn, tuỳ theo từng bộ phận và giai\nđoạn mà có thể thấy các hình ảnh lâm sàng khác nhau: khó thở, đau tức hạ sườn phải,\nđau đầu.\nLưu ý: Khi lâm sàng nghi ngờ là ung thư hắc tố thì quá trình thăm khám phải hết\nsức nhẹ nhàng, không được làm sinh thiết hoặc chọc hút tế bào để tránh tạo điều kiện\nthuận lợi cho tế bào ung thư di căn, bởi tế bào ung thư rất nhỏ, liên kết tế bào rất lỏng\nlẻo nên rất dễ bị dời khỏi tổ chức u nguyên phát và di bào đến các tạng, cơ quan khác.",
+          "char_count": 1107,
+          "word_count": 257
+        }
+      ],
+      "source_reference": "Bài 58, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1107,
+      "total_word_count": 257
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI59_CLINICAL",
+      "bai_number": 59,
+      "disease_name_vi": "UNG THƯ DA",
+      "disease_name_en": "Skin Cancer (Non-Melanoma)",
+      "icd10_code": "C44",
+      "organ_system": "Da",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Các triệu chứng sớm ung thư da: ổ loét lâu liền hoặc loét rớm máu; ổ dày sừng có\nloét, nổi cục, dễ chảy máu; ổ loét hoặc u trên nền sẹo cũ; nốt đỏ mạn tính có loét.\n2.1.1. Ung thư da tế bào đáy\n- Vị trí: Ung thư da tế bào đáy hay gặp ở vùng da hở, đặc biệt là mũi, má, thái\ndương và rất ít khi ở niêm mạc.\n- Đặc điểm lâm sàng: Thể điển hình là những tổn thương dạng hạt nổi gồ lên bề\nmặt da, màu đỏ hồng, cản sáng có đường kính khoảng vài milimet và có giãn mạch\n(hình 1).\nHình 1. Ung thư da tế bào đáy\n- Ngoài ra còn có các dạng khác như sau:\n+ Dạng nốt: tổn thương dạng nốt to màu trắng.\n+ Dạng sẹo phẳng: được hình thành từ vùng trung tâm của sẹo trên da với vùng\nbờ nổi gồ lên, thường ở má.\n+ Dạng loét: tổn thương dạng loét, không nổi gồ, tiến triển nhanh.\n+ Dạng có màu sắc: các hạt nổi gồ trên da có màu sắc.\n+ Dạng xơ cứng bì: tổn thương thâm nhiễm không rõ ranh giới.\n+ Dạng tổn thương đỏ da, ranh giới rất rõ với bờ nổi gồ.\n- Tính chất di căn hạch: ung thư da tế bào đáy hầu như không di căn hạch vùng,\nkhông di căn xa.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI59_SX01",
+          "sub_heading": "",
+          "text": "Các triệu chứng sớm ung thư da: ổ loét lâu liền hoặc loét rớm máu; ổ dày sừng có\nloét, nổi cục, dễ chảy máu; ổ loét hoặc u trên nền sẹo cũ; nốt đỏ mạn tính có loét.\n2.1.1. Ung thư da tế bào đáy\n- Vị trí: Ung thư da tế bào đáy hay gặp ở vùng da hở, đặc biệt là mũi, má, thái\ndương và rất ít khi ở niêm mạc.\n- Đặc điểm lâm sàng: Thể điển hình là những tổn thương dạng hạt nổi gồ lên bề\nmặt da, màu đỏ hồng, cản sáng có đường kính khoảng vài milimet và có giãn mạch\n(hình 1).\nHình 1. Ung thư da tế bào đáy\n- Ngoài ra còn có các dạng khác như sau:\n+ Dạng nốt: tổn thương dạng nốt to màu trắng.\n+ Dạng sẹo phẳng: được hình thành từ vùng trung tâm của sẹo trên da với vùng\nbờ nổi gồ lên, thường ở má.\n+ Dạng loét: tổn thương dạng loét, không nổi gồ, tiến triển nhanh.\n+ Dạng có màu sắc: các hạt nổi gồ trên da có màu sắc.\n+ Dạng xơ cứng bì: tổn thương thâm nhiễm không rõ ranh giới.\n+ Dạng tổn thương đỏ da, ranh giới rất rõ với bờ nổi gồ.\n- Tính chất di căn hạch: ung thư da tế bào đáy hầu như không di căn hạch vùng,\nkhông di căn xa.",
+          "char_count": 1029,
+          "word_count": 241
+        }
+      ],
+      "source_reference": "Bài 59, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1029,
+      "total_word_count": 241
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI60_CLINICAL",
+      "bai_number": 60,
+      "disease_name_vi": "U MÔ ĐỆM ĐƯỜNG TIÊU HÓA",
+      "disease_name_en": "Gastrointestinal Stromal Tumor",
+      "icd10_code": "C49.A",
+      "organ_system": "Tiêu hóa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng lâm sàng bệnh GIST có thể thay đổi tùy theo vị trí, kích thước và mức\nđộ xâm lấn của khối u vào mô tạng xung quanh. Khoảng 20% bệnh nhân GIST không\ncó triệu chứng lâm sàng mà tình cờ phát hiện khi khám sức khỏe định kỳ bằng nội soi,\nchụp cắt lớp vi tính…\nCác triệu chứng lâm sàng thường gặp có thể bao gồm:\n- Đau bụng: đau âm ỉ hoặc trội thành cơn.\n- Xuất huyết tiêu hóa cao từ dạ dày: nôn ra máu, đi ngoài phân đen hoặc xuất\nhuyết tiêu hóa thấp như đi ngoài phân máu từ đen đến đỏ thẩm hay đỏ tươi tùy vị trí\nxuất huyết khác nhau như từ ruột non hay đại trực tràng. Kèm theo biểu hiện toàn thân\ncủa thiếu máu tùy từng mức độ xuất huyết.\n- Nuốt vướng, nuốt khó: u vị trí thực quản hay u lớn dạ dày, tâm vị.\n- Buồn nôn, nôn.\n- Khối u sờ thấy trên lâm sàng vùng bụng.\n- Tắc ruột (đau bụng cơn, nôn, buồn nôn, bí trung đại tiện…): thường gặp ở trường\nhợp u ruột non hay khối u lớn gây hẹp tắc đường tiêu hóa.\n- Viêm phúc mạc do thủng tạng rỗng: bệnh nhân có thể sốt, đau bụng như dao\nđâm, bụng cứng như gỗ, phản ứng thành bụng dương tính…\n- Triệu chứng toàn thân: mệt mỏi, chán ăn, sụt cân và các triệu chứng di căn (bệnh\nthường gặp di căn theo đường máu vào gan, phúc mạc…).",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI60_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng lâm sàng bệnh GIST có thể thay đổi tùy theo vị trí, kích thước và mức\nđộ xâm lấn của khối u vào mô tạng xung quanh. Khoảng 20% bệnh nhân GIST không\ncó triệu chứng lâm sàng mà tình cờ phát hiện khi khám sức khỏe định kỳ bằng nội soi,\nchụp cắt lớp vi tính…\nCác triệu chứng lâm sàng thường gặp có thể bao gồm:\n- Đau bụng: đau âm ỉ hoặc trội thành cơn.\n- Xuất huyết tiêu hóa cao từ dạ dày: nôn ra máu, đi ngoài phân đen hoặc xuất\nhuyết tiêu hóa thấp như đi ngoài phân máu từ đen đến đỏ thẩm hay đỏ tươi tùy vị trí\nxuất huyết khác nhau như từ ruột non hay đại trực tràng. Kèm theo biểu hiện toàn thân\ncủa thiếu máu tùy từng mức độ xuất huyết.\n- Nuốt vướng, nuốt khó: u vị trí thực quản hay u lớn dạ dày, tâm vị.\n- Buồn nôn, nôn.\n- Khối u sờ thấy trên lâm sàng vùng bụng.\n- Tắc ruột (đau bụng cơn, nôn, buồn nôn, bí trung đại tiện…): thường gặp ở trường\nhợp u ruột non hay khối u lớn gây hẹp tắc đường tiêu hóa.\n- Viêm phúc mạc do thủng tạng rỗng: bệnh nhân có thể sốt, đau bụng như dao\nđâm, bụng cứng như gỗ, phản ứng thành bụng dương tính…\n- Triệu chứng toàn thân: mệt mỏi, chán ăn, sụt cân và các triệu chứng di căn (bệnh\nthường gặp di căn theo đường máu vào gan, phúc mạc…).",
+          "char_count": 1184,
+          "word_count": 264
+        }
+      ],
+      "source_reference": "Bài 60, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1184,
+      "total_word_count": 264
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI61_CLINICAL",
+      "bai_number": 61,
+      "disease_name_vi": "U MÔ BÀO LANGERHANS",
+      "disease_name_en": "Langerhans Cell Histiocytosis",
+      "icd10_code": "C96.6",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Tùy theo vào vị trí tổn thương trong cơ thể mà bệnh nhân có các triệu chứng khác\nnhau, có thể gặp các biểu hiện lâm sàng sau:\n2.1.1. Tổn thương xương\nGặp khoảng 80% các trường hợp.\n- Các xương hay bị tổn thương: hộp sọ, xương hàm, xương sườn, khung chậu, cột\nsống, xương đùi, xương cánh tay, xương ổ mắt hay xương vùng quanh tai.\n- Triệu chứng lâm sàng: đau xương vị trí tổn thương u, sưng mô mềm có thể gây\nra các biểu hiện thứ phát khác như:\n+ Viêm tai giữa và viêm tai xương chũm tái diễn do tổn thương xương thái\ndương, xương chũm và xương vùng tai.\n+ Lồi mắt do tổn thương xương ổ mắt và phì đại mô hạt trong ổ mắt.\n+ Răng lỏng lẻo do tổn thương xương hàm dưới.\n+ Rối loạn chức năng vùng dưới đồi - tuyến yên do tổn thương vùng yên và\nxương bướm, tùy vị trí mà có thể gặp: (1) Tổn thương tuyến yên sau hay gặp nhất, gây\ntriệu chứng đái nhạt (lượng nước tiểu có thể trên 4 lít/ngày hoặc trên 300ml/kg/ngày.\n(2) Tổn thương tuyến yên trước gây lùn tuyến yên, chậm phát triển, rối loạn dậy thì, suy\ngiáp. (3) Tổn thương vùng dưới đồi gây rối loạn hành vi, rối loạn điều hòa thân nhiệt và\ngiấc ngủ.\n+ Gãy xương tự phát do tổn thương tiêu xương: như xương đùi, cánh tay…\n+ Gù vẹo cột sống do tổn thương đốt sống hay khối u chèn ép đốt sống.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI61_SX01",
+          "sub_heading": "",
+          "text": "Tùy theo vào vị trí tổn thương trong cơ thể mà bệnh nhân có các triệu chứng khác\nnhau, có thể gặp các biểu hiện lâm sàng sau:\n2.1.1. Tổn thương xương\nGặp khoảng 80% các trường hợp.\n- Các xương hay bị tổn thương: hộp sọ, xương hàm, xương sườn, khung chậu, cột\nsống, xương đùi, xương cánh tay, xương ổ mắt hay xương vùng quanh tai.\n- Triệu chứng lâm sàng: đau xương vị trí tổn thương u, sưng mô mềm có thể gây\nra các biểu hiện thứ phát khác như:\n+ Viêm tai giữa và viêm tai xương chũm tái diễn do tổn thương xương thái\ndương, xương chũm và xương vùng tai.\n+ Lồi mắt do tổn thương xương ổ mắt và phì đại mô hạt trong ổ mắt.\n+ Răng lỏng lẻo do tổn thương xương hàm dưới.\n+ Rối loạn chức năng vùng dưới đồi - tuyến yên do tổn thương vùng yên và\nxương bướm, tùy vị trí mà có thể gặp: (1) Tổn thương tuyến yên sau hay gặp nhất, gây\ntriệu chứng đái nhạt (lượng nước tiểu có thể trên 4 lít/ngày hoặc trên 300ml/kg/ngày.\n(2) Tổn thương tuyến yên trước gây lùn tuyến yên, chậm phát triển, rối loạn dậy thì, suy\ngiáp. (3) Tổn thương vùng dưới đồi gây rối loạn hành vi, rối loạn điều hòa thân nhiệt và\ngiấc ngủ.\n+ Gãy xương tự phát do tổn thương tiêu xương: như xương đùi, cánh tay…\n+ Gù vẹo cột sống do tổn thương đốt sống hay khối u chèn ép đốt sống.",
+          "char_count": 1239,
+          "word_count": 266
+        }
+      ],
+      "source_reference": "Bài 61, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1239,
+      "total_word_count": 266
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI62_CLINICAL",
+      "bai_number": 62,
+      "disease_name_vi": "U THẦN KINH NỘI TIẾT",
+      "disease_name_en": "Neuroendocrine Tumor",
+      "icd10_code": "C7A",
+      "organ_system": "Nội tiết",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Ở giai đoạn sớm không có triệu chứng nên rất khó chẩn đoán sớm các u thần\nkinh nội tiết. Trong nhiều trường hợp, u thần kinh nội tiết được phát hiện tình cờ khi\nbệnh nhân đi khám sức khỏe định kỳ hoặc đi khám vì một bệnh lý khác.\n- Bệnh nhân có thể vào viện với nhiều triệu chứng lâm sàng khác nhau, tuỳ thuộc\nvào vị trí khối u nguyên phát. Bệnh thường có biểu hiện trên lâm sàng với các khối u\nthần kinh nội tiết có chức năng.\n- Các dấu hiệu và triệu chứng của hội chứng carcinoid\n+ Da đỏ ửng, nóng bừng mặt, ngực và thay đổi màu sắc, từ hồng sang tím\n+ Triệu chứng xuất tiết (bao gồm chảy nước mắt, ra mồ hôi, chảy nước bọt, buồn\nnôn, nôn, sốt và tiêu chảy trầm trọng) có thể kéo dài từ vài phút đến vài giờ hoặc lâu hơn.\n+ Tiêu chảy, chuột rút ở chân và đau bụng\n+ Khó thở, thở khò khè\n+ Nhịp tim nhanh, loạn nhịp\n+ Một số bệnh nhân vào viện vì xuất hiện biến chứng như: tổn thương van tim,\nsuy tim, tắc ruột…\n- Tùy thuộc vào vị trí, bản chất khối u mà bệnh nhân có biểu hiện lâm sàng\nkhác nhau.\n- U thần kinh nội tiết biểu hiện tại đường tiêu hóa (dạ dày, ruột non, đại trực tràng,\nruột thừa): đau bụng, rối loạn nhu động ruột, xuất huyết tiêu hóa, một số trường hợp vào\nviện vì tắc ruột hoặc viêm phúc mạc do thủng tạng rỗng…\n- U thần kinh nội tiết ở phổi: ho khan hoặc ho ra máu, đau tức ngực, tràn dịch\nmàng phổi…\n- U thần kinh nội tiết ở tụy: các triệu chứng do bài tiết hormon tuyến tụy insulin,\nglucagon, gastrin và các peptid khác\n+ U tụy nội tiết insulin (Insulinoma): bao gồm 2 nhóm triệu chứng cơ bản sau:\nThiếu glucose máu não (đau đầu, lú lẫn, rối loạn thị giác, động kinh, thay đổi nhân\ncách, rối loạn định hướng thậm chí hôn mê) và tăng tiết cathecholamin với các biểu\nhiện như mạch nhanh, mệt, run tay chân, ra mồ hôi, tim đập nhanh và dễ bị kích\nthích)…\n+ U tụy nội tiết glucagon (Glucagonoma): các triệu chứng giống như bệnh tiểu\nđường và các triệu chứng đau đớn và nguy hiểm khác: tăng đường huyết, tiêu chảy mạn\ntính, phát ban da, bàn chân thường bị bong tróc da, huyết khối tĩnh mạch sâu…\n- Pheochromocytomas (PHEOs) là những khối u thần kinh nội tiết tiết ra các\ncatecholamine, có nguồn gốc từ những tế bào ưa crom của tủy thượng thận hoặc các\nhạch giao cảm (paraganglia) ngoài thượng thận. Bệnh có đặc trưng bởi các cơn tăng\nhuyết áp kịch phát, tim đập nhanh, mạnh, vã mồ hôi, đau đầu dữ dội, run tay chân,\nkhó thở…",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI62_SX01",
+          "sub_heading": "",
+          "text": "- Ở giai đoạn sớm không có triệu chứng nên rất khó chẩn đoán sớm các u thần\nkinh nội tiết. Trong nhiều trường hợp, u thần kinh nội tiết được phát hiện tình cờ khi\nbệnh nhân đi khám sức khỏe định kỳ hoặc đi khám vì một bệnh lý khác.\n- Bệnh nhân có thể vào viện với nhiều triệu chứng lâm sàng khác nhau, tuỳ thuộc\nvào vị trí khối u nguyên phát. Bệnh thường có biểu hiện trên lâm sàng với các khối u\nthần kinh nội tiết có chức năng.\n- Các dấu hiệu và triệu chứng của hội chứng carcinoid\n+ Da đỏ ửng, nóng bừng mặt, ngực và thay đổi màu sắc, từ hồng sang tím\n+ Triệu chứng xuất tiết (bao gồm chảy nước mắt, ra mồ hôi, chảy nước bọt, buồn\nnôn, nôn, sốt và tiêu chảy trầm trọng) có thể kéo dài từ vài phút đến vài giờ hoặc lâu hơn.\n+ Tiêu chảy, chuột rút ở chân và đau bụng\n+ Khó thở, thở khò khè\n+ Nhịp tim nhanh, loạn nhịp\n+ Một số bệnh nhân vào viện vì xuất hiện biến chứng như: tổn thương van tim,\nsuy tim, tắc ruột…\n- Tùy thuộc vào vị trí, bản chất khối u mà bệnh nhân có biểu hiện lâm sàng\nkhác nhau.\n- U thần kinh nội tiết biểu hiện tại đường tiêu hóa (dạ dày, ruột non, đại trực tràng,\nruột thừa): đau bụng, rối loạn nhu động ruột, xuất huyết tiêu hóa, một số trường hợp vào\nviện vì tắc ruột hoặc viêm phúc mạc do thủng tạng rỗng…\n- U thần kinh nội tiết ở phổi: ho khan hoặc ho ra máu, đau tức ngực, tràn dịch\nmàng phổi…\n- U thần kinh nội tiết ở tụy: các triệu chứng do bài tiết hormon tuyến tụy insulin,\nglucagon, gastrin và các peptid khác\n+ U tụy nội tiết insulin (Insulinoma): bao gồm 2 nhóm triệu chứng cơ bản sau:\nThiếu glucose máu não (đau đầu, lú lẫn, rối loạn thị giác, động kinh, thay đổi nhân\ncách, rối loạn định hướng thậm chí hôn mê) và tăng tiết cathecholamin với các biểu\nhiện như mạch nhanh, mệt, run tay chân, ra mồ hôi, tim đập nhanh và dễ bị kích\nthích)…\n+ U tụy nội tiết glucagon (Glucagonoma): các triệu chứng giống như bệnh tiểu\nđường và các triệu chứng đau đớn và nguy hiểm khác: tăng đường huyết, tiêu chảy mạn\ntính, phát ban da, bàn chân thường bị bong tróc da, huyết khối tĩnh mạch sâu…\n- Pheochromocytomas (PHEOs) là những khối u thần kinh nội tiết tiết ra các\ncatecholamine, có nguồn gốc từ những tế bào ưa crom của tủy thượng thận hoặc các\nhạch giao cảm (paraganglia) ngoài thượng thận. Bệnh có đặc trưng bởi các cơn tăng\nhuyết áp kịch phát, tim đập nhanh, mạnh, vã mồ hôi, đau đầu dữ dội, run tay chân,\nkhó thở…",
+          "char_count": 2343,
+          "word_count": 498
+        }
+      ],
+      "source_reference": "Bài 62, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 2343,
+      "total_word_count": 498
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI63_CLINICAL",
+      "bai_number": 63,
+      "disease_name_vi": "U TẾ BÀO MẦM THẦN KINH TRUNG ƯƠNG",
+      "disease_name_en": "CNS Germ Cell Tumor",
+      "icd10_code": "C71",
+      "organ_system": "Thần kinh trung ương (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng tùy thuộc vào vị trí của khối u trong não. Các khối u nằm trong vùng\ntuyến tùng thường có các triệu chứng tăng áp lực nội sọ do ứ dịch não tủy tắc nghẽn. Do\ncác khối u không tinh có tính chất tiến triển hơn về mặt sinh học so với khối u tinh nên\nthường có bệnh sử ngắn hơn.\n- Đau đầu, buồn nôn và ói mửa, nặng hơn vào buổi sáng: 56-93%.\n- Mờ mắt, ngủ gà (trạng thái mơ màng): 20-54%.\n- Cử động mắt bất thường.\n- Thất điều, cơn co giật, rối loạn hành vi: 10-28%.\n- U tế bào mầm nằm trong hạch nền gây triệu chứng yếu một bên của cơ thể.\n- Xâm lấn các cấu trúc lân cận giữa não có thể gây rối loạn thị lực, biểu hiện dấu\nhiệu Parinaud - mất phối hợp liếc dọc nhãn cầu, gặp 25-50% các khối u tế bào mầm\nvùng tuyến tùng.\n- Ở những bệnh nhân có khối u tế bào mầm vùng tuyến tùng, khoảng 80% có các\ntriệu chứng tăng áp lực nội sọ trong khi đó các triệu chứng tăng áp lực nội sọ chỉ gặp\ndưới 10% bệnh nhân có khối u tế bào mầm trên yên.\n- Các rối loạn nội tiết như tiểu đường, dậy thì sớm xảy ra ở bệnh nhân có khối u tế\nbào mầm nội sọ chiếm khoảng 6-12%. Bệnh nhân có khối u tế bào mầm vùng trên yên\ncó thể gây nên các rối loạn nội tiết tuyến yên như chậm tăng trưởng, đái tháo đường, đái\ntháo nhạt... Các triệu chứng này ít gặp trên bệnh nhân có u tế bào mầm vùng tuyến tùng.\n- Các khối u tế bào mầm nội sọ có thể xâm lấn các cấu trúc lân cận như vùng dưới\nđồi (11%), não thất ba (22%), hoặc lan tràn qua dịch não tủy (10%). Với các khối u\nxoang nội bì hoặc ung thư biểu mô rau thì thường lan tràn hơn, và xâm lấn não thất ba\ngặp hơn 40% trường hợp. Lan tràn ngoài sọ đến phổi và xương cũng đã được báo cáo ở\nkhoảng 3% bệnh nhân.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI63_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng tùy thuộc vào vị trí của khối u trong não. Các khối u nằm trong vùng\ntuyến tùng thường có các triệu chứng tăng áp lực nội sọ do ứ dịch não tủy tắc nghẽn. Do\ncác khối u không tinh có tính chất tiến triển hơn về mặt sinh học so với khối u tinh nên\nthường có bệnh sử ngắn hơn.\n- Đau đầu, buồn nôn và ói mửa, nặng hơn vào buổi sáng: 56-93%.\n- Mờ mắt, ngủ gà (trạng thái mơ màng): 20-54%.\n- Cử động mắt bất thường.\n- Thất điều, cơn co giật, rối loạn hành vi: 10-28%.\n- U tế bào mầm nằm trong hạch nền gây triệu chứng yếu một bên của cơ thể.\n- Xâm lấn các cấu trúc lân cận giữa não có thể gây rối loạn thị lực, biểu hiện dấu\nhiệu Parinaud - mất phối hợp liếc dọc nhãn cầu, gặp 25-50% các khối u tế bào mầm\nvùng tuyến tùng.\n- Ở những bệnh nhân có khối u tế bào mầm vùng tuyến tùng, khoảng 80% có các\ntriệu chứng tăng áp lực nội sọ trong khi đó các triệu chứng tăng áp lực nội sọ chỉ gặp\ndưới 10% bệnh nhân có khối u tế bào mầm trên yên.\n- Các rối loạn nội tiết như tiểu đường, dậy thì sớm xảy ra ở bệnh nhân có khối u tế\nbào mầm nội sọ chiếm khoảng 6-12%. Bệnh nhân có khối u tế bào mầm vùng trên yên\ncó thể gây nên các rối loạn nội tiết tuyến yên như chậm tăng trưởng, đái tháo đường, đái\ntháo nhạt... Các triệu chứng này ít gặp trên bệnh nhân có u tế bào mầm vùng tuyến tùng.\n- Các khối u tế bào mầm nội sọ có thể xâm lấn các cấu trúc lân cận như vùng dưới\nđồi (11%), não thất ba (22%), hoặc lan tràn qua dịch não tủy (10%). Với các khối u\nxoang nội bì hoặc ung thư biểu mô rau thì thường lan tràn hơn, và xâm lấn não thất ba\ngặp hơn 40% trường hợp. Lan tràn ngoài sọ đến phổi và xương cũng đã được báo cáo ở\nkhoảng 3% bệnh nhân.",
+          "char_count": 1636,
+          "word_count": 374
+        }
+      ],
+      "source_reference": "Bài 63, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1636,
+      "total_word_count": 374
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI64_CLINICAL",
+      "bai_number": 64,
+      "disease_name_vi": "U NGUYÊN BÀO THẦN KINH",
+      "disease_name_en": "Neuroblastoma",
+      "icd10_code": "C47.9",
+      "organ_system": "Thần kinh trung ương (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Lâm sàng diễn biến khởi đầu âm thầm, u có thể xuất hiện bất cứ vị trí nào của hệ\nthần kinh giao cảm.\n- Khối u tại ổ bụng chiếm 2/3 các trường hợp ở tuyến thượng thận, bụng to kèm\nsốt kéo dài, xanh xao, tiêu chảy. Ngoài ra có thể gặp ở vùng cổ, trung thất có kèm theo\nho, phù nề mặt, cổ, khó thở.\nTrong và sau hóa trị có tiên lượng xấu\n- Tổn thương di căn: 50% có di căn vào tủy xương, gan, da, ngoài ra còn di căn\nhạch vùng, hệ thần kinh trung ương.\n- Dấu hiệu lồi mắt, xuất huyết quanh hốc mắt (hội chứng Hutchinson).\n- Hội chứng cận u: rung giật mắt - co giật chi - thái dương.\n- Dấu hiệu toàn thân và kết hợp: sốt, mệt mỏi, sút cân, thiếu máu, nhiễm trùng,\n- Gan to, đau xương.\n- Tiêu chảy do khối u tiết chất VIP (vasoactive intestinal polypeptide).",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI64_SX01",
+          "sub_heading": "",
+          "text": "Lâm sàng diễn biến khởi đầu âm thầm, u có thể xuất hiện bất cứ vị trí nào của hệ\nthần kinh giao cảm.\n- Khối u tại ổ bụng chiếm 2/3 các trường hợp ở tuyến thượng thận, bụng to kèm\nsốt kéo dài, xanh xao, tiêu chảy. Ngoài ra có thể gặp ở vùng cổ, trung thất có kèm theo\nho, phù nề mặt, cổ, khó thở.\nTrong và sau hóa trị có tiên lượng xấu\n- Tổn thương di căn: 50% có di căn vào tủy xương, gan, da, ngoài ra còn di căn\nhạch vùng, hệ thần kinh trung ương.\n- Dấu hiệu lồi mắt, xuất huyết quanh hốc mắt (hội chứng Hutchinson).\n- Hội chứng cận u: rung giật mắt - co giật chi - thái dương.\n- Dấu hiệu toàn thân và kết hợp: sốt, mệt mỏi, sút cân, thiếu máu, nhiễm trùng,\n- Gan to, đau xương.\n- Tiêu chảy do khối u tiết chất VIP (vasoactive intestinal polypeptide).",
+          "char_count": 753,
+          "word_count": 166
+        }
+      ],
+      "source_reference": "Bài 64, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 753,
+      "total_word_count": 166
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI65_CLINICAL",
+      "bai_number": 65,
+      "disease_name_vi": "U THẦN KINH ĐỆM TRẺ EM",
+      "disease_name_en": "Pediatric Glioma",
+      "icd10_code": "C71",
+      "organ_system": "Thần kinh trung ương (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng của một khối u thần kinh đệm phụ thuộc rất nhiều vào kích thước khối\nu và vị trí của u trong não.\nMột số triệu chứng phổ biến nhất bao gồm:\n- Nhức đầu, đặc biệt là vào buổi sáng hoặc đỡ hơn sau khi nôn.\n- Nôn nghiêm trọng hoặc thường xuyên mà không có các dấu hiệu khác của bệnh\ndạ dày-ruột.\n- Các vấn đề về thị giác, như thị giác kép, thị lực mờ hoặc mất thị lực.\n- Động tác vụng về. Khó đi bộ hoặc cân bằng do yếu chân, tay, tê.\n- Động kinh\n- Tăng hoặc giảm cân\n- Dậy thì sớm\n- Nhầm lẫn\n- Có vấn đề về lời nói\n- Buồn ngủ\n- Thay đổi hành vi.\n2.1.2. Xét nghiệm cận lâm sàng\n- Chẩn đoán hình ảnh\nChụp cộng hưởng từ (MRI) để đánh giá khối u, vị trí và kích thước của u\nChụp cột sống, chụp Xquang ống sống của toàn bộ cột sống kiểm tra xem có khối u\nbên trong cột sống hay không thông qua tiêm chất cản quang vào dịch não tủy.\nChụp PET/CT hoặc PET/MRI toàn thân với 18F-FDG trước điều trị để chẩn đoán u\nnguyên phát, chẩn đoán giai đoạn bệnh; chụp sau điều trị để theo dõi đáp ứng điều trị,\nđánh giá tái phát và di căn; mô phỏng lập kế hoạch xạ trị.\n- Thăm dò chức năng\nĐiện não: Electroencephalogram (EEG), đo hoạt động điện của não.\n- Xét nghiệm khác\nChọc hút dịch não tủy xét nghiệm xem khối u có lan tràn không.\nCác dấu ấn sinh học hoặc đột biến gen được tìm thấy trong khối u có thể giúp xác\nđịnh tiên lượng, bao gồm: IDH1, IDH2, MGMT, EGFR và đồng mất đoạn nhiễm sắc\nthể 1p/19q. Xét nghiệm sinh học phân tử: giải trình tự nhiều gen.\n- Xét nghiệm mô bệnh học\nLấy mẫu sinh thiết hoặc mô từ khối u: Khẳng định loại khối u và độ ác tính của nó,\nđặc điểm sinh học phân tử của các tế bào khối u.\nCần chẩn đoán độ ác tính từ độ I đến độ IV. Theo phân loại giải phẫu bệnh các khối\nu thần kinh trung ương 2016, u thần kinh đệm cụ thể gồm:\n- U thần kinh đệm độ I: Pilocytic astrocytoma. Hay gặp ở trẻ em. U thường ở tiểu\nnão, thân não, đôi khi ở bán cầu đại não.\n- U thần kinh đệm độ II: Gồm astrocytoma, oligodendroglioma và\noligoastrocytoma hỗn hợp. Diffuse astrocytic and oligodendroglial tumors: Diffuse\nastrocytoma, IDH (+), gemistocytic astrocytoma, IDH (+), diffuse astrocytoma, IDH\n(+), diffuse astrocytoma, NOS. Oligodendroglioma với IDH (+) và mất 1p/19q.\n- U thần kinh đệm độ III: Gồm anaplastic astrocytoma với IDH (+), anaplastic\nastrocytoma với IDH (-), anaplastic astrocytoma, NOS, anaplastic oligodendroglioma\nvới IDH (+) và mất 1p/19q, và oligoastrocytoma hỗn hợp bất thục sản, anaplastic\noligoastrocytoma, NOS.\n- U thần kinh đệm độ IV: Glioblastoma không có đột biến IDH, glioblastoma tế\nbào khổng lồ, gliosarcoma, glioblastoma dạng biểu bì, glioblastoma có đột biến IDH,\nglioblastoma, NOS.\nCác khối u sao bào khác: Pilomyxoid astrocytoma, subependymal giant cell\nastrocytoma, pleomorphic xantho astrocytoma, anaplastic pleomorphic xantho\nastrocytoma.\n\n\n\n\n\n568",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI65_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng của một khối u thần kinh đệm phụ thuộc rất nhiều vào kích thước khối\nu và vị trí của u trong não.\nMột số triệu chứng phổ biến nhất bao gồm:\n- Nhức đầu, đặc biệt là vào buổi sáng hoặc đỡ hơn sau khi nôn.\n- Nôn nghiêm trọng hoặc thường xuyên mà không có các dấu hiệu khác của bệnh\ndạ dày-ruột.\n- Các vấn đề về thị giác, như thị giác kép, thị lực mờ hoặc mất thị lực.\n- Động tác vụng về. Khó đi bộ hoặc cân bằng do yếu chân, tay, tê.\n- Động kinh\n- Tăng hoặc giảm cân\n- Dậy thì sớm\n- Nhầm lẫn\n- Có vấn đề về lời nói\n- Buồn ngủ\n- Thay đổi hành vi.\n2.1.2. Xét nghiệm cận lâm sàng\n- Chẩn đoán hình ảnh\nChụp cộng hưởng từ (MRI) để đánh giá khối u, vị trí và kích thước của u\nChụp cột sống, chụp Xquang ống sống của toàn bộ cột sống kiểm tra xem có khối u\nbên trong cột sống hay không thông qua tiêm chất cản quang vào dịch não tủy.\nChụp PET/CT hoặc PET/MRI toàn thân với 18F-FDG trước điều trị để chẩn đoán u\nnguyên phát, chẩn đoán giai đoạn bệnh; chụp sau điều trị để theo dõi đáp ứng điều trị,\nđánh giá tái phát và di căn; mô phỏng lập kế hoạch xạ trị.\n- Thăm dò chức năng\nĐiện não: Electroencephalogram (EEG), đo hoạt động điện của não.\n- Xét nghiệm khác\nChọc hút dịch não tủy xét nghiệm xem khối u có lan tràn không.\nCác dấu ấn sinh học hoặc đột biến gen được tìm thấy trong khối u có thể giúp xác\nđịnh tiên lượng, bao gồm: IDH1, IDH2, MGMT, EGFR và đồng mất đoạn nhiễm sắc\nthể 1p/19q. Xét nghiệm sinh học phân tử: giải trình tự nhiều gen.\n- Xét nghiệm mô bệnh học\nLấy mẫu sinh thiết hoặc mô từ khối u: Khẳng định loại khối u và độ ác tính của nó,\nđặc điểm sinh học phân tử của các tế bào khối u.\nCần chẩn đoán độ ác tính từ độ I đến độ IV. Theo phân loại giải phẫu bệnh các khối\nu thần kinh trung ương 2016, u thần kinh đệm cụ thể gồm:\n- U thần kinh đệm độ I: Pilocytic astrocytoma. Hay gặp ở trẻ em. U thường ở tiểu\nnão, thân não, đôi khi ở bán cầu đại não.\n- U thần kinh đệm độ II: Gồm astrocytoma, oligodendroglioma và\noligoastrocytoma hỗn hợp. Diffuse astrocytic and oligodendroglial tumors: Diffuse\nastrocytoma, IDH (+), gemistocytic astrocytoma, IDH (+), diffuse astrocytoma, IDH\n(+), diffuse astrocytoma, NOS. Oligodendroglioma với IDH (+) và mất 1p/19q.\n- U thần kinh đệm độ III: Gồm anaplastic astrocytoma với IDH (+), anaplastic\nastrocytoma với IDH (-), anaplastic astrocytoma, NOS, anaplastic oligodendroglioma\nvới IDH (+) và mất 1p/19q, và oligoastrocytoma hỗn hợp bất thục sản, anaplastic\noligoastrocytoma, NOS.\n- U thần kinh đệm độ IV: Glioblastoma không có đột biến IDH, glioblastoma tế\nbào khổng lồ, gliosarcoma, glioblastoma dạng biểu bì, glioblastoma có đột biến IDH,\nglioblastoma, NOS.\nCác khối u sao bào khác: Pilomyxoid astrocytoma, subependymal giant cell\nastrocytoma, pleomorphic xantho astrocytoma, anaplastic pleomorphic xantho\nastrocytoma.",
+          "char_count": 2774,
+          "word_count": 548
+        }
+      ],
+      "source_reference": "Bài 65, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 2783,
+      "total_word_count": 549
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI66_CLINICAL",
+      "bai_number": 66,
+      "disease_name_vi": "U NGUYÊN TỦY BÀO",
+      "disease_name_en": "Medulloblastoma",
+      "icd10_code": "C71.6",
+      "organ_system": "Thần kinh trung ương (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Thường các triệu chứng ban đầu không liên tục và không rõ ràng.\n- Đau đầu, nôn vào buổi sáng, ngủ gà\n- Thất điều thân, chi hoặc loạn tầm động tác\n- Liệt mặt\n- Phù gai thị\n- Dấu hiệu màng não\n- Trẻ nhũ nhi thường không bộc lộ triệu chứng điển hình\n- Bộ ba Cushing (bao gồm tăng huyết áp, nhịp tim chậm và giảm thông khí), một\nphát hiện không phổ biến ở trẻ em bị tăng áp lực nội sọ, thường báo hiệu sắp xảy ra\nthoát vị.\n- Rối loạn chức năng tiểu não: Với kích thước khối u ngày càng tăng và xâm lấn\nvào các mô não xung quanh, các triệu chứng đặc trưng hơn xuất hiện: Mất điều hòa hai\nchi dưới, mất phối hợp thân, chi trên.\n- Dấu hiệu tổn thương thân não: Khối u xâm nhập vào thân não hoặc tăng áp lực\nnội sọ có thể dẫn đến nhìn đôi và nhiều triệu chứng của thần kinh sọ khác, như yếu mặt,\nù tai, giảm thính lực, nghiêng đầu và cứng cổ.\n- Bệnh di căn: Có khoảng 10% trường hợp Medulloblastoma di căn xuống tủy\nsống. Không thường xuyên, bệnh nhân có thể bị đau lưng hoặc yếu chân thứ phát sau di\ncăn cột sống.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI66_SX01",
+          "sub_heading": "",
+          "text": "Thường các triệu chứng ban đầu không liên tục và không rõ ràng.\n- Đau đầu, nôn vào buổi sáng, ngủ gà\n- Thất điều thân, chi hoặc loạn tầm động tác\n- Liệt mặt\n- Phù gai thị\n- Dấu hiệu màng não\n- Trẻ nhũ nhi thường không bộc lộ triệu chứng điển hình\n- Bộ ba Cushing (bao gồm tăng huyết áp, nhịp tim chậm và giảm thông khí), một\nphát hiện không phổ biến ở trẻ em bị tăng áp lực nội sọ, thường báo hiệu sắp xảy ra\nthoát vị.\n- Rối loạn chức năng tiểu não: Với kích thước khối u ngày càng tăng và xâm lấn\nvào các mô não xung quanh, các triệu chứng đặc trưng hơn xuất hiện: Mất điều hòa hai\nchi dưới, mất phối hợp thân, chi trên.\n- Dấu hiệu tổn thương thân não: Khối u xâm nhập vào thân não hoặc tăng áp lực\nnội sọ có thể dẫn đến nhìn đôi và nhiều triệu chứng của thần kinh sọ khác, như yếu mặt,\nù tai, giảm thính lực, nghiêng đầu và cứng cổ.\n- Bệnh di căn: Có khoảng 10% trường hợp Medulloblastoma di căn xuống tủy\nsống. Không thường xuyên, bệnh nhân có thể bị đau lưng hoặc yếu chân thứ phát sau di\ncăn cột sống.",
+          "char_count": 1006,
+          "word_count": 222
+        }
+      ],
+      "source_reference": "Bài 66, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1006,
+      "total_word_count": 222
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI67_CLINICAL",
+      "bai_number": 67,
+      "disease_name_vi": "U NGUYÊN BÀO VÕNG MẠC",
+      "disease_name_en": "Retinoblastoma",
+      "icd10_code": "C69.2",
+      "organ_system": "Mắt (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Đồng tử trắng: chiếm 56% đến 70% trường hợp bệnh được phát hiện nhờ dấu\nhiệu này, gọi khác như \"mắt mèo\", \"mắt có ánh sáng lập lòe\"..., thường quan sát thấy\nkhi mắt chuyển động. Khi nhìn vào mắt bé, cha mẹ thấy có ánh trắng (nhất là vào ban\nđêm hoặc trong phòng tối vì khi đó đồng tử giãn).\n- Lác: có khoảng 34% trường hợp, trẻ bị lé trong vòng 6 tháng tuổi nên nghi ngờ\ncó u nguyên bào võng mạc đi khám chuyên khoa, cần phân biệt tật khúc xạ.\n- Thị lực kém: khoảng 8% thị lực giảm hoặc mất khi khối u cả hai bên.\n- Đỏ và đau nhức mắt do tăng nhãn áp, viêm màng bồ đào, viêm tế bào hốc mắt,\nxuất huyết tự nhiên trong tiền phòng, trong thể pha lê. Mắt đỏ và đau chứng tỏ bệnh lan\nrộng, có xâm lấn màng mạch rộng.\nKhám khối u bằng soi đáy mắt gián tiếp, hình ảnh khối u lan tràn vào trong thủy\ntinh thể, màu hồng kèm theo sự tăng sinh mạch lan tràn bề mặt. Trẻ lớn hay gặp u màu\ntrắng như tuyết hoàn toàn vô mạch. Vị trí riềm răng cưa chiếm 75% các trường hợp\nbệnh. Calci hoá có thể thấy trong 50% các trường hợp qua soi đáy mắt. Sự mô tả chính\nxác vị trí khối u sẽ giúp lập kế hoạch xạ trị. Kích thước của tổn thương có thể ước tính\nbằng cách so sánh với đường kính đầu dây thần kinh mắt.\nCác thể lâm sàng\n- U nguyên bào võng mạc một bên mắt: 75% trường hợp, gặp ở trẻ 2-4 tuổi.\n- U nguyên bào võng mạc hai bên mắt: 25%, gặp ở trẻ nhỏ hơn, khoảng 14-16\ntháng tuổi, có tính di truyền 40% trường hợp.\n- U nguyên bào võng mạc ba bên (trilateral): u nguyên bào võng mạc hai bên và có\nthêm u nguyên bào tuyến tùng, chiếm 3-9%, tiên lượng rất xấu. Đa số trẻ bị tử vong\ntrong vòng 35 tháng.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI67_SX01",
+          "sub_heading": "",
+          "text": "- Đồng tử trắng: chiếm 56% đến 70% trường hợp bệnh được phát hiện nhờ dấu\nhiệu này, gọi khác như \"mắt mèo\", \"mắt có ánh sáng lập lòe\"..., thường quan sát thấy\nkhi mắt chuyển động. Khi nhìn vào mắt bé, cha mẹ thấy có ánh trắng (nhất là vào ban\nđêm hoặc trong phòng tối vì khi đó đồng tử giãn).\n- Lác: có khoảng 34% trường hợp, trẻ bị lé trong vòng 6 tháng tuổi nên nghi ngờ\ncó u nguyên bào võng mạc đi khám chuyên khoa, cần phân biệt tật khúc xạ.\n- Thị lực kém: khoảng 8% thị lực giảm hoặc mất khi khối u cả hai bên.\n- Đỏ và đau nhức mắt do tăng nhãn áp, viêm màng bồ đào, viêm tế bào hốc mắt,\nxuất huyết tự nhiên trong tiền phòng, trong thể pha lê. Mắt đỏ và đau chứng tỏ bệnh lan\nrộng, có xâm lấn màng mạch rộng.\nKhám khối u bằng soi đáy mắt gián tiếp, hình ảnh khối u lan tràn vào trong thủy\ntinh thể, màu hồng kèm theo sự tăng sinh mạch lan tràn bề mặt. Trẻ lớn hay gặp u màu\ntrắng như tuyết hoàn toàn vô mạch. Vị trí riềm răng cưa chiếm 75% các trường hợp\nbệnh. Calci hoá có thể thấy trong 50% các trường hợp qua soi đáy mắt. Sự mô tả chính\nxác vị trí khối u sẽ giúp lập kế hoạch xạ trị. Kích thước của tổn thương có thể ước tính\nbằng cách so sánh với đường kính đầu dây thần kinh mắt.\nCác thể lâm sàng\n- U nguyên bào võng mạc một bên mắt: 75% trường hợp, gặp ở trẻ 2-4 tuổi.\n- U nguyên bào võng mạc hai bên mắt: 25%, gặp ở trẻ nhỏ hơn, khoảng 14-16\ntháng tuổi, có tính di truyền 40% trường hợp.\n- U nguyên bào võng mạc ba bên (trilateral): u nguyên bào võng mạc hai bên và có\nthêm u nguyên bào tuyến tùng, chiếm 3-9%, tiên lượng rất xấu. Đa số trẻ bị tử vong\ntrong vòng 35 tháng.",
+          "char_count": 1584,
+          "word_count": 353
+        }
+      ],
+      "source_reference": "Bài 67, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1584,
+      "total_word_count": 353
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI68_CLINICAL",
+      "bai_number": 68,
+      "disease_name_vi": "U NGUYÊN BÀO THẬN",
+      "disease_name_en": "Wilms Tumor (Nephroblastoma)",
+      "icd10_code": "C64.9",
+      "organ_system": "Tiết niệu (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Khối u: đặc điểm u Wilms thường là khối lớn ở mạn sườn không di động theo\nnhịp thở. Biểu hiện cả hai thận chiếm 5-10%.\n- Đau bụng, đái máu đại thể.\n- Tăng huyết áp do tăng hoạt tính renin.\n- Triệu chứng nhiễm trùng đường tiết niệu, thiểu niệu hoặc đa niệu ít gặp.\n- Giãn tĩnh mạch tinh phát hiện rõ khi trẻ nằm ngửa.\n- Toàn thân: có thể sốt, sút cân, nôn, mệt mỏi.\n- Phát hiện các hội chứng liên quan với u Wilms như không có mống mắt, dị dạng\nmặt, phì đại nửa người một phần hay hoàn toàn, các bất thường về sinh dục tiết niệu\nnhư lỗ sáo lệch dưới, tinh hoàn ẩn, lưỡng tính giả.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI68_SX01",
+          "sub_heading": "",
+          "text": "- Khối u: đặc điểm u Wilms thường là khối lớn ở mạn sườn không di động theo\nnhịp thở. Biểu hiện cả hai thận chiếm 5-10%.\n- Đau bụng, đái máu đại thể.\n- Tăng huyết áp do tăng hoạt tính renin.\n- Triệu chứng nhiễm trùng đường tiết niệu, thiểu niệu hoặc đa niệu ít gặp.\n- Giãn tĩnh mạch tinh phát hiện rõ khi trẻ nằm ngửa.\n- Toàn thân: có thể sốt, sút cân, nôn, mệt mỏi.\n- Phát hiện các hội chứng liên quan với u Wilms như không có mống mắt, dị dạng\nmặt, phì đại nửa người một phần hay hoàn toàn, các bất thường về sinh dục tiết niệu\nnhư lỗ sáo lệch dưới, tinh hoàn ẩn, lưỡng tính giả.",
+          "char_count": 581,
+          "word_count": 128
+        }
+      ],
+      "source_reference": "Bài 68, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 581,
+      "total_word_count": 128
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI69_CLINICAL",
+      "bai_number": 69,
+      "disease_name_vi": "SARCOMA EWING",
+      "disease_name_en": "Ewing Sarcoma",
+      "icd10_code": "C41.9",
+      "organ_system": "Cơ xương khớp (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng lâm sàng\nKhối u kèm sưng và đau thường gặp nhất. Khối u xuất hiện ở tứ chi tương đối dễ\nphát hiện vì ở nông.\nKhối u ở xương chậu, cột sống thường khó phát hiện vì u ở sâu. Tại các vị trí này,\nkhối u xuất hiện âm thầm nhưng khi chèn ép sẽ gây đau nhiều và ảnh hưởng vận động.\nKhối u ở cột sống xâm lấn, chèn ép vào tủy sống gây hội chứng ép tủy.\nKhi khối u phát triển mạnh, kích thước lớn tạo nên sự biến dạng tại chỗ, làm lệch\nđối xứng của chi, của cơ thể, hạn chế vận động, thậm chí gây gãy xương bệnh lý.\nNgoài ra có thể gặp sốt dai dẳng, một số trường hợp biểu hiện đầu tiên là triệu\nchứng di căn xa như tiêu xương sọ, xương sườn và xương dẹt khác.\nTriệu chứng ở các cơ quan di căn: có khoảng 10-30% sarcoma Ewing có di căn tại\nthời điểm chẩn đoán. Vị trí di căn nhiều nhất là phổi (38%), kế đến là xương (31%), tủy\nxương (11%), di căn hạch chiếm khoảng 7%, ít khi thấy di căn gan. Ngoài ra người ta\ncòn thấy di căn mạc treo ổ bụng, di căn thành ống tiêu hoá. Hiếm khi có di căn hệ thần\nkinh trung ương, nếu có chỉ khoảng <5%.\n\n\n\n\n\n603",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI69_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng lâm sàng\nKhối u kèm sưng và đau thường gặp nhất. Khối u xuất hiện ở tứ chi tương đối dễ\nphát hiện vì ở nông.\nKhối u ở xương chậu, cột sống thường khó phát hiện vì u ở sâu. Tại các vị trí này,\nkhối u xuất hiện âm thầm nhưng khi chèn ép sẽ gây đau nhiều và ảnh hưởng vận động.\nKhối u ở cột sống xâm lấn, chèn ép vào tủy sống gây hội chứng ép tủy.\nKhi khối u phát triển mạnh, kích thước lớn tạo nên sự biến dạng tại chỗ, làm lệch\nđối xứng của chi, của cơ thể, hạn chế vận động, thậm chí gây gãy xương bệnh lý.\nNgoài ra có thể gặp sốt dai dẳng, một số trường hợp biểu hiện đầu tiên là triệu\nchứng di căn xa như tiêu xương sọ, xương sườn và xương dẹt khác.\nTriệu chứng ở các cơ quan di căn: có khoảng 10-30% sarcoma Ewing có di căn tại\nthời điểm chẩn đoán. Vị trí di căn nhiều nhất là phổi (38%), kế đến là xương (31%), tủy\nxương (11%), di căn hạch chiếm khoảng 7%, ít khi thấy di căn gan. Ngoài ra người ta\ncòn thấy di căn mạc treo ổ bụng, di căn thành ống tiêu hoá. Hiếm khi có di căn hệ thần\nkinh trung ương, nếu có chỉ khoảng <5%.",
+          "char_count": 1041,
+          "word_count": 235
+        }
+      ],
+      "source_reference": "Bài 69, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1050,
+      "total_word_count": 236
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI70_CLINICAL",
+      "bai_number": 70,
+      "disease_name_vi": "SARCOMA XƯƠNG",
+      "disease_name_en": "Osteosarcoma",
+      "icd10_code": "C40-C41",
+      "organ_system": "Cơ xương khớp (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng cơ năng\nĐau tại chỗ: là dấu hiệu đầu tiên, triệu chứng đau chiếm 87,5% các sarcoma xương.\nĐặc điểm đau lúc đầu ít, ngắt quãng sau đó đau liên tục và kéo dài, đau nhói kiểu gãy\nvụn xương. Biểu hiện toàn thân như mệt mỏi, mất ngủ. Vận động giảm ở giai đoạn\nmuộn hoặc tổn thương nhiều vị trí.\nTriệu chứng thực thể\nKhối u ở sâu, cứng chắc, có ranh giới rõ. Da trên u nóng hơn phần da lành, đôi khi\ncó tĩnh mạch bàng hệ. Khối u hay gặp tại xương dài, ở hành xương, thường gặp ở vị trí\nđầu trên xương chày, đầu dưới xương đùi, vị trí ít gặp hơn là đầu trên xương cánh tay và\nđầu trên xương đùi. Các xương dẹt hay bị tổn thương là xương chậu và xương bả vai.\nTeo cơ, sưng nề ở phần mềm, hình dát cà phê kiểu giầy thể thao hoặc u máu ngoài\nda đôi khi giúp ích cho chẩn đoán. Những khối u ở vùng điểm thần kinh hông hoặc\nxương cùng có thể phát hiện được có sự suy giảm chức năng thần kinh.\nGãy xương tự nhiên gặp từ 1,1% đến 5% các trường hợp.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI70_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng cơ năng\nĐau tại chỗ: là dấu hiệu đầu tiên, triệu chứng đau chiếm 87,5% các sarcoma xương.\nĐặc điểm đau lúc đầu ít, ngắt quãng sau đó đau liên tục và kéo dài, đau nhói kiểu gãy\nvụn xương. Biểu hiện toàn thân như mệt mỏi, mất ngủ. Vận động giảm ở giai đoạn\nmuộn hoặc tổn thương nhiều vị trí.\nTriệu chứng thực thể\nKhối u ở sâu, cứng chắc, có ranh giới rõ. Da trên u nóng hơn phần da lành, đôi khi\ncó tĩnh mạch bàng hệ. Khối u hay gặp tại xương dài, ở hành xương, thường gặp ở vị trí\nđầu trên xương chày, đầu dưới xương đùi, vị trí ít gặp hơn là đầu trên xương cánh tay và\nđầu trên xương đùi. Các xương dẹt hay bị tổn thương là xương chậu và xương bả vai.\nTeo cơ, sưng nề ở phần mềm, hình dát cà phê kiểu giầy thể thao hoặc u máu ngoài\nda đôi khi giúp ích cho chẩn đoán. Những khối u ở vùng điểm thần kinh hông hoặc\nxương cùng có thể phát hiện được có sự suy giảm chức năng thần kinh.\nGãy xương tự nhiên gặp từ 1,1% đến 5% các trường hợp.",
+          "char_count": 946,
+          "word_count": 210
+        }
+      ],
+      "source_reference": "Bài 70, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 946,
+      "total_word_count": 210
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI71_CLINICAL",
+      "bai_number": 71,
+      "disease_name_vi": "SARCOMA CƠ VÂN",
+      "disease_name_en": "Rhabdomyosarcoma",
+      "icd10_code": "C49",
+      "organ_system": "Cơ xương khớp (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Khối u và hậu quả do u gây nên:\n- Khối u vùng mi, ổ mắt thường gây ra lồi mắt, đôi khi liệt mắt. U cận màng não\n(trừ ổ mắt) thường gây tắc nghẽn mũi, xoang, tiết dịch mủ bất thường, liệt thần kinh sọ,\ncó thể kèm đau đầu, nôn, tăng huyết áp.\n- Khối u vùng bàng quang gây bí đái, đái máu, đôi khi chảy dịch nhày máu. Khối\nu vùng tuyến tiền liệt đôi khi đái buốt, đái rắt, táo bón xu hướng di căn phổi, tủy xương\nvà xương. U vùng âm đạo thường ở trẻ nhỏ gây tiết dịch âm đạo bất thường.\n- U vùng chi, thân mình xuất hiện bằng khối bất thường đỏ da, tăng nhạy cảm đau.\nCác vị trí khác hiếm gặp trong lồng ngực, sau phúc mạc, trong tiểu khung khó phát hiện\nsớm. U vùng đáy chậu và quanh hậu môn lâm sàng đôi khi giống như ổ áp xe hay polyp.\nTại đường mật biểu hiện bằng vàng da tắc nghẽn.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI71_SX01",
+          "sub_heading": "",
+          "text": "Khối u và hậu quả do u gây nên:\n- Khối u vùng mi, ổ mắt thường gây ra lồi mắt, đôi khi liệt mắt. U cận màng não\n(trừ ổ mắt) thường gây tắc nghẽn mũi, xoang, tiết dịch mủ bất thường, liệt thần kinh sọ,\ncó thể kèm đau đầu, nôn, tăng huyết áp.\n- Khối u vùng bàng quang gây bí đái, đái máu, đôi khi chảy dịch nhày máu. Khối\nu vùng tuyến tiền liệt đôi khi đái buốt, đái rắt, táo bón xu hướng di căn phổi, tủy xương\nvà xương. U vùng âm đạo thường ở trẻ nhỏ gây tiết dịch âm đạo bất thường.\n- U vùng chi, thân mình xuất hiện bằng khối bất thường đỏ da, tăng nhạy cảm đau.\nCác vị trí khác hiếm gặp trong lồng ngực, sau phúc mạc, trong tiểu khung khó phát hiện\nsớm. U vùng đáy chậu và quanh hậu môn lâm sàng đôi khi giống như ổ áp xe hay polyp.\nTại đường mật biểu hiện bằng vàng da tắc nghẽn.",
+          "char_count": 783,
+          "word_count": 177
+        }
+      ],
+      "source_reference": "Bài 71, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 783,
+      "total_word_count": 177
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI72_CLINICAL",
+      "bai_number": 72,
+      "disease_name_vi": "U LYMPHO KHÔNG HODGKIN Ở TRẺ EM",
+      "disease_name_en": "Pediatric Non-Hodgkin Lymphoma",
+      "icd10_code": "C82-C85",
+      "organ_system": "Huyết học (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Diễn biến bệnh thường tiến triển nhanh. Tổn thương ngoài hạch thường gặp hơn\ntổn thương tại hạch.\n- Hạch to nhanh cứng chắc, di động hạn chế do dính, không gây đau.\n- Khó thở, đau ngực, hội chứng chèn ép tĩnh mạch chủ trên có thể gặp khi có tổn\nthương ở trung thất.\n- Có thể gặp các tổn thương ngoài hạch như: sưng đau amydal, lồi mắt, tổn thương\nở vòm họng. Triệu chứng không đặc hiệu, có thể giống với các bệnh lý vùng đầu cổ.\n- Hạch ổ bụng gây đau bụng, tắc ruột.\n- Các triệu chứng toàn thân như sốt, vã mồ hôi về đêm, mẩn ngứa ngoài da, sút\ncân nhanh (hội chứng B).\n- Thâm nhiễm thần kinh trung ương có các triệu chứng trên lâm sàng như đau đầu\nngày càng tăng, nôn vọt, liệt dây thần kinh sọ não, thường là dây III, V, VI, nhìn đôi, rối\nloạn cơ tròn, liệt nửa người, hôn mê. Hoặc thấy tế bào ác tính trong dịch não tủy.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI72_SX01",
+          "sub_heading": "",
+          "text": "- Diễn biến bệnh thường tiến triển nhanh. Tổn thương ngoài hạch thường gặp hơn\ntổn thương tại hạch.\n- Hạch to nhanh cứng chắc, di động hạn chế do dính, không gây đau.\n- Khó thở, đau ngực, hội chứng chèn ép tĩnh mạch chủ trên có thể gặp khi có tổn\nthương ở trung thất.\n- Có thể gặp các tổn thương ngoài hạch như: sưng đau amydal, lồi mắt, tổn thương\nở vòm họng. Triệu chứng không đặc hiệu, có thể giống với các bệnh lý vùng đầu cổ.\n- Hạch ổ bụng gây đau bụng, tắc ruột.\n- Các triệu chứng toàn thân như sốt, vã mồ hôi về đêm, mẩn ngứa ngoài da, sút\ncân nhanh (hội chứng B).\n- Thâm nhiễm thần kinh trung ương có các triệu chứng trên lâm sàng như đau đầu\nngày càng tăng, nôn vọt, liệt dây thần kinh sọ não, thường là dây III, V, VI, nhìn đôi, rối\nloạn cơ tròn, liệt nửa người, hôn mê. Hoặc thấy tế bào ác tính trong dịch não tủy.",
+          "char_count": 825,
+          "word_count": 179
+        }
+      ],
+      "source_reference": "Bài 72, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 825,
+      "total_word_count": 179
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI73_CLINICAL",
+      "bai_number": 73,
+      "disease_name_vi": "BỆNH HODGKIN Ở TRẺ EM",
+      "disease_name_en": "Pediatric Hodgkin Lymphoma",
+      "icd10_code": "C81",
+      "organ_system": "Huyết học (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng tại hạch\n- Hạch vùng trên cơ hoành chiếm khoảng 90%. Thường gặp hạch vùng đầu, cổ\nchiếm khoảng 60-80%, một hạch hoặc thành chuỗi, đặc điểm hạch to dần với tính chất\ncứng, không đau, kém di động. Các vị trí khác ít gặp hơn như hạch nách, khoeo, ống\ncánh tay. Hạch trung thất tùy mức độ có các triệu chứng chèn ép như: Ho, khó thở, đau\nngực, hội chứng chèn ép tĩnh mạch chủ trên gây triệu chứng phù áo khoác.\n- Hạch dưới cơ hoành thường ít gặp hơn chiếm khoảng 10%. vùng ổ bụng thường\nâm thầm, ít có biểu hiện triệu chứng, có thể phát hiện sau khi được siêu âm ổ bụng hoặc\nbiểu hiện đau bụng do khối hạch lớn trong ổ bụng gây chèn ép…\n- Các tạng như: Gan, lách, xâm lấn tủy xương ít gặp.\nHội chứng toàn thân: là các triệu chứng biểu hiện của bệnh ảnh hưởng tới toàn\nthân, tập hợp thành hội chứng B gồm:\n- Sốt trên 380C từng đợt trong vài ngày, hay sốt về đêm theo tiến triển của bệnh\nkhông rõ nguyên nhân.\n- Sút cân >10% trọng lượng cơ thể trong vòng 6 tháng.\n- Ra mồ hôi về đêm hoặc kèm theo ngứa.\n\n\n\n\n\n651",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI73_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng tại hạch\n- Hạch vùng trên cơ hoành chiếm khoảng 90%. Thường gặp hạch vùng đầu, cổ\nchiếm khoảng 60-80%, một hạch hoặc thành chuỗi, đặc điểm hạch to dần với tính chất\ncứng, không đau, kém di động. Các vị trí khác ít gặp hơn như hạch nách, khoeo, ống\ncánh tay. Hạch trung thất tùy mức độ có các triệu chứng chèn ép như: Ho, khó thở, đau\nngực, hội chứng chèn ép tĩnh mạch chủ trên gây triệu chứng phù áo khoác.\n- Hạch dưới cơ hoành thường ít gặp hơn chiếm khoảng 10%. vùng ổ bụng thường\nâm thầm, ít có biểu hiện triệu chứng, có thể phát hiện sau khi được siêu âm ổ bụng hoặc\nbiểu hiện đau bụng do khối hạch lớn trong ổ bụng gây chèn ép…\n- Các tạng như: Gan, lách, xâm lấn tủy xương ít gặp.\nHội chứng toàn thân: là các triệu chứng biểu hiện của bệnh ảnh hưởng tới toàn\nthân, tập hợp thành hội chứng B gồm:\n- Sốt trên 380C từng đợt trong vài ngày, hay sốt về đêm theo tiến triển của bệnh\nkhông rõ nguyên nhân.\n- Sút cân >10% trọng lượng cơ thể trong vòng 6 tháng.\n- Ra mồ hôi về đêm hoặc kèm theo ngứa.",
+          "char_count": 1008,
+          "word_count": 217
+        }
+      ],
+      "source_reference": "Bài 73, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1017,
+      "total_word_count": 218
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI74_CLINICAL",
+      "bai_number": 74,
+      "disease_name_vi": "CHẨN ĐOÁN VÀ ĐIỀU TRỊ U NÃO Ở TRẺ EM",
+      "disease_name_en": "Pediatric Brain Tumor",
+      "icd10_code": "C71",
+      "organ_system": "Thần kinh trung ương (Nhi)",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Tùy theo tuổi mắc bệnh, vị trí và tính chất mô bệnh học của u mà bệnh nhân có các\nbiểu hiện lâm sàng với các hội chứng tăng áp lực nội sọ, rối loạn hành vi, rối loạn nội\ntiết, dấu hiệu thần kinh khu trú.\nHội chứng tăng áp lực nội sọ: là hội chứng thường gặp nhất trong u não trẻ em, nó\nbiểu hiện bằng các triệu chứng đau đầu, nôn và buồn nôn. Đôi khi hội chứng này xuất\nhiện muộn do các khớp sọ của trẻ chưa liền, xương sọ còn mềm, do vậy khi áp lực trong\nhộp sọ tăng do u phát triển thì hộp sọ cùng giãn ra theo lực tác động vào hộp sọ.\n- Đau đầu: thường đau nhiều vào sáng sớm hay nửa đêm về sáng, đau dai dẳng,\nlặp lại hàng ngày, ngày càng đau nhiều hơn về cả cường độ và thời gian. Ở trẻ còn bé\nchưa biết phàn nàn đau có thể biểu hiện bằng các triệu chứng như bỏ ăn, quấy khóc, ngủ\nít, vật vã.\n- Nôn: thường đi kèm với triệu chứng đau đầu nhưng cũng có trường hợp bệnh\nnhân đi khám vì triệu chứng nôn đơn thuần. Đặc điểm là nôn vọt, nôn tự nhiên không\nliên quan đến bữa ăn, thường nôn vào buổi sáng. Sau mỗi lần nôn bệnh nhân thường\nmệt hơn, nhưng sau nôn thường đỡ đau đầu. Nếu để bệnh nhân nôn nhiều có thể dẫn\nđến suy kiệt, mất nước, rối loạn điện giải.\n- Phù gai thị: dấu hiệu nặng thường gặp trong tăng áp lực nội sọ ở trẻ lớn còn đối\nvới trẻ nhỏ thì ít gặp hơn.\n- Ở các trẻ nhỏ dưới 2 tuổi các triệu chứng đau đầu, nôn, phù gai nhiều khi ít gặp\nmà thường biểu hiện bằng dấu hiệu kích thước vòng đầu tăng lên bất thường (nhanh hơn\nso với số đo chuẩn), các khớp sọ giãn rộng, thóp phồng, da đầu căng, giãn các tĩnh mạch\ndưới da đầu, có thể thấy mắt của bệnh nhân ở vị trí nhìn xuống (dấu hiệu mặt trời lặn).\n- Hậu quả của tăng áp lực nội sọ:\n+ Bệnh nhân thay đổi tính tình: không hòa nhập với những người xung quanh, dễ\ncáu gắt hoặc kích động, kém tập trung, ngủ nhiều hoặc ở trạng thái buồn ngủ.\n+ Tụt kẹt não: khi áp lực nội sọ tăng quá ngưỡng sẽ gây tụt kẹt não qua liềm đại\nnão, qua lều tiểu não hoặc qua lỗ chẩm làm cho bệnh nặng lên nhanh gây nguy hiểm\nđến tính mạng bệnh nhân. Nó được biểu hiện bằng các triệu chứng đau đầu dữ dội hoặc\nđau vùng gáy, bệnh nhân nằm tư thế ưỡn cổ đầu ngửa ra sau, giãn đồng tử, thở nhanh\nnông hoặc ngừng thở, hôn mê, nếu không xử lý kịp thời sẽ tử vong.\n- Dấu hiệu thần kinh khu trú: tùy theo u khu trú ở vị trí nào của não sẽ có biểu hiện\ntriệu chứng do vùng đó chi phối.\n+ Hội chứng của hố sau: bệnh nhân đi loạng choạng hay bị ngã, rối loạn thăng\nbằng, liệt các dây thần kinh sọ (u ở thân não).\n+ Hội chứng của trên lều tiểu não: giảm hoặc mất cảm giác nửa người, yếu hoặc\nliệt vận động nửa người, rối loạn nói (có thể hiểu lời nói nhưng bệnh nhân không nói\nđược hoặc nói được nhưng không hiểu lời nói), rối loạn nhìn, rối loạn ý thức, rối loạn\ngiấc ngủ…\n- Dấu hiệu về mắt:\n+ Giảm thị lực: gặp trong trường hợp tăng áp lực nội sọ, u thần kinh đệm của dây\nthị giác hay chéo thị giác.\n+ Bán manh: gặp trong trường hợp u chèn vào một phần của dải thị giác.\n+ Liệt vận nhãn: gây nhìn đôi, thường gặp liệt dây VI bệnh nhân biểu hiện lác\ntrong, liệt dây III biểu hiện lác ngoài. Hội chứng Parinaud (bệnh nhân không hội tụ\nđược nhãn cầu) thấy trong u chèn vào cuống não hoặc u vùng tuyến tùng.\n+ Rung giật nhãn cầu: thường gặp ở bệnh nhân u hố sau.\n- Động kinh: có thể là cơn động kinh toàn thể hoặc cơn động kinh cục bộ.\n- Rối loạn nội tiết: bệnh nhân phát triển thể trạng và sinh lý không bình thường.\nCó hai thể là giảm tiết hormon và tăng tiết hormon.\n+ Giảm tiết hormon thường gặp hơn do u ở vùng tuyến yên hay dưới đồi (u sọ hầu,\nu thần kinh đệm) chèn ép gây suy tuyến yên biểu hiện là bệnh nhân chậm phát triển về\nthể lực, đái tháo nhạt, không dậy thì.\n+ Tăng tiết hormon: Ít gặp hơn, thường thấy trong bệnh u loạn sản phôi\n(hamartome) ở trên yên và u tuyến yên tăng tiết hormon biểu hiện bằng dấu hiệu dậy thì\nsớm ở trẻ em.\n- Vòng đầu to: thường gặp ở trẻ sơ sinh và trẻ nhỏ dưới 1 tuổi.\n- Chậm phát triển tâm thần vận động và thay đổi hành vi: ở trẻ sơ sinh và trẻ nhỏ\ncó thể biểu hiện tăng động và rối loạn hành vi. Việc thay đổi hành vi, tính cách, giảm\nkết quả học tập thường kín đáo, cha mẹ và thầy thuốc cần chú ý mới nhận thấy sự thay\nđổi này.\n- Hội chứng thần kinh da: trẻ có biểu hiện hội chứng thần kinh da gồm xơ hóa củ,\nđa u xơ thần kinh (NF1) thường tăng nguy cơ có khối u ở não. Với những bệnh nhân xơ\nhóa củ có thể phối hợp với u tế bào thần kinh đệm khổng lồ dưới màng não thất. Trẻ bị\nNF1 có các nốt cà phê nâu ở da, đa u xơ thần kinh, có thể phối hợp với u dây thị giác và\ngiao thoa thị giác.\n- Các khối u bẩm sinh của hệ thần kinh trung ương: hiếm gặp, chiếm khoảng dưới\n2% các khối u ở trẻ sơ sinh. Thường được chẩn đoán trong bệnh cảnh vòng đầu tăng và\nthóp phồng căng lúc sinh, đây là triệu chứng gây ra do hậu quả thứ phát là giãn não thất.\nĐa số trường hợp, chẩn đoán u não ở trẻ sơ sinh được phát hiện sau khi siêu âm qua\nthóp hoặc chụp cộng hưởng từ não ở trẻ có nghi ngờ về bất thường cấu trúc ở não.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI74_SX01",
+          "sub_heading": "",
+          "text": "Tùy theo tuổi mắc bệnh, vị trí và tính chất mô bệnh học của u mà bệnh nhân có các\nbiểu hiện lâm sàng với các hội chứng tăng áp lực nội sọ, rối loạn hành vi, rối loạn nội\ntiết, dấu hiệu thần kinh khu trú.\nHội chứng tăng áp lực nội sọ: là hội chứng thường gặp nhất trong u não trẻ em, nó\nbiểu hiện bằng các triệu chứng đau đầu, nôn và buồn nôn. Đôi khi hội chứng này xuất\nhiện muộn do các khớp sọ của trẻ chưa liền, xương sọ còn mềm, do vậy khi áp lực trong\nhộp sọ tăng do u phát triển thì hộp sọ cùng giãn ra theo lực tác động vào hộp sọ.\n- Đau đầu: thường đau nhiều vào sáng sớm hay nửa đêm về sáng, đau dai dẳng,\nlặp lại hàng ngày, ngày càng đau nhiều hơn về cả cường độ và thời gian. Ở trẻ còn bé\nchưa biết phàn nàn đau có thể biểu hiện bằng các triệu chứng như bỏ ăn, quấy khóc, ngủ\nít, vật vã.\n- Nôn: thường đi kèm với triệu chứng đau đầu nhưng cũng có trường hợp bệnh\nnhân đi khám vì triệu chứng nôn đơn thuần. Đặc điểm là nôn vọt, nôn tự nhiên không\nliên quan đến bữa ăn, thường nôn vào buổi sáng. Sau mỗi lần nôn bệnh nhân thường\nmệt hơn, nhưng sau nôn thường đỡ đau đầu. Nếu để bệnh nhân nôn nhiều có thể dẫn\nđến suy kiệt, mất nước, rối loạn điện giải.\n- Phù gai thị: dấu hiệu nặng thường gặp trong tăng áp lực nội sọ ở trẻ lớn còn đối\nvới trẻ nhỏ thì ít gặp hơn.\n- Ở các trẻ nhỏ dưới 2 tuổi các triệu chứng đau đầu, nôn, phù gai nhiều khi ít gặp\nmà thường biểu hiện bằng dấu hiệu kích thước vòng đầu tăng lên bất thường (nhanh hơn\nso với số đo chuẩn), các khớp sọ giãn rộng, thóp phồng, da đầu căng, giãn các tĩnh mạch\ndưới da đầu, có thể thấy mắt của bệnh nhân ở vị trí nhìn xuống (dấu hiệu mặt trời lặn).\n- Hậu quả của tăng áp lực nội sọ:\n+ Bệnh nhân thay đổi tính tình: không hòa nhập với những người xung quanh, dễ\ncáu gắt hoặc kích động, kém tập trung, ngủ nhiều hoặc ở trạng thái buồn ngủ.\n+ Tụt kẹt não: khi áp lực nội sọ tăng quá ngưỡng sẽ gây tụt kẹt não qua liềm đại\nnão, qua lều tiểu não hoặc qua lỗ chẩm làm cho bệnh nặng lên nhanh gây nguy hiểm\nđến tính mạng bệnh nhân. Nó được biểu hiện bằng các triệu chứng đau đầu dữ dội hoặc\nđau vùng gáy, bệnh nhân nằm tư thế ưỡn cổ đầu ngửa ra sau, giãn đồng tử, thở nhanh\nnông hoặc ngừng thở, hôn mê, nếu không xử lý kịp thời sẽ tử vong.\n- Dấu hiệu thần kinh khu trú: tùy theo u khu trú ở vị trí nào của não sẽ có biểu hiện\ntriệu chứng do vùng đó chi phối.\n+ Hội chứng của hố sau: bệnh nhân đi loạng choạng hay bị ngã, rối loạn thăng\nbằng, liệt các dây thần kinh sọ (u ở thân não).\n+ Hội chứng của trên lều tiểu não: giảm hoặc mất cảm giác nửa người, yếu hoặc\nliệt vận động nửa người, rối loạn nói (có thể hiểu lời nói nhưng bệnh nhân không nói\nđược hoặc nói được nhưng không hiểu lời nói), rối loạn nhìn, rối loạn ý thức, rối loạn\ngiấc ngủ…\n- Dấu hiệu về mắt:\n+ Giảm thị lực: gặp trong trường hợp tăng áp lực nội sọ, u thần kinh đệm của dây\nthị giác hay chéo thị giác.\n+ Bán manh: gặp trong trường hợp u chèn vào một phần của dải thị giác.\n+ Liệt vận nhãn: gây nhìn đôi, thường gặp liệt dây VI bệnh nhân biểu hiện lác\ntrong, liệt dây III biểu hiện lác ngoài. Hội chứng Parinaud (bệnh nhân không hội tụ\nđược nhãn cầu) thấy trong u chèn vào cuống não hoặc u vùng tuyến tùng.\n+ Rung giật nhãn cầu: thường gặp ở bệnh nhân u hố sau.\n- Động kinh: có thể là cơn động kinh toàn thể hoặc cơn động kinh cục bộ.\n- Rối loạn nội tiết: bệnh nhân phát triển thể trạng và sinh lý không bình thường.\nCó hai thể là giảm tiết hormon và tăng tiết hormon.\n+ Giảm tiết hormon thường gặp hơn do u ở vùng tuyến yên hay dưới đồi (u sọ hầu,\nu thần kinh đệm) chèn ép gây suy tuyến yên biểu hiện là bệnh nhân chậm phát triển về\nthể lực, đái tháo nhạt, không dậy thì.\n+ Tăng tiết hormon: Ít gặp hơn, thường thấy trong bệnh u loạn sản phôi\n(hamartome) ở trên yên và u tuyến yên tăng tiết hormon biểu hiện bằng dấu hiệu dậy thì\nsớm ở trẻ em.\n- Vòng đầu to: thường gặp ở trẻ sơ sinh và trẻ nhỏ dưới 1 tuổi.\n- Chậm phát triển tâm thần vận động và thay đổi hành vi: ở trẻ sơ sinh và trẻ nhỏ\ncó thể biểu hiện tăng động và rối loạn hành vi. Việc thay đổi hành vi, tính cách, giảm\nkết quả học tập thường kín đáo, cha mẹ và thầy thuốc cần chú ý mới nhận thấy sự thay\nđổi này.\n- Hội chứng thần kinh da: trẻ có biểu hiện hội chứng thần kinh da gồm xơ hóa củ,\nđa u xơ thần kinh (NF1) thường tăng nguy cơ có khối u ở não. Với những bệnh nhân xơ\nhóa củ có thể phối hợp với u tế bào thần kinh đệm khổng lồ dưới màng não thất. Trẻ bị\nNF1 có các nốt cà phê nâu ở da, đa u xơ thần kinh, có thể phối hợp với u dây thị giác và\ngiao thoa thị giác.\n- Các khối u bẩm sinh của hệ thần kinh trung ương: hiếm gặp, chiếm khoảng dưới\n2% các khối u ở trẻ sơ sinh. Thường được chẩn đoán trong bệnh cảnh vòng đầu tăng và\nthóp phồng căng lúc sinh, đây là triệu chứng gây ra do hậu quả thứ phát là giãn não thất.\nĐa số trường hợp, chẩn đoán u não ở trẻ sơ sinh được phát hiện sau khi siêu âm qua\nthóp hoặc chụp cộng hưởng từ não ở trẻ có nghi ngờ về bất thường cấu trúc ở não.",
+          "char_count": 4877,
+          "word_count": 1102
+        }
+      ],
+      "source_reference": "Bài 74, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 4877,
+      "total_word_count": 1102
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI75_CLINICAL",
+      "bai_number": 75,
+      "disease_name_vi": "ĐIỀU TRỊ UNG THƯ BIỂU MÔ TUYẾN GIÁP THỂ BIỆT HÓA",
+      "disease_name_en": "Differentiated Thyroid Carcinoma (Nuclear Med)",
+      "icd10_code": "C73",
+      "organ_system": "Nội tiết",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Triệu chứng sớm:\n+ Thường thầm lặng ít có dấu hiệu lâm sàng. Nhiều bệnh nhân tự phát hiện thấy có\nu tuyến giáp trạng, u thường có đặc điểm: cứng chắc, bờ rõ, bề mặt nhẵn hay gồ ghề, di\nđộng theo nhịp nuốt.\n+ Nhiều trường hợp, phát hiện qua khám sức khỏe định kỳ, siêu âm tuyến giáp\nthấy có u tuyến giáp, có nốt vôi hóa trong u.\n+ Có thể có hạch ở vùng cổ, hạch thường nhỏ, di động và thường cùng bên với\nkhối u.\n- Triệu chứng muộn, khi u lớn, bệnh nhân thường có các dấu hiệu:\n+ Khối u to, rắn, cố định ở trước cổ.\n+ Khàn tiếng, có thể khó thở.\n+ Khó nuốt, nuốt vướng do u chèn ép.\n+ Da vùng cổ có thể thâm nhiễm hoặc sùi loét, chảy máu.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI75_SX01",
+          "sub_heading": "",
+          "text": "- Triệu chứng sớm:\n+ Thường thầm lặng ít có dấu hiệu lâm sàng. Nhiều bệnh nhân tự phát hiện thấy có\nu tuyến giáp trạng, u thường có đặc điểm: cứng chắc, bờ rõ, bề mặt nhẵn hay gồ ghề, di\nđộng theo nhịp nuốt.\n+ Nhiều trường hợp, phát hiện qua khám sức khỏe định kỳ, siêu âm tuyến giáp\nthấy có u tuyến giáp, có nốt vôi hóa trong u.\n+ Có thể có hạch ở vùng cổ, hạch thường nhỏ, di động và thường cùng bên với\nkhối u.\n- Triệu chứng muộn, khi u lớn, bệnh nhân thường có các dấu hiệu:\n+ Khối u to, rắn, cố định ở trước cổ.\n+ Khàn tiếng, có thể khó thở.\n+ Khó nuốt, nuốt vướng do u chèn ép.\n+ Da vùng cổ có thể thâm nhiễm hoặc sùi loét, chảy máu.",
+          "char_count": 639,
+          "word_count": 146
+        }
+      ],
+      "source_reference": "Bài 75, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 639,
+      "total_word_count": 146
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI76_CLINICAL",
+      "bai_number": 76,
+      "disease_name_vi": "ĐIỀU TRỊ BỆNH BASEDOW BẰNG IOD PHÓNG XẠ (131I)",
+      "disease_name_en": "Basedow Disease (I-131 Treatment)",
+      "icd10_code": "E05.0",
+      "organ_system": "Nội tiết",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Bướu tuyến giáp phì đại dạng lan tỏa, mật độ căng, sờ có thể thấy rung miu, nghe\ncó tiếng thổi liên tục hoặc thổi tâm thu.\nBiểu hiện ở mắt: có thể có lồi mắt, thường cả hai bên, nề mi, cứng mi, mất sự hội tụ\nnhãn cầu.\nRun đầu chi: run tay không theo ý muốn, run đầu chi, run tăng khi xúc động, có thể\ngặp teo cơ gốc chi (dấu hiệu ghế đẩu dương tính).\nRối loạn tim mạch: hồi hộp, trống ngực, nhịp nhanh xoang cả khi nghỉ, huyết áp tối\nđa tăng. Giai đoạn muộn khi đã có biến chứng tim: có biểu hiện suy tim, rối loạn nhịp\ntim, rung nhĩ loạn nhịp hoàn toàn.\nCác triệu chứng khác: da nóng ẩm, nóng bức, sút cân, rối loạn tiêu hóa (tiêu chảy),\năn khỏe, uống nhiều, rối loạn sinh dục (phụ nữ: mất kinh, nam giới: suy giảm sinh lý,\nliệt dương).",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI76_SX01",
+          "sub_heading": "",
+          "text": "Bướu tuyến giáp phì đại dạng lan tỏa, mật độ căng, sờ có thể thấy rung miu, nghe\ncó tiếng thổi liên tục hoặc thổi tâm thu.\nBiểu hiện ở mắt: có thể có lồi mắt, thường cả hai bên, nề mi, cứng mi, mất sự hội tụ\nnhãn cầu.\nRun đầu chi: run tay không theo ý muốn, run đầu chi, run tăng khi xúc động, có thể\ngặp teo cơ gốc chi (dấu hiệu ghế đẩu dương tính).\nRối loạn tim mạch: hồi hộp, trống ngực, nhịp nhanh xoang cả khi nghỉ, huyết áp tối\nđa tăng. Giai đoạn muộn khi đã có biến chứng tim: có biểu hiện suy tim, rối loạn nhịp\ntim, rung nhĩ loạn nhịp hoàn toàn.\nCác triệu chứng khác: da nóng ẩm, nóng bức, sút cân, rối loạn tiêu hóa (tiêu chảy),\năn khỏe, uống nhiều, rối loạn sinh dục (phụ nữ: mất kinh, nam giới: suy giảm sinh lý,\nliệt dương).",
+          "char_count": 737,
+          "word_count": 160
+        }
+      ],
+      "source_reference": "Bài 76, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 737,
+      "total_word_count": 160
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI79_CLINICAL",
+      "bai_number": 79,
+      "disease_name_vi": "ĐIỀU TRỊ BỆNH ĐA HỒNG CẦU NGUYÊN PHÁT",
+      "disease_name_en": "Polycythemia Vera",
+      "icd10_code": "D45",
+      "organ_system": "Huyết học",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Triệu chứng cơ năng: đau đầu, chóng mặt, dị cảm, ngứa sau khi tắm nước nóng do\ntăng độ quánh của máu. Mệt mỏi, sút cân.\nThực thể: đỏ da mặt và đầu chi, niêm mạc đỏ sẫm; lách to, có thể có gan to; tăng\nhuyết áp.\nNếu bệnh giai đoạn muộn có thể có các biến chứng: suy tim, tắc mạch, chảy máu,\ngút - sỏi thận do tăng acid uric, loét dạ dày-tá tràng do tăng histamin.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI79_SX01",
+          "sub_heading": "",
+          "text": "Triệu chứng cơ năng: đau đầu, chóng mặt, dị cảm, ngứa sau khi tắm nước nóng do\ntăng độ quánh của máu. Mệt mỏi, sút cân.\nThực thể: đỏ da mặt và đầu chi, niêm mạc đỏ sẫm; lách to, có thể có gan to; tăng\nhuyết áp.\nNếu bệnh giai đoạn muộn có thể có các biến chứng: suy tim, tắc mạch, chảy máu,\ngút - sỏi thận do tăng acid uric, loét dạ dày-tá tràng do tăng histamin.",
+          "char_count": 362,
+          "word_count": 80
+        }
+      ],
+      "source_reference": "Bài 79, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 362,
+      "total_word_count": 80
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI80_CLINICAL",
+      "bai_number": 80,
+      "disease_name_vi": "ĐIỀU TRỊ ĐAU DO UNG THƯ DI CĂN XƯƠNG",
+      "disease_name_en": "Cancer Bone Metastasis Pain",
+      "icd10_code": "C79.5",
+      "organ_system": "Cơ xương khớp",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "- Đau là cảm giác khó chịu và sự trải qua những cảm xúc có liên quan đến tổn\nthương mô học thực thể hoặc tiềm tàng, hoặc được mô tả về phương diện tổn thương\nmô học. Đau do tổn thương di căn xương thường âm ỉ nhưng có thể trở nên đau buốt khi\ncử động.\n- Đau là triệu chứng chủ yếu để chỉ định điều trị và đánh giá hiệu quả điều trị.\nTriệu chứng đau tuỳ thuộc vào vị trí và thời gian di căn. Lúc đầu, đau có thể ở mức độ\nnhẹ, ngắt quãng nhưng về sau sẽ nặng lên và liên tục.\n- Gãy xương bệnh lý: thường xảy ra ở khoảng 8% các trường hợp, đặc biệt với loại\ndi căn huỷ xương.\n- Biến dạng cột sống, xẹp đốt sống, triệu chứng chèn ép tủy sống.\n- Đánh giá mức độ đau:\n+ Thước đo hiển thị số (Visual Analogue Scale: VAS): Thước đo được chia\nthành 10 điểm từ 0 đến 10 (0 điểm: không đau, 10 điểm: là mức độ đau mà bệnh nhân\nkhông chịu đựng nổi). Bệnh nhân được hướng dẫn để tự chấm điểm đánh giá mức\nđộ đau.\nHình 1. Thước đo VAS\n+ Thước đánh giá tỷ lệ hiển thị số (Numerical Rating Scale: NRS): Thước đo được\nchia thành 100 điểm từ 0 đến 100 (0 điểm: không đau, 100 điểm: là mức độ đau mà\nbệnh nhân không chịu đựng nổi). Bệnh nhân được hướng dẫn để tự chấm điểm đánh giá\nmức độ đau từ 0 đến 100. Ưu điểm: thước dễ sử dụng, ít sai số vì tỷ lệ chia thang điểm\nnhỏ chỉ bằng 1/10 của thước VAS.\n+ Mức độ đau theo bậc thang của WHO: Đau được chia thành 3 bậc: 1, 2 và 3\ntương ứng đau nhẹ, đau vừa và đau nặng theo mức độ điều trị và kiểm soát đau. Đây là\ncách đánh giá đau có ý nghĩa lâm sàng và thực tiễn nhất. Phương pháp này dễ thực hiện\nvà thuận tiện cho người thầy thuốc trong việc đánh giá và kiểm soát đau trong ung thư.\nBảng 1. Lượng hoá mức độ đau khi kết hợp các phương thức đánh giá\nTheo WHO\nTheo Serlin, Nakamura\nTheo thang điểm VAS\nBậc 1\nĐau nhẹ\n1-4 điểm\nBậc 2\nĐau vừa\n5-7 điểm\nBậc 3\nĐau nặng\n8-10 điểm",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI80_SX01",
+          "sub_heading": "",
+          "text": "- Đau là cảm giác khó chịu và sự trải qua những cảm xúc có liên quan đến tổn\nthương mô học thực thể hoặc tiềm tàng, hoặc được mô tả về phương diện tổn thương\nmô học. Đau do tổn thương di căn xương thường âm ỉ nhưng có thể trở nên đau buốt khi\ncử động.\n- Đau là triệu chứng chủ yếu để chỉ định điều trị và đánh giá hiệu quả điều trị.\nTriệu chứng đau tuỳ thuộc vào vị trí và thời gian di căn. Lúc đầu, đau có thể ở mức độ\nnhẹ, ngắt quãng nhưng về sau sẽ nặng lên và liên tục.\n- Gãy xương bệnh lý: thường xảy ra ở khoảng 8% các trường hợp, đặc biệt với loại\ndi căn huỷ xương.\n- Biến dạng cột sống, xẹp đốt sống, triệu chứng chèn ép tủy sống.\n- Đánh giá mức độ đau:\n+ Thước đo hiển thị số (Visual Analogue Scale: VAS): Thước đo được chia\nthành 10 điểm từ 0 đến 10 (0 điểm: không đau, 10 điểm: là mức độ đau mà bệnh nhân\nkhông chịu đựng nổi). Bệnh nhân được hướng dẫn để tự chấm điểm đánh giá mức\nđộ đau.\nHình 1. Thước đo VAS\n+ Thước đánh giá tỷ lệ hiển thị số (Numerical Rating Scale: NRS): Thước đo được\nchia thành 100 điểm từ 0 đến 100 (0 điểm: không đau, 100 điểm: là mức độ đau mà\nbệnh nhân không chịu đựng nổi). Bệnh nhân được hướng dẫn để tự chấm điểm đánh giá\nmức độ đau từ 0 đến 100. Ưu điểm: thước dễ sử dụng, ít sai số vì tỷ lệ chia thang điểm\nnhỏ chỉ bằng 1/10 của thước VAS.\n+ Mức độ đau theo bậc thang của WHO: Đau được chia thành 3 bậc: 1, 2 và 3\ntương ứng đau nhẹ, đau vừa và đau nặng theo mức độ điều trị và kiểm soát đau. Đây là\ncách đánh giá đau có ý nghĩa lâm sàng và thực tiễn nhất. Phương pháp này dễ thực hiện\nvà thuận tiện cho người thầy thuốc trong việc đánh giá và kiểm soát đau trong ung thư.\nBảng 1. Lượng hoá mức độ đau khi kết hợp các phương thức đánh giá\nTheo WHO\nTheo Serlin, Nakamura\nTheo thang điểm VAS\nBậc 1\nĐau nhẹ\n1-4 điểm\nBậc 2\nĐau vừa\n5-7 điểm\nBậc 3\nĐau nặng\n8-10 điểm",
+          "char_count": 1802,
+          "word_count": 408
+        }
+      ],
+      "source_reference": "Bài 80, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 1802,
+      "total_word_count": 408
+    },
+    {
+      "chunk_id": "MOH_VN_2020_BAI81_CLINICAL",
+      "bai_number": 81,
+      "disease_name_vi": "CẤY HẠT PHÓNG XẠ ĐIỀU TRỊ UNG THƯ",
+      "disease_name_en": "Prostate Cancer (Brachytherapy)",
+      "icd10_code": "C61",
+      "organ_system": "Nam khoa",
+      "section": "2.1.1. Lâm sàng",
+      "content_type": "clinical_signs_and_symptoms",
+      "clinical_text": "Giai đoạn sớm thường không có triệu chứng gì, có thể phát hiện bệnh qua sàng lọc\ncho những đối tượng có nguy cơ cao. Khi bệnh xuất hiện các triệu chứng rầm rộ như bí\ntiểu, tiểu máu, bệnh thường đã ở giai đoạn muộn.\nTriệu chứng toàn thân: sụt cân, chán ăn, thiếu máu.\nTriệu chứng tiết niệu-sinh dục: đái rắt, đái khó, bí đái, đái ngắt quãng, đái máu…\nCó khi đau khi xuất tinh.\nCác triệu chứng di căn: đau xương, gãy xương bệnh lý, đau ngực, khó thở…\nThăm khám trực tràng: có thể thấy tiền liệt tuyến to, dính, hạn chế di động khi u đã\nxâm lấn ra ngoài.",
+      "symptoms": [
+        {
+          "chunk_id": "MOH_VN_2020_BAI81_SX01",
+          "sub_heading": "",
+          "text": "Giai đoạn sớm thường không có triệu chứng gì, có thể phát hiện bệnh qua sàng lọc\ncho những đối tượng có nguy cơ cao. Khi bệnh xuất hiện các triệu chứng rầm rộ như bí\ntiểu, tiểu máu, bệnh thường đã ở giai đoạn muộn.\nTriệu chứng toàn thân: sụt cân, chán ăn, thiếu máu.\nTriệu chứng tiết niệu-sinh dục: đái rắt, đái khó, bí đái, đái ngắt quãng, đái máu…\nCó khi đau khi xuất tinh.\nCác triệu chứng di căn: đau xương, gãy xương bệnh lý, đau ngực, khó thở…\nThăm khám trực tràng: có thể thấy tiền liệt tuyến to, dính, hạn chế di động khi u đã\nxâm lấn ra ngoài.",
+          "char_count": 551,
+          "word_count": 116
+        }
+      ],
+      "source_reference": "Bài 81, Hướng dẫn chẩn đoán và điều trị một số bệnh ung bướu, QĐ 1514/QĐ-BYT 01/04/2020",
+      "total_chunks": 1,
+      "total_char_count": 551,
+      "total_word_count": 116
+    }
+  ]
+}

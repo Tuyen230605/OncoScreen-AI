@@ -1,0 +1,134 @@
+{
+  "version": "1.0-uspstf-adapter",
+  "description": "Rules converted from USPSTF recommendations using map_uspstf_rules.py",
+  "rules": [
+    {
+      "id": "breast_40_74",
+      "cancer_type": "breast",
+      "doc_id": "breast_uspstf_2024",
+      "section": "Khuyến nghị",
+      "gender": "female",
+      "min_age": 40,
+      "max_age": 74,
+      "requires": [],
+      "method": "Chụp nhũ ảnh (mammography)",
+      "start_age": 40,
+      "interval_months": 24,
+      "applies_because": "Phụ nữ 40–74 tuổi",
+      "family_note": "Có người thân mắc ung thư vú: guideline nguy cơ trung bình có thể không đủ; bác sĩ cần đánh giá kế hoạch riêng.",
+      "_uspstf_metadata": {
+        "grade": "B",
+        "serv_freq": "biennial",
+        "service_code": "breast_screening",
+        "method_en": "Screening mammography"
+      }
+    },
+    {
+      "id": "cervical_21_29",
+      "cancer_type": "cervical",
+      "doc_id": "cervical_uspstf_2018",
+      "section": "Khuyến nghị",
+      "gender": "female",
+      "min_age": 21,
+      "max_age": 29,
+      "requires": [],
+      "method": "Xét nghiệm tế bào học cổ tử cung (Pap)",
+      "start_age": 21,
+      "interval_months": 36,
+      "applies_because": "Phụ nữ 21–29 tuổi",
+      "family_note": null,
+      "_uspstf_metadata": {
+        "grade": "A",
+        "serv_freq": "every 3 years",
+        "service_code": "cervical_screening",
+        "method_en": "Cervical cytology alone (Pap smear)"
+      }
+    },
+    {
+      "id": "cervical_30_65",
+      "cancer_type": "cervical",
+      "doc_id": "cervical_uspstf_2018",
+      "section": "Khuyến nghị",
+      "gender": "female",
+      "min_age": 30,
+      "max_age": 65,
+      "requires": [],
+      "method": "Xét nghiệm HPV nguy cơ cao (hoặc Pap mỗi 3 năm)",
+      "start_age": 30,
+      "interval_months": 60,
+      "applies_because": "Phụ nữ 30–65 tuổi",
+      "family_note": null,
+      "_uspstf_metadata": {
+        "grade": "A",
+        "serv_freq": "every 5 years",
+        "service_code": "cervical_screening",
+        "method_en": "hrHPV testing alone or cotesting every 5 years (or Pap every 3 years)"
+      }
+    },
+    {
+      "id": "colorectal_45_75",
+      "cancer_type": "colorectal",
+      "doc_id": "colorectal_uspstf_2021",
+      "section": "Khuyến nghị",
+      "gender": "any",
+      "min_age": 45,
+      "max_age": 75,
+      "requires": [],
+      "method": "Xét nghiệm FIT (hoặc nội soi đại tràng mỗi 10 năm)",
+      "start_age": 45,
+      "interval_months": 12,
+      "applies_because": "Người 45–75 tuổi",
+      "family_note": "Có người thân mắc ung thư đại trực tràng: thường cần bắt đầu sớm hơn và chọn phương pháp riêng; bác sĩ quyết định.",
+      "_uspstf_metadata": {
+        "grade": "A",
+        "serv_freq": "annual (FIT) or 10 years (colonoscopy)",
+        "service_code": "colorectal_screening",
+        "method_en": "Stool-based tests (FIT annual) or colonoscopy every 10 years"
+      }
+    },
+    {
+      "id": "lung_50_80_20py",
+      "cancer_type": "lung",
+      "doc_id": "lung_uspstf_2021",
+      "section": "Khuyến nghị",
+      "gender": "any",
+      "min_age": 50,
+      "max_age": 80,
+      "requires": [
+        "pack_years>=20"
+      ],
+      "method": "Chụp CT phổi liều thấp (LDCT)",
+      "start_age": 50,
+      "interval_months": 12,
+      "applies_because": "Người 50–80 tuổi, hút thuốc từ 20 gói-năm (còn hút hoặc bỏ dưới 15 năm)",
+      "family_note": null,
+      "_uspstf_metadata": {
+        "grade": "B",
+        "serv_freq": "annual",
+        "service_code": "lung_screening",
+        "method_en": "Low-dose computed tomography (LDCT)"
+      }
+    },
+    {
+      "id": "prostate_55_69_sdm",
+      "cancer_type": "prostate",
+      "doc_id": "prostate_uspstf_2018",
+      "section": "Khuyến nghị",
+      "gender": "male",
+      "min_age": 55,
+      "max_age": 69,
+      "requires": [],
+      "method": "Trao đổi với bác sĩ về xét nghiệm PSA (quyết định cá nhân)",
+      "start_age": 55,
+      "interval_months": null,
+      "applies_because": "Nam giới 55–69 tuổi",
+      "family_note": "Có người thân mắc ung thư tuyến tiền liệt: nguy cơ cao hơn, cần bác sĩ tư vấn riêng.",
+      "_uspstf_metadata": {
+        "grade": "C",
+        "serv_freq": "individualized",
+        "service_code": "prostate_screening",
+        "method_en": "Periodic PSA-based screening with shared decision-making"
+      }
+    }
+  ]
+}

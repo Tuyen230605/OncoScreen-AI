@@ -1,0 +1,12 @@
+# Metadata nguồn theo chuẩn OncoScreen-AI
+publisher: "NCCN (National Comprehensive Cancer Network) / MedGUIDE"
+title: "MedGUIDE NCCN Decision Guidelines — Other"
+url: "https://huggingface.co/datasets/MedGUIDE/MedGUIDE-MCQA-8K"
+publication_date: "2025-05-15"
+version: "MCQA-8K"
+accessed_on: "2026-10-28"
+jurisdiction: "US"
+language: "en"
+license: "Research and Educational Guideline Dataset"
+reuse_notes: "Lưu đồ quyết định lâm sàng NCCN cho chẩn đoán và phân tầng nguy cơ ung thư"
+sha256: "36acd34a5abb96f5d95f11c81637b7b09d0ef08a0d00838284de2fdb5d8c7b6d"

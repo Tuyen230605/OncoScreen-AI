@@ -1,0 +1,12 @@
+# Metadata nguồn theo chuẩn OncoScreen-AI
+publisher: "National Cancer Institute (NCI) / Pedrampedram"
+title: "CancerGov_QA — Other Cancer PDQ QA Dataset"
+url: "https://huggingface.co/datasets/Pedrampedram/CancerGov_QA"
+publication_date: "2023-04-26"
+version: "1.0.0"
+accessed_on: "2026-10-28"
+jurisdiction: "US"
+language: "en"
+license: "Public Domain / NCI PDQ®"
+reuse_notes: "Tập dữ liệu câu hỏi - trả lời trích xuất từ các bản tóm tắt NCI PDQ"
+sha256: "7eccb69136f1c53b08ff47b775d46c15d59ac090bf1cc5824841853b4d190092"

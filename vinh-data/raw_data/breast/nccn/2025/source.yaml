@@ -1,0 +1,12 @@
+# Metadata nguồn theo chuẩn OncoScreen-AI
+publisher: "NCCN (National Comprehensive Cancer Network) / MedGUIDE"
+title: "MedGUIDE NCCN Decision Guidelines — Breast"
+url: "https://huggingface.co/datasets/MedGUIDE/MedGUIDE-MCQA-8K"
+publication_date: "2025-05-15"
+version: "MCQA-8K"
+accessed_on: "2026-10-28"
+jurisdiction: "US"
+language: "en"
+license: "Research and Educational Guideline Dataset"
+reuse_notes: "Lưu đồ quyết định lâm sàng NCCN cho chẩn đoán và phân tầng nguy cơ ung thư"
+sha256: "7d86a7076c3b967db8ff8e0e023979b1e435e8db46d47b73278d6cb58bd6e6c7"

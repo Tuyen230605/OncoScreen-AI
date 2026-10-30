@@ -1,0 +1,12 @@
+# Metadata nguồn theo chuẩn OncoScreen-AI
+publisher: "National Cancer Institute (NCI) / Pedrampedram"
+title: "CancerGov_QA — Lung Cancer PDQ QA Dataset"
+url: "https://huggingface.co/datasets/Pedrampedram/CancerGov_QA"
+publication_date: "2023-04-26"
+version: "1.0.0"
+accessed_on: "2026-10-28"
+jurisdiction: "US"
+language: "en"
+license: "Public Domain / NCI PDQ®"
+reuse_notes: "Tập dữ liệu câu hỏi - trả lời trích xuất từ các bản tóm tắt NCI PDQ"
+sha256: "e66fbcc0395aa95ac93e3b1edae1d65f7a4819eccb0cd52aa90e661169bdaa07"

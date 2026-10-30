@@ -1,0 +1,12 @@
+# Metadata nguồn theo chuẩn OncoScreen-AI
+publisher: "NCCN (National Comprehensive Cancer Network) / MedGUIDE"
+title: "MedGUIDE NCCN Decision Guidelines — Prostate"
+url: "https://huggingface.co/datasets/MedGUIDE/MedGUIDE-MCQA-8K"
+publication_date: "2025-05-15"
+version: "MCQA-8K"
+accessed_on: "2026-10-28"
+jurisdiction: "US"
+language: "en"
+license: "Research and Educational Guideline Dataset"
+reuse_notes: "Lưu đồ quyết định lâm sàng NCCN cho chẩn đoán và phân tầng nguy cơ ung thư"
+sha256: "c90e788f8321309877f7634a53fe5c3cad00f34f95bfb4021b46eaa82df71b56"
