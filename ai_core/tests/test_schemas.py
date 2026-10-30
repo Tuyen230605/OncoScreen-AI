@@ -83,3 +83,11 @@ def test_urgent_care_requires_red_flag_and_booking_requires_hint():
 def test_detected_red_flag_requires_message_and_flags():
     with pytest.raises(ValidationError):
         RedFlagResult(detected=True)
+
+
+def test_red_flag_reply_requires_urgent_booking_priority():
+    """Contract §3.1: red_flag.detected ⇒ booking_hint.priority = urgent."""
+    rf = RedFlagResult(detected=True, flags=[FLAG], message="m")
+    routine = BookingHint(priority=BookingPriority.routine, service_codes=["general_screening"], reason="r")
+    with pytest.raises(ValidationError):
+        _reply(red_flag=rf, next_action=NextAction.urgent_care, booking_hint=routine)

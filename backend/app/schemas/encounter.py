@@ -30,6 +30,9 @@ class EncounterOut(BaseModel):
     disclaimer: str
 
 
+MAX_INTERVAL_MONTHS = 120  # 10 năm — chu kỳ dài nhất trong guideline; chặn lỗi nhập liệu & ngày hẹn vượt lịch
+
+
 class FinalizeEncounterIn(BaseModel):
     conclusion: str = Field(min_length=1, max_length=4000)
     clinical_notes: str | None = Field(default=None, max_length=8000)
@@ -42,6 +45,14 @@ class FinalizeEncounterIn(BaseModel):
         if not value.strip():
             raise ValueError("Kết luận không được để trống")
         return value.strip()
+
+    @field_validator("final_plan")
+    @classmethod
+    def interval_in_range(cls, plan: ScreeningPlan | None) -> ScreeningPlan | None:
+        for i, item in enumerate(plan.items if plan else []):
+            if item.interval_months > MAX_INTERVAL_MONTHS:
+                raise ValueError(f"items[{i}].interval_months không được vượt quá {MAX_INTERVAL_MONTHS} tháng")
+        return plan
 
 
 class CopilotAskIn(BaseModel):

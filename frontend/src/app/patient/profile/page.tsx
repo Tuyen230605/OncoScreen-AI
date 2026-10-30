@@ -259,7 +259,7 @@ export default function ProfilePage() {
               </div>
             )}
             {boolField("hepatitis_b_or_c", "Viêm gan B hoặc C mạn tính")}
-            {boolField("cirrhosis", "Bác sĩ từng nói bạn bị xơ gan")}
+            {boolField("cirrhosis", "Có tiền sử xơ gan (theo thông tin bác sĩ từng cho biết)")}
             <div>
               <label htmlFor="profile-height" className="label">
                 Chiều cao (cm)

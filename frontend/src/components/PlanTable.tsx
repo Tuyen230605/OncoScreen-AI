@@ -5,6 +5,9 @@ import { daysUntil, formatDate, intervalLabel, todayISO } from "@/lib/format";
 import { SourceList } from "@/components/SourceList";
 import { Calendar, Trash2 } from "@/components/icons";
 
+/** `PlanItem.interval_months` ở backend là số nguyên > 0 (nhập 1.5 sẽ bị từ chối). */
+export const isValidInterval = (months: number) => Number.isInteger(months) && months >= 1;
+
 /**
  * Bảng kế hoạch tầm soát (controlled).
  * - readonly (bệnh nhân / xem lại): bảng trên md+, thẻ xếp dọc trên mobile.
@@ -85,15 +88,18 @@ export function PlanTable({
                   id={`plan-interval-${i}`}
                   type="number"
                   min={1}
+                  step={1}
                   inputMode="numeric"
                   value={it.interval_months > 0 ? it.interval_months : ""}
                   onChange={(e) => updateItem(i, { interval_months: e.target.value === "" ? 0 : Number(e.target.value) })}
-                  className={`input ${it.interval_months < 1 ? "input-error" : ""}`}
-                  aria-invalid={it.interval_months < 1}
+                  className={`input ${isValidInterval(it.interval_months) ? "" : "input-error"}`}
+                  aria-invalid={!isValidInterval(it.interval_months)}
                   aria-describedby={`plan-interval-hint-${i}`}
                 />
                 <p id={`plan-interval-hint-${i}`} className="mt-1 text-xs text-slate-500">
-                  {it.interval_months >= 1 ? intervalLabel(it.interval_months) : "Bác sĩ cần đặt chu kỳ ≥ 1 tháng."}
+                  {isValidInterval(it.interval_months)
+                    ? intervalLabel(it.interval_months)
+                    : "Bác sĩ cần đặt chu kỳ là số nguyên tháng, tối thiểu 1."}
                 </p>
               </div>
               <div>

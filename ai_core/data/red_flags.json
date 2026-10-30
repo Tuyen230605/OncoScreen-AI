@@ -5,9 +5,10 @@
     "severity": "urgent",
     "advice": "Hãy đến cơ sở y tế chuyên khoa để được khám và đánh giá trong vài ngày tới.",
     "patterns": [
-      "so thay (mot |1 )?(khoi|cuc|u|hach)",
+      "so (thay|duoc|vao thay|trung) (mot |1 |cai )?(khoi|cuc|u|hach)\\b",
       "noi (cuc|hach|u)\\b",
-      "(co|thay|phat hien) (mot |1 )?(khoi u|cuc u|cuc cung|khoi cung|cuc la|khoi la)",
+      "(?<!the )(?<!giup )(?<!de )(?<!se )(?<!biet )\\b(co|thay|phat hien|moc|noi) (mot |1 |cai |them )?(cuc|hach)\\b(?! (bo|toan|thuoc|ky|qua|kho|nhoc|diem|tinh))",
+      "(?<!the )(?<!giup )(?<!de )(?<!se )(?<!biet )\\b(co|thay|phat hien|moc|noi) (mot |1 |cai |them )?khoi (u|cung|la|bat thuong|o|tren|trong|nho|to|lon|sung)\\b",
       "\\bu cuc\\b"
     ]
   },
@@ -17,12 +18,17 @@
     "severity": "urgent",
     "advice": "Chảy máu bất thường cần được bác sĩ thăm khám sớm. Đừng trì hoãn.",
     "patterns": [
-      "(di ngoai|di cau|di tieu|tieu) ra mau",
-      "phan (co |lan )?mau",
-      "ho ra mau",
-      "ra mau (am dao|bat thuong|sau quan he|ngoai (ky|chu ky) kinh)",
-      "chay mau bat thuong",
-      "num vu (tiet|chay) (dich|mau)"
+      "(di ngoai|di cau|di tieu|tieu|dai tien|dai) ra mau",
+      "\\btieu mau\\b",
+      "(phan|nuoc tieu|dom|dom dai) (co |lan |dinh |ra )mau\\b",
+      "\\b(dom|nuoc tieu) mau\\b",
+      "phan (den|mau den)\\b",
+      "(ho|khac|non|oi) (ra |ra cuc |lan )mau\\b",
+      "\\b(ho|non) (co )?mau\\b",
+      "ra mau (am dao|bat thuong|sau quan he|sau (khi )?(man kinh|tat kinh)|ngoai (ky|chu ky) kinh)",
+      "chay mau (am dao|bat thuong|sau quan he|sau (khi )?(man kinh|tat kinh)|khi (di ngoai|di cau|di tieu))",
+      "xuat huyet (am dao|tieu hoa)",
+      "num vu (tiet|chay|ra) (dich|mau)"
     ]
   },
   {
@@ -31,7 +37,9 @@
     "severity": "soon",
     "advice": "Hãy đặt lịch khám tổng quát trong 1–2 tuần tới để tìm nguyên nhân.",
     "patterns": [
-      "sut (\\d+ ?)?(kg|can|ky)",
+      "sut (\\d+ ?)?(kg|can|ky|ki|kilo)\\b",
+      "(?<!muon )(?<!can )(?<!cach )(?<!de )(?<!nen )\\b(giam|xuong|mat) \\d+ ?(kg|can|ky|ki|kilo)\\b",
+      "(giam|xuong) can (nhanh|khong ro|bat thuong|dot ngot|nhieu|lien tuc)",
       "gay sut"
     ]
   },
@@ -41,7 +49,7 @@
     "severity": "soon",
     "advice": "Đau kéo dài cần được đánh giá bởi bác sĩ; hãy đi khám trong vài tuần tới.",
     "patterns": [
-      "dau (keo dai|lien tuc|mai khong (het|khoi)|hoai khong)"
+      "dau (\\w+ ){0,2}(keo dai|lien tuc|mai khong (het|khoi|giam)|hoai khong (het|khoi|giam)?)"
     ]
   },
   {
@@ -60,7 +68,7 @@
     "severity": "soon",
     "advice": "Vàng da hoặc vàng mắt cần được khám sớm để tìm nguyên nhân.",
     "patterns": [
-      "vang (da|mat)\\b"
+      "vang (da|mat)\\b(?! (buoi|hom|lich|cuoc|tai|trong|khoi|ca|may|mot|nhieu lan))"
     ]
   }
 ]

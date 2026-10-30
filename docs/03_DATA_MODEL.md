@@ -29,6 +29,6 @@ audit_logs  ─ ai làm gì trên thực thể nào
 | `audit_logs` | actor_id?, action, entity, entity_id, before, after | Kiểm toán |
 
 Các loại mốc (`record_events.kind`): `account.created`, `profile.updated`, `consult.summary`, `red_flag.detected`,
-`appointment.requested|confirmed|cancelled`, `encounter.started`, `encounter.finalized`, `reminder.done`.
+`appointment.requested|confirmed|cancelled|escalated`, `encounter.started`, `encounter.finalized`, `reminder.done`.
 
 JSON `brief`, `draft_plan`, `final_plan`, `intake`, `last_reply` lưu nguyên `model_dump(mode="json")` của `ai_core.schemas`.

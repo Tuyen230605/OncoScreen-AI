@@ -22,7 +22,7 @@ Tin nhắn ──►  out-of-scope · injection · RED-FLAG ──►  luật t�
 - `MockAgent` = cùng pipeline, tắt LLM và vector store → hành vi an toàn của mock trùng agent thật; FE/BE/CI chạy không cần API key.
 
 ## 2. Rules-first: quyết định y khoa không giao cho LLM
-- **Eligibility engine** (`tools/eligibility.py`, `data/screening_rules.json`): mỗi luật = giới, khoảng tuổi, điều kiện (`pack_years>=20`, `hepatitis_or_cirrhosis`), phương pháp, tuổi bắt đầu, chu kỳ và **trỏ tới một mục guideline cụ thể** (`doc_id` + `section`). Luật trỏ sai tài liệu → lỗi ngay khi load (fail fast); test kiểm tra mọi luật.
+- **Eligibility engine** (`tools/eligibility.py`, `data/screening_rules.json`): mỗi luật = giới, khoảng tuổi, điều kiện (`pack_years>=20`, `cirrhosis`, `hepatitis_without_cirrhosis` — viêm gan B/C chưa xơ gan chỉ gợi ý trao đổi với bác sĩ, không đặt chu kỳ, đúng mục "Đối tượng" của AASLD 2023), phương pháp, tuổi bắt đầu, chu kỳ và **trỏ tới một mục guideline cụ thể** (`doc_id` + `section`). Luật trỏ sai tài liệu → lỗi ngay khi load (fail fast); test kiểm tra mọi luật.
 - LLM chỉ **diễn giải** gợi ý đã tính sẵn; prompt cấm thêm/bớt mục, đổi con số.
 - Trích xuất thông tin (`tools/intake.py`): luật tiếng Việt (có dấu/không dấu, phủ định, phân biệt "tôi bị" với "mẹ tôi bị", tuổi của người thân); LLM chỉ **điền chỗ trống**, không ghi đè giá trị luật đã xác định.
 
@@ -88,11 +88,11 @@ Tin nhắn ──►  out-of-scope · injection · RED-FLAG ──►  luật t�
 | Kiểm toán | `audit_logs` (ai làm gì), tách biệt `record_events` (hồ sơ y tế) và `agent_runs` (quan sát AI) | — |
 
 ## 7. Đánh giá (evaluation)
-- **Golden set** `ai_core/data/eval/navigator_cases.json` (20 ca: red-flag có dấu/không dấu, phủ định, gia đình vs bản thân, hút thuốc nặng/nhẹ, viêm gan, yêu cầu chẩn đoán, injection, câu hỏi kiến thức).
+- **Golden set** `ai_core/data/eval/navigator_cases.json` (40 ca: red-flag có dấu/không dấu, phủ định và "không biết/không những…", ra máu sau mãn kinh, triệu chứng của người thân, "sợ bị ung thư" ≠ tiền sử, câu hỏi chung không ghi đè tuổi/giới, hút thuốc/viêm gan của người thân, hút thuốc nặng/nhẹ, yêu cầu chẩn đoán, injection, câu hỏi kiến thức).
 - Chạy: `python -m ai_core.cli eval [--real]`; CI chạy với MockAgent (`tests/test_eval.py`).
 - Chỉ số & ngưỡng: red-flag recall **100%** (bắt buộc), red-flag false positive, triage accuracy, suggestion accuracy, citation validity **100%**, diagnosis-language rate **0%**, latency.
-- Kết quả hiện tại (MockAgent): 20/20 ca đạt, recall 100%, FP 0%, triage 100%, suggestion 100%, citation 100%, diagnosis-language 0%.
-- Unit test: 58 test AI Core (luật, RAG, guardrail, fallback khi LLM bịa nguồn/bịa số/chẩn đoán/lỗi) + 18 test backend (hành trình đầy đủ, phân quyền, HITL).
+- Kết quả hiện tại (MockAgent): 40/40 ca đạt, recall 100%, FP 0%, triage 100%, suggestion 100%, citation 100%, diagnosis-language 0%.
+- Unit test: 136 test AI Core (luật, RAG, guardrail vào/ra, fallback khi LLM bịa nguồn/bịa số/chẩn đoán/khuyên điều trị/lỗi/treo) + 34 test backend (hành trình đầy đủ, phân quyền, HITL, máy trạng thái lịch hẹn/lần khám, audit, nâng ưu tiên khi red-flag xuất hiện sau đặt lịch).
 
 ## 8. Bảo mật & quyền riêng tư
 - Phiên ẩn danh dùng token ngẫu nhiên, DB chỉ lưu SHA-256, so sánh hằng thời gian; giới hạn 40 lượt/phiên.

@@ -852,7 +852,8 @@ Bản gốc (xuất xứ, giấy phép) ─► Tóm tắt tiếng Việt có met
 | Đại trực tràng | Người 45–75 tuổi | Xét nghiệm FIT (hoặc nội soi đại tràng mỗi 10 năm) | 1 năm/lần | USPSTF 2021 |
 | Phổi | Người 50–80 tuổi, hút thuốc từ 20 gói-năm, đang hút hoặc bỏ dưới 15 năm | CT phổi liều thấp | 1 năm/lần | USPSTF 2021 |
 | Tuyến tiền liệt | Nam 55–69 tuổi | Trao đổi với bác sĩ về PSA (quyết định cá nhân) | Không đặt sẵn | USPSTF 2018 |
-| Gan | Người viêm gan B/C mạn hoặc xơ gan | Siêu âm gan, có thể kèm AFP | 6 tháng/lần | AASLD 2023 |
+| Gan | Người xơ gan | Siêu âm gan, có thể kèm AFP | 6 tháng/lần | AASLD 2023 |
+| Gan | Người viêm gan B/C mạn chưa ghi nhận xơ gan | Trao đổi với bác sĩ chuyên khoa về việc giám sát | Bác sĩ xác định | AASLD 2023 |
 
 Người có tiền sử gia đình mắc ung thư: hệ thống **chỉ nêu lưu ý "bác sĩ cần đánh giá kế hoạch riêng"**, không tự điều chỉnh mốc tuổi hay chu kỳ.
 

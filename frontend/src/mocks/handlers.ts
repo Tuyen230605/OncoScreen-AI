@@ -247,8 +247,9 @@ function recordFor(patientId: string, view: "patient" | "doctor"): PatientRecord
   const d = getDb();
   refreshReminders();
   const user = d.users.find((u) => u.id === patientId && u.role === "patient") ?? fail(404, "Không tìm thấy bệnh nhân.");
+  // Như backend (record_service.record_out): bệnh nhân chỉ thấy lượt khám đã hoàn tất
   const encounters = d.encounters
-    .filter((e) => e.patient_id === patientId)
+    .filter((e) => e.patient_id === patientId && (view === "doctor" || e.status === "finalized"))
     .map(encounterWithReminders)
     .map((e) => (view === "patient" ? patientView(e) : e))
     .sort((a, b) => b.created_at.localeCompare(a.created_at));
@@ -865,6 +866,7 @@ export const cancelAppointment = (id: string) =>
     const u = requirePatient();
     const appt = getDb().appointments.find((a) => a.id === id && a.patient_id === u.id) ?? fail(404, "Không tìm thấy lịch hẹn.");
     if (appt.status === "completed" || appt.status === "cancelled") fail(409, "Lịch hẹn đã hoàn tất hoặc đã huỷ.");
+    if (appt.encounter_id) fail(409, "Lịch hẹn đã bắt đầu khám nên không thể huỷ.");
     appt.status = "cancelled";
     addEvent(u.id, "appointment.cancelled", `Huỷ lịch ${appt.service_name}.`, { appointment_id: appt.id });
     return appt;

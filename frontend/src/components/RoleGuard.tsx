@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { Role } from "@/types/api";
-import { clearSession, getUser, homeFor } from "@/lib/auth";
+import { clearSession, getUser, homeFor, loginHref, onSessionExpired } from "@/lib/auth";
 import { Brand, SiteFooter } from "@/components/Brand";
 import {
   Bell,
@@ -49,10 +49,13 @@ function isActive(pathname: string, item: NavItem): boolean {
   return !isRoot && pathname.startsWith(`${item.href}/`);
 }
 
+const currentPath = () => `${window.location.pathname}${window.location.search}`;
+
 /**
  * Khung trang theo vai trò:
  * - Chưa đăng nhập → /login?next=<trang hiện tại>
  * - Sai vai trò → về trang của vai trò đó
+ * - JWT hết hạn giữa chừng (API trả 401, phiên đã bị xoá) → /login?next=<trang hiện tại>
  */
 export function RoleGuard({ role, children }: { role: Role; children: React.ReactNode }) {
   const router = useRouter();
@@ -63,8 +66,7 @@ export function RoleGuard({ role, children }: { role: Role; children: React.Reac
   useEffect(() => {
     const u = getUser();
     if (!u) {
-      const next = `${window.location.pathname}${window.location.search}`;
-      router.replace(`/login?next=${encodeURIComponent(next)}`);
+      router.replace(loginHref(currentPath()));
     } else if (u.role !== role) {
       router.replace(homeFor(u.role));
     } else {
@@ -72,6 +74,15 @@ export function RoleGuard({ role, children }: { role: Role; children: React.Reac
       setOk(true);
     }
   }, [role, router]);
+
+  useEffect(
+    () =>
+      onSessionExpired(() => {
+        setOk(false);
+        router.replace(loginHref(currentPath()));
+      }),
+    [router],
+  );
 
   function handleLogout() {
     clearSession();

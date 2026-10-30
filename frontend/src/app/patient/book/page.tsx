@@ -3,11 +3,13 @@ import Link from "next/link";
 import { FormEvent, Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
-import { anonymousConsultToken, clearConsult } from "@/lib/consult";
+import { getUser } from "@/lib/auth";
+import { anonymousConsultToken, clearConsult, saveConsult } from "@/lib/consult";
 import { errorMessage } from "@/lib/errors";
-import { cancerLabel } from "@/lib/labels";
+import { cancerLabel, DEFAULT_DISCLAIMER } from "@/lib/labels";
 import { formatDate, todayISO } from "@/lib/format";
 import type { AppointmentOut, ConsultationOut, ServiceOut } from "@/types/api";
+import { Disclaimer } from "@/components/Disclaimer";
 import { RedFlagAlert } from "@/components/RedFlagAlert";
 import { AppointmentStatusBadge, PriorityBadge } from "@/components/StatusBadge";
 import { InlineError, SkeletonList } from "@/components/ui";
@@ -44,6 +46,9 @@ function BookingForm() {
         if (!token) return null;
         try {
           const claimed = await api.claimConsultation(id, token);
+          // Phiên giờ thuộc tài khoản: /patient/chat tiếp tục đúng cuộc trò chuyện này
+          const owner = getUser();
+          if (owner) saveConsult({ id, access_token: token }, owner.id);
           clearConsult(null);
           return claimed;
         } catch {
@@ -89,6 +94,8 @@ function BookingForm() {
   const redFlag = consult?.last_reply?.red_flag.detected ? consult.last_reply.red_flag : null;
   const urgent = Boolean(redFlag) || hint?.priority === "urgent" || selected.includes("oncology_priority");
   const remaining = Math.max(0, MAX_OPEN - openCount);
+  // Trang hiển thị cảnh báo / lý do khám do trợ lý soạn → luôn kèm lưu ý y khoa (S6)
+  const disclaimer = <Disclaimer text={consult?.last_reply?.disclaimer ?? DEFAULT_DISCLAIMER} compact />;
 
   function toggle(code: string) {
     setError("");
@@ -121,9 +128,15 @@ function BookingForm() {
           }),
         );
       }
-      setCreated(done);
+      setCreated((prev) => [...prev, ...done]);
     } catch (err) {
-      if (done.length) setCreated(done);
+      if (done.length) {
+        // Lịch đã tạo được bỏ khỏi lựa chọn để lần gửi lại không tạo trùng; cập nhật số lịch đang mở
+        const doneCodes = new Set(done.map((a) => a.service_code));
+        setCreated((prev) => [...prev, ...done]);
+        setSelected((prev) => prev.filter((code) => !doneCodes.has(code)));
+        setOpenCount((n) => n + done.length);
+      }
       setError(errorMessage(err, "Chưa đặt được lịch. Vui lòng thử lại."));
     } finally {
       setSubmitting(false);
@@ -177,6 +190,7 @@ function BookingForm() {
             Xem hồ sơ xuyên suốt
           </Link>
         </div>
+        {disclaimer}
       </section>
     );
   }
@@ -285,7 +299,8 @@ function BookingForm() {
       {error && <InlineError message={error} />}
       {created.length > 0 && error && (
         <p className="text-sm text-slate-600">
-          Đã tạo {created.length} lịch hẹn trước khi gặp lỗi.{" "}
+          Đã tạo {created.length} lịch hẹn trước khi gặp lỗi ({created.map((a) => a.service_name).join(", ")}); các dịch
+          vụ này đã được bỏ chọn để không đặt trùng.{" "}
           <Link href="/patient" className="font-semibold text-teal-700 underline">
             Xem tại trang tổng quan
           </Link>
@@ -312,6 +327,7 @@ function BookingForm() {
           )}
         </button>
       </div>
+      {disclaimer}
     </form>
   );
 }

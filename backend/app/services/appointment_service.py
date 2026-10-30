@@ -102,6 +102,41 @@ def create(db: Session, user: User, body: AppointmentIn) -> AppointmentOut:
     return to_out(db, a)
 
 
+def escalate_for_red_flag(db: Session, consult: Consultation) -> None:
+    """R2: dấu hiệu cảnh báo ghi nhận SAU khi đã đặt lịch từ phiên này → nâng các lịch còn mở lên khẩn."""
+    if not consult.red_flag or not consult.patient_id:
+        return
+    rows = db.scalars(
+        select(Appointment).where(
+            Appointment.consultation_id == consult.id,
+            Appointment.status.in_(OPEN_STATUSES),
+            Appointment.priority != "urgent",
+        )
+    ).all()
+    for a in rows:
+        a.priority = "urgent"
+        record_service.add_event(
+            db,
+            a.patient_id,
+            "appointment.escalated",
+            "Lịch hẹn được chuyển sang ưu tiên khám sớm do ghi nhận dấu hiệu cần lưu ý khi tư vấn.",
+            data={"service_code": a.service_code, "priority": a.priority},
+            ref_type="appointment",
+            ref_id=a.id,
+            actor_id=consult.patient_id,
+        )
+        db.add(
+            AuditLog(
+                actor_id=consult.patient_id,
+                action="appointment.escalate",
+                entity="appointment",
+                entity_id=a.id,
+                before={"priority": "routine"},
+                after={"priority": "urgent"},
+            )
+        )
+
+
 def list_mine(db: Session, user: User) -> list[AppointmentOut]:
     rows = db.scalars(
         select(Appointment).where(Appointment.patient_id == user.id).order_by(Appointment.created_at.desc())
@@ -115,6 +150,8 @@ def cancel(db: Session, user: User, appointment_id: str) -> AppointmentOut:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Không tìm thấy lịch hẹn")
     if a.status not in OPEN_STATUSES:
         raise HTTPException(status.HTTP_409_CONFLICT, f"Lịch hẹn đang ở trạng thái {a.status}")
+    if db.scalar(select(Encounter.id).where(Encounter.appointment_id == a.id)):
+        raise HTTPException(status.HTTP_409_CONFLICT, "Bác sĩ đã bắt đầu khám, không thể huỷ lịch hẹn này")
     a.status = "cancelled"
     record_service.add_event(
         db,

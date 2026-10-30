@@ -257,6 +257,8 @@ class NavigatorReply(BaseModel):
                 raise ValueError("red-flag replies must route to urgent_care")
             if self.suggestions:
                 raise ValueError("red-flag replies cannot contain screening suggestions")
+            if self.booking_hint is None or self.booking_hint.priority != BookingPriority.urgent:
+                raise ValueError("red-flag replies require an urgent booking_hint")
         elif self.next_action == NextAction.urgent_care:
             raise ValueError("urgent_care requires a detected red flag")
         if self.next_action != NextAction.continue_chat and self.booking_hint is None:

@@ -7,6 +7,8 @@
  * - `Authorization: Bearer <JWT>` tự gắn khi đã đăng nhập.
  * - Endpoint Navigator nhận thêm `X-Consult-Token` cho phiên tư vấn ẩn danh. Bearer chỉ gửi kèm khi người dùng là
  *   bệnh nhân (contract: "tuỳ chọn Bearer (patient)").
+ * - JWT bị từ chối (hết hạn) → xoá phiên + phát sự kiện `onSessionExpired` (RoleGuard chuyển về /login?next=…);
+ *   riêng các endpoint Navigator thử lại 1 lần ở chế độ ẩn danh.
  */
 import type {
   AgentName,
@@ -39,8 +41,8 @@ import type {
   TokenOut,
   UserOut,
 } from "@/types/api";
-import { getToken, getUser } from "@/lib/auth";
-import { ApiRequestError, statusFallback } from "@/lib/errors";
+import { expireSession, getToken, getUser } from "@/lib/auth";
+import { ApiRequestError, messageFromDetail, SESSION_EXPIRED_MESSAGE, statusFallback } from "@/lib/errors";
 import * as mock from "@/mocks/handlers";
 
 export { ApiRequestError } from "@/lib/errors";
@@ -59,29 +61,31 @@ interface RequestOptions {
   /** Gửi Bearer nếu có token (mặc định true). */
   auth?: boolean;
   consultToken?: string | null;
+  /** Navigator: JWT bị từ chối → xoá phiên rồi thử lại 1 lần ở chế độ ẩn danh (không Bearer). */
+  anonymousRetry?: boolean;
 }
 
-function detailOf(payload: unknown): string | null {
-  if (!payload || typeof payload !== "object") return null;
-  const detail = (payload as { detail?: unknown }).detail;
-  if (typeof detail === "string") return detail;
-  // FastAPI 422: detail là mảng lỗi validation
-  if (Array.isArray(detail)) {
-    const msgs = detail
-      .map((d) => (d && typeof d === "object" && "msg" in d ? String((d as { msg: unknown }).msg) : null))
-      .filter((m): m is string => Boolean(m));
-    return msgs.length ? msgs.join("; ") : null;
+/**
+ * 401 cũng có thể do mã phiên tư vấn (X-Consult-Token) sai trong khi JWT vẫn hợp lệ.
+ * Chỉ coi là hết phiên đăng nhập khi `GET /auth/me` với chính token đó cũng bị từ chối.
+ */
+async function bearerRejected(path: string, token: string): Promise<boolean> {
+  if (path === "/auth/me") return true;
+  try {
+    const res = await fetch(`${BASE}/auth/me`, {
+      headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
+    });
+    return res.status === 401;
+  } catch {
+    return false; // lỗi mạng: không kết luận được, giữ phiên
   }
-  return null;
 }
 
 async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
   const headers: Record<string, string> = { Accept: "application/json" };
   if (opts.body !== undefined) headers["Content-Type"] = "application/json";
-  if (opts.auth !== false) {
-    const token = getToken();
-    if (token) headers.Authorization = `Bearer ${token}`;
-  }
+  const sentToken = opts.auth !== false ? getToken() : null;
+  if (sentToken) headers.Authorization = `Bearer ${sentToken}`;
   if (opts.consultToken) headers["X-Consult-Token"] = opts.consultToken;
 
   let res: Response;
@@ -95,9 +99,14 @@ async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
     throw new ApiRequestError(0, statusFallback(0) ?? "Không kết nối được máy chủ.");
   }
   if (!res.ok) {
+    if (res.status === 401 && sentToken && (await bearerRejected(path, sentToken))) {
+      expireSession(sentToken);
+      if (opts.anonymousRetry) return request<T>(path, { ...opts, auth: false, anonymousRetry: false });
+      throw new ApiRequestError(401, SESSION_EXPIRED_MESSAGE);
+    }
     let detail: string | null = null;
     try {
-      detail = detailOf(await res.json());
+      detail = messageFromDetail(await res.json());
     } catch {
       /* body không phải JSON */
     }
@@ -129,13 +138,18 @@ export const api = {
   createConsultation: () =>
     USE_MOCK
       ? mock.createConsultation()
-      : request<ConsultationCreated>("/navigator/consultations", { method: "POST", auth: navigatorAuth() }),
+      : request<ConsultationCreated>("/navigator/consultations", {
+          method: "POST",
+          auth: navigatorAuth(),
+          anonymousRetry: true,
+        }),
   getConsultation: (id: string, consultToken?: string | null) =>
     USE_MOCK
       ? mock.getConsultation(id, consultToken)
       : request<ConsultationOut>(`/navigator/consultations/${encodeURIComponent(id)}`, {
           auth: navigatorAuth(),
           consultToken,
+          anonymousRetry: true,
         }),
   sendConsultMessage: (id: string, body: NavigatorMessageIn, consultToken?: string | null) =>
     USE_MOCK
@@ -145,6 +159,7 @@ export const api = {
           body,
           auth: navigatorAuth(),
           consultToken,
+          anonymousRetry: true,
         }),
   /** Gắn phiên ẩn danh vào tài khoản bệnh nhân đã có (Bearer + X-Consult-Token). */
   claimConsultation: (id: string, consultToken: string) =>

@@ -2,8 +2,8 @@
 import { FormEvent, KeyboardEvent, type ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import type { Answer, ConsultationOut, NavigatorMessageIn, Questionnaire, ServiceOut, UserOut } from "@/types/api";
 import { api } from "@/lib/api";
-import { getUser } from "@/lib/auth";
-import { clearConsult, getStoredConsult, saveConsult } from "@/lib/consult";
+import { getUser, onSessionExpired } from "@/lib/auth";
+import { clearConsult, getStoredConsult, saveConsult, type StoredConsult } from "@/lib/consult";
 import { errorMessage, isStatus } from "@/lib/errors";
 import { DEFAULT_DISCLAIMER } from "@/lib/labels";
 import { initials } from "@/lib/format";
@@ -26,16 +26,30 @@ const WELCOME =
 
 const MAX_LEN = 2000;
 
+const SESSION_EXPIRED_NOTE =
+  "Phiên đăng nhập đã hết hạn. Bạn vẫn có thể hỏi trợ lý ẩn danh, hoặc đăng nhập lại để tiếp tục cuộc trò chuyện của tài khoản.";
+
+/** Khoá lưu phiên tư vấn theo phiên đăng nhập *hiện tại* (đọc lại storage vì phiên có thể vừa hết hạn giữa chừng). */
+function currentOwner(): string | null {
+  const u = getUser();
+  return u?.role === "patient" ? u.id : null;
+}
+
 /**
  * Chat với Navigator (dùng chung cho trang công khai "/" và "/patient/chat").
  * - Ẩn danh: phiên lưu `{id, access_token}` ở localStorage, gửi lại qua X-Consult-Token.
  * - Bệnh nhân đã đăng nhập: phiên tạo bằng Bearer (gắn tài khoản), CTA dẫn thẳng tới đặt lịch.
+ * - Mã phiên chỉ bị xoá khi backend xác nhận phiên không còn truy cập được (401/404); lỗi mạng/máy chủ thì giữ lại
+ *   để thử lại, vì backend chỉ trả `access_token` một lần.
  */
 export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
   const [user, setUser] = useState<UserOut | null>(null);
   const [initializing, setInitializing] = useState(true);
   const [consult, setConsult] = useState<ConsultationOut | null>(null);
   const [consultToken, setConsultToken] = useState<string | null>(null);
+  /** Phiên đã lưu nhưng chưa tải lại được (lỗi mạng/máy chủ): tin nhắn kế tiếp vẫn gửi vào phiên này. */
+  const [unrestored, setUnrestored] = useState<StoredConsult | null>(null);
+  const [restoreError, setRestoreError] = useState("");
   const [services, setServices] = useState<ServiceOut[]>([]);
   const [questionnaire, setQuestionnaire] = useState<Questionnaire | null>(null);
   const [showForm, setShowForm] = useState(false);
@@ -51,6 +65,30 @@ export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
   const patient = user?.role === "patient" ? user : null;
   const storageOwner = patient?.id ?? null;
 
+  const restore = useCallback((stored: StoredConsult, owner: string | null) => {
+    setInitializing(true);
+    setRestoreError("");
+    api
+      .getConsultation(stored.id, stored.access_token)
+      .then((c) => {
+        setConsult(c);
+        setConsultToken(stored.access_token);
+        setUnrestored(null);
+      })
+      .catch((err) => {
+        if (isStatus(err, 401) || isStatus(err, 404)) {
+          // Phiên không còn truy cập được. Nếu do phiên đăng nhập vừa hết hạn thì giữ con trỏ của tài khoản
+          // (đăng nhập lại sẽ khôi phục được).
+          if (currentOwner() === owner) clearConsult(owner);
+          setUnrestored(null);
+        } else {
+          setUnrestored(stored);
+          setRestoreError(errorMessage(err, "Chưa tải lại được cuộc trò chuyện trước đó."));
+        }
+      })
+      .finally(() => setInitializing(false));
+  }, []);
+
   // Khôi phục phiên đang dở (nếu còn hợp lệ)
   useEffect(() => {
     const u = getUser();
@@ -58,19 +96,23 @@ export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
     const owner = u?.role === "patient" ? u.id : null;
     const stored = getStoredConsult(owner);
     api.listServices().then(setServices).catch(() => setServices([]));
-    if (!stored) {
-      setInitializing(false);
-      return;
-    }
-    api
-      .getConsultation(stored.id, stored.access_token)
-      .then((c) => {
-        setConsult(c);
-        setConsultToken(stored.access_token);
-      })
-      .catch(() => clearConsult(owner))
-      .finally(() => setInitializing(false));
-  }, []);
+    if (stored) restore(stored, owner);
+    else setInitializing(false);
+  }, [restore]);
+
+  // JWT hết hạn (API đã xoá phiên): chuyển sang chế độ ẩn danh; cuộc trò chuyện của tài khoản vẫn được giữ
+  useEffect(
+    () =>
+      onSessionExpired(() => {
+        setUser(null);
+        setConsult(null);
+        setConsultToken(null);
+        setUnrestored(null);
+        setRestoreError("");
+        setError(SESSION_EXPIRED_NOTE);
+      }),
+    [],
+  );
 
   // Cuộn khung chat xuống cuối (chỉ cuộn trong khung, không cuộn cả trang)
   const messageCount = consult?.messages.length ?? 0;
@@ -81,12 +123,14 @@ export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
 
   const ensureConsult = useCallback(async (): Promise<{ id: string; token: string | null }> => {
     if (consult) return { id: consult.id, token: consultToken };
+    if (unrestored) return { id: unrestored.id, token: unrestored.access_token };
     const created = await api.createConsultation();
-    saveConsult({ id: created.consultation.id, access_token: created.access_token }, storageOwner);
+    // Lưu theo phiên đăng nhập sau khi gọi API: nếu JWT vừa hết hạn, phiên mới là phiên ẩn danh
+    saveConsult({ id: created.consultation.id, access_token: created.access_token }, currentOwner());
     setConsult(created.consultation);
     setConsultToken(created.access_token);
     return { id: created.consultation.id, token: created.access_token };
-  }, [consult, consultToken, storageOwner]);
+  }, [consult, consultToken, unrestored]);
 
   async function send(body: NavigatorMessageIn, label: string): Promise<boolean> {
     if (sending) return false;
@@ -97,13 +141,23 @@ export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
       const c = await ensureConsult();
       const updated = await api.sendConsultMessage(c.id, body, c.token);
       setConsult(updated);
+      setConsultToken(c.token);
+      setUnrestored(null);
+      setRestoreError("");
       return true;
     } catch (err) {
       if (isStatus(err, 401) || isStatus(err, 404)) {
-        clearConsult(storageOwner);
         setConsult(null);
         setConsultToken(null);
-        setError("Phiên tư vấn trước đã hết hiệu lực. Mình đã mở cuộc trò chuyện mới, bạn vui lòng gửi lại.");
+        setUnrestored(null);
+        setRestoreError("");
+        if (currentOwner() === storageOwner) {
+          clearConsult(storageOwner);
+          setError("Phiên tư vấn trước đã hết hiệu lực. Mình đã mở cuộc trò chuyện mới, bạn vui lòng gửi lại.");
+        } else {
+          // JWT vừa hết hạn: phiên của tài khoản không truy cập được ở chế độ ẩn danh, giữ lại để đăng nhập lại
+          setError(SESSION_EXPIRED_NOTE);
+        }
       } else {
         setError(errorMessage(err, "Chưa gửi được tin nhắn. Vui lòng thử lại."));
       }
@@ -153,6 +207,8 @@ export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
     clearConsult(storageOwner);
     setConsult(null);
     setConsultToken(null);
+    setUnrestored(null);
+    setRestoreError("");
     setShowForm(false);
     setError("");
     setInput("");
@@ -201,7 +257,7 @@ export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
                 Bảng hỏi nhanh
               </button>
             )}
-            {consult && (
+            {(consult || unrestored) && (
               <button
                 type="button"
                 onClick={resetConversation}
@@ -288,6 +344,11 @@ export function NavigatorChat({ mode }: { mode: "public" | "patient" }) {
                     {p}
                   </button>
                 ))}
+              </div>
+            )}
+            {restoreError && unrestored && (
+              <div className="mb-3">
+                <InlineError message={restoreError} onRetry={() => restore(unrestored, storageOwner)} />
               </div>
             )}
             {error && (

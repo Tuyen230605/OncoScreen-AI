@@ -10,10 +10,10 @@ Hai agent dùng chung lõi:
 
 ```bash
 pip install -e ".[dev,local-embed,openai]"   # từ thư mục ai_core
-pytest -q                                    # 58 test: luật, RAG, guardrail, fallback, eval
+pytest -q                                    # luật, RAG, guardrail, fallback, hồi quy tiếng Việt, eval
 python -m ai_core.cli demo                   # MockAgent: Navigator + Copilot brief (ca nữ 45 tuổi)
 python -m ai_core.cli demo --case lung|red-flag|ask
-python -m ai_core.cli eval                   # golden set 20 ca (thêm --real để đo với LLM)
+python -m ai_core.cli eval                   # golden set 40 ca (thêm --real để đo với LLM)
 python scripts/ingest.py                     # nạp data/guidelines → Chroma (tuỳ chọn; thiếu thì dùng BM25)
 python -m ai_core.cli demo --real            # agent thật (cần LLM key)
 ```

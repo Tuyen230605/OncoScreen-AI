@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 from app.models import AuditLog, Consultation, PatientProfile, User
 from app.models._common import utcnow
 from app.schemas.navigator import ConsultationCreated, ConsultationOut, NavigatorMessageIn
-from app.services import agent_service, record_service
+from app.services import agent_service, appointment_service, record_service
 from app.services.record_service import ai_profile
 
 MAX_TURNS = 40
@@ -106,6 +106,7 @@ async def post_message(db: Session, c: Consultation, body: NavigatorMessageIn) -
     c.red_flag = c.red_flag or reply.red_flag.detected
     c.next_action = reply.next_action.value
     record_service.sync_consultation_events(db, c)
+    appointment_service.escalate_for_red_flag(db, c)
     db.commit()
     db.refresh(c)
     return to_out(c)

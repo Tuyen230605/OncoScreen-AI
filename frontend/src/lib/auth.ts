@@ -47,6 +47,34 @@ export function clearSession(): void {
   }
 }
 
+const SESSION_EXPIRED_EVENT = "cs:session-expired";
+
+/**
+ * Backend từ chối JWT `token` (hết hạn / không hợp lệ): xoá phiên và báo cho các component đang mở
+ * (RoleGuard chuyển về /login, Navigator chuyển sang chế độ ẩn danh). Bỏ qua nếu đã đăng nhập phiên khác.
+ */
+export function expireSession(token: string): void {
+  if (getToken() !== token) return;
+  clearSession();
+  try {
+    window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT));
+  } catch {
+    /* ngoài trình duyệt */
+  }
+}
+
+/** Đăng ký nghe sự kiện phiên hết hạn; trả hàm huỷ đăng ký (dùng trực tiếp làm cleanup của useEffect). */
+export function onSessionExpired(listener: () => void): () => void {
+  if (typeof window === "undefined") return () => undefined;
+  window.addEventListener(SESSION_EXPIRED_EVENT, listener);
+  return () => window.removeEventListener(SESSION_EXPIRED_EVENT, listener);
+}
+
+/** Trang đăng nhập, quay lại `next` (đường dẫn hiện tại) sau khi đăng nhập. */
+export function loginHref(next: string): string {
+  return `/login?next=${encodeURIComponent(next)}`;
+}
+
 export function homeFor(role: UserOut["role"]): string {
   return role === "doctor" ? "/doctor" : "/patient";
 }

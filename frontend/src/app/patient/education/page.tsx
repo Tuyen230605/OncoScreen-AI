@@ -6,6 +6,7 @@ import { errorMessage } from "@/lib/errors";
 import { DEFAULT_DISCLAIMER } from "@/lib/labels";
 import type { CancerType, EducationContent } from "@/types/api";
 import { Disclaimer } from "@/components/Disclaimer";
+import { SimpleMarkdown } from "@/components/SimpleMarkdown";
 import { SourceList } from "@/components/SourceList";
 import { InlineError, SkeletonText } from "@/components/ui";
 import { CheckCircle2, ShieldAlert } from "@/components/icons";
@@ -91,7 +92,7 @@ export default function EducationPage() {
               </ul>
             </section>
           )}
-          <p className="max-w-prose whitespace-pre-wrap text-base leading-relaxed text-slate-700">{selected.body_md}</p>
+          <SimpleMarkdown source={selected.body_md} />
           {selected.prevention_tips.length > 0 && (
             <section className="space-y-2">
               <h3 className="text-sm font-semibold text-slate-800">Phòng ngừa chủ động</h3>

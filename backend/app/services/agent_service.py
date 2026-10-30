@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from functools import partial
 from time import monotonic
 
@@ -28,6 +29,8 @@ from app.models import AgentRun
 
 __all__ = ["agent_name", "list_services"]
 
+log = logging.getLogger(__name__)
+
 
 def _agent():
     return get_agent(force_mock=settings.use_mock_agent)
@@ -41,7 +44,11 @@ async def _call(fn, *args, **kwargs):
     try:
         return await run_in_threadpool(partial(fn, *args, **kwargs))
     except AgentError as exc:
-        raise HTTPException(status.HTTP_502_BAD_GATEWAY, f"AI Core lỗi: {exc}") from exc
+        # Chi tiết lỗi (có thể chứa dữ liệu đầu vào) chỉ ghi log, không trả về client.
+        log.exception("AI Core lỗi khi gọi %s", getattr(fn, "__name__", fn))
+        raise HTTPException(
+            status.HTTP_502_BAD_GATEWAY, "Trợ lý AI tạm thời không xử lý được yêu cầu. Vui lòng thử lại sau."
+        ) from exc
 
 
 def _generator(events: list[dict]) -> str | None:

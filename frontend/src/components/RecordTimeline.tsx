@@ -25,6 +25,7 @@ function iconFor(kind: string): { icon: IconType; tone: string } {
   if (kind === "appointment.requested") return { icon: CalendarPlus, tone: "bg-amber-50 text-amber-700" };
   if (kind === "appointment.confirmed") return { icon: CalendarCheck, tone: "bg-sky-50 text-sky-700" };
   if (kind === "appointment.cancelled") return { icon: XCircle, tone: "bg-slate-100 text-slate-500" };
+  if (kind === "appointment.escalated") return { icon: AlertTriangle, tone: "bg-red-100 text-red-700" };
   if (kind === "encounter.started") return { icon: Stethoscope, tone: "bg-indigo-50 text-indigo-700" };
   if (kind === "encounter.finalized") return { icon: ClipboardCheck, tone: "bg-emerald-50 text-emerald-700" };
   if (kind === "reminder.done") return { icon: CheckCircle2, tone: "bg-emerald-50 text-emerald-700" };

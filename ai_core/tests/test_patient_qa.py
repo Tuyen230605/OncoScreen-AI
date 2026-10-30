@@ -48,3 +48,24 @@ def test_llm_answer_must_cite_plan_source(monkeypatch):
 def test_mock_mode_summarizes_plan():
     result = patient_qa.answer_question("Kế hoạch gồm gì?", PLAN, use_llm=False)
     assert "Nhũ ảnh" in result.answer and result.sources
+
+
+# --------------------------------------------------------------------------- hồi quy (review ai_core)
+
+
+def test_red_flag_question_gets_urgent_guidance_not_the_routine_plan(monkeypatch):
+    monkeypatch.setattr("ai_core.llm.get_chat_model", lambda: (_ for _ in ()).throw(AssertionError("LLM called")))
+    question = "Tôi đi ngoài ra máu 2 tuần nay, có cần nội soi sớm hơn lịch không?"
+    for plan, use_llm in ((PLAN, False), (PLAN, True), (None, True)):
+        result = patient_qa.answer_question(question, plan, use_llm=use_llm)
+        assert "khám" in result.answer and "115" in result.answer
+        assert "chu kỳ" not in result.answer and result.sources == []
+
+
+def test_llm_answer_with_treatment_advice_falls_back(monkeypatch):
+    monkeypatch.setattr(
+        "ai_core.llm.get_chat_model",
+        lambda: _Model({"answer": "Bạn nên phẫu thuật cắt bỏ để chắc chắn.", "source_ids": [SOURCE.doc_id]}),
+    )
+    result = patient_qa.answer_question("Bao lâu chụp một lần?", PLAN)
+    assert result.insufficient_evidence and "phẫu thuật" not in result.answer

@@ -12,6 +12,7 @@ python -m venv .venv && source .venv/Scripts/activate
 pip install -r requirements.txt
 pip install -e ../ai_core            # để import được package ai_core
 cp ../.env.example ../.env           # DATABASE_URL mặc định trỏ tới Postgres của docker compose
+#                                      Postgres: đặt SECRET_KEY ≥ 32 ký tự ngẫu nhiên, nếu không backend từ chối khởi động
 (cd .. && docker compose up -d)      # PostgreSQL 16; hoặc SQLite: DATABASE_URL=sqlite:///./dev.db
 uvicorn app.main:app --reload        # http://localhost:8000/docs
 pytest -q
