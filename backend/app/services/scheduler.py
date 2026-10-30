@@ -42,6 +42,15 @@ def create_reminders_for_plan(db: Session, encounter: Encounter, plan: Screening
     return out
 
 
+def _next_cycle_due(last_done: date, interval_months: int) -> date | None:
+    """Ngày hẹn chu kỳ kế tiếp; None nếu vượt phạm vi lịch (dữ liệu cũ có chu kỳ bất thường) thay vì lỗi 500."""
+    try:
+        return next_due_date(last_done, interval_months)
+    except (OverflowError, ValueError):
+        log.warning("scheduler: bỏ qua chu kỳ kế tiếp, interval_months=%s vượt phạm vi lịch", interval_months)
+        return None
+
+
 def list_for_patient(db: Session, patient_id: str, status_: str | None) -> list[Reminder]:
     q = select(Reminder).where(Reminder.patient_id == patient_id)
     if status_:
@@ -81,8 +90,8 @@ def complete(db: Session, reminder_id: str, user: User, completed_at: date | Non
     if encounter and encounter.final_plan:
         plan = ScreeningPlan.model_validate(encounter.final_plan)
         matching = [item for item in plan.items if item.cancer_type.value == r.cancer_type and item.method == r.method]
-        if len(matching) == 1:
-            due = next_due_date(actual_date, matching[0].interval_months)
+        due = _next_cycle_due(actual_date, matching[0].interval_months) if len(matching) == 1 else None
+        if due is not None:
             exists = db.scalar(
                 select(Reminder).where(
                     Reminder.encounter_id == r.encounter_id,

@@ -16,11 +16,16 @@ from app.schemas.record import PatientListItem, PatientRecordOut
 from app.services import appointment_service, encounter_service, metrics_service, record_service, scheduler
 
 router = APIRouter()
+MAX_PAGE_SIZE = 100
 
 
 @router.get("/appointments", response_model=Page[AppointmentOut])
 def appointments(
-    _: Doctor, db: DB, status_: str | None = Query(None, alias="status"), page: int = 1, page_size: int = 20
+    _: Doctor,
+    db: DB,
+    status_: str | None = Query(None, alias="status"),
+    page: int = Query(1, ge=1),
+    page_size: int = Query(20, ge=1, le=MAX_PAGE_SIZE),
 ):
     return appointment_service.list_for_doctor(db, status_, page, page_size)
 
@@ -95,7 +100,13 @@ def metrics(_: Doctor, db: DB):
 
 
 @router.get("/agent-runs", response_model=Page[AgentRunOut])
-def agent_runs(_: Doctor, db: DB, agent: str | None = None, page: int = 1, page_size: int = 20):
+def agent_runs(
+    _: Doctor,
+    db: DB,
+    agent: str | None = None,
+    page: int = Query(1, ge=1),
+    page_size: int = Query(20, ge=1, le=MAX_PAGE_SIZE),
+):
     return metrics_service.agent_runs(db, agent, page, page_size)
 
 

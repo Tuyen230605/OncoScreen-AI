@@ -23,7 +23,7 @@ def upsert_profile(body: PatientProfileIn, user: Patient, db: DB):
     profile.age = body.age
     profile.gender = body.gender.value
     profile.genetics_history = body.genetics_history
-    profile.lifestyle = body.lifestyle
+    profile.lifestyle = body.lifestyle.model_dump(exclude_none=True)
     db.add(profile)
     record_service.add_event(db, user.id, "profile.updated", "Bệnh nhân cập nhật hồ sơ sức khoẻ.", actor_id=user.id)
     db.commit()

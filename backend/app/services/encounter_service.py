@@ -54,6 +54,12 @@ def _get_or_404(db: Session, encounter_id: str) -> Encounter:
     return e
 
 
+def _require_owner(e: Encounter, doctor: User) -> None:
+    """HITL: chỉ bác sĩ đã bắt đầu lần khám (đã đọc brief) mới được sinh lại brief hay kết thúc khám."""
+    if e.doctor_id != doctor.id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "Chỉ bác sĩ phụ trách lần khám này mới được thực hiện")
+
+
 async def _generate_brief(db: Session, e: Encounter, a: Appointment) -> None:
     patient = db.get(User, e.patient_id)
     reason = a.reason or services_by_code().get(a.service_code, {}).get("name")
@@ -116,6 +122,7 @@ def get_for(db: Session, encounter_id: str, viewer: User) -> EncounterOut:
 
 async def regenerate_brief(db: Session, doctor: User, encounter_id: str) -> EncounterOut:
     e = _get_or_404(db, encounter_id)
+    _require_owner(e, doctor)
     if e.status == "finalized":
         raise HTTPException(status.HTTP_409_CONFLICT, "Lần khám đã kết thúc")
     await _generate_brief(db, e, db.get(Appointment, e.appointment_id))
@@ -146,8 +153,14 @@ async def ask_copilot(db: Session, doctor: User, encounter_id: str, body: Copilo
 
 def finalize(db: Session, doctor: User, encounter_id: str, body: FinalizeEncounterIn) -> EncounterOut:
     e = _get_or_404(db, encounter_id)
+    _require_owner(e, doctor)
     if e.status == "finalized":
         raise HTTPException(status.HTTP_409_CONFLICT, "Lần khám đã kết thúc")
+    a = db.get(Appointment, e.appointment_id)
+    if a is None or a.status != "confirmed":
+        raise HTTPException(
+            status.HTTP_409_CONFLICT, f"Lịch hẹn đang ở trạng thái {a.status if a else 'không tồn tại'}"
+        )
     explicit_no_plan = "final_plan" in body.model_fields_set and body.final_plan is None
     if body.final_plan is not None:
         final = body.final_plan
@@ -161,7 +174,7 @@ def finalize(db: Session, doctor: User, encounter_id: str, body: FinalizeEncount
         except GuardrailViolation as exc:
             raise HTTPException(status.HTTP_400_BAD_REQUEST, f"Kế hoạch vi phạm guardrail: {exc}") from exc
     final_json = final.model_dump(mode="json") if final else None
-    if body.final_plan is not None and final_json != e.draft_plan:
+    if final_json != e.draft_plan:  # R5: mọi khác biệt so với bản nháp (kể cả bỏ bản nháp) đều được kiểm toán
         db.add(
             AuditLog(
                 actor_id=doctor.id,
@@ -176,12 +189,9 @@ def finalize(db: Session, doctor: User, encounter_id: str, body: FinalizeEncount
     e.conclusion = body.conclusion
     e.clinical_notes = body.clinical_notes
     e.status = "finalized"
-    e.doctor_id = doctor.id
     e.finalized_at = datetime.now(UTC)
     reminders = scheduler.create_reminders_for_plan(db, e, final) if final else []
-    a = db.get(Appointment, e.appointment_id)
-    if a:
-        a.status = "completed"
+    a.status = "completed"
     cancer_types = sorted({item.cancer_type.value for item in final.items}) if final else []
     plan_text = (
         "Kế hoạch theo dõi: " + "; ".join(f"{CANCER_LABEL_VI[i.cancer_type]} — {i.method}" for i in final.items) + "."
@@ -224,4 +234,4 @@ async def ask_patient_question(db: Session, patient: User, encounter_id: str, qu
         insufficient_evidence=answer.insufficient_evidence,
     )
     db.commit()
-    return answer
+    return answer.model_copy(update={"trace_events": []})  # R4: trace chỉ lưu ở agent_runs, không lộ cho bệnh nhân

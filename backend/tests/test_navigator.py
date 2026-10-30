@@ -95,3 +95,32 @@ def test_logged_in_patient_consultation_is_linked_immediately(client):
     cid, _ = start_consultation(client, auth)
     body = say(client, cid, auth, "Tầm soát ung thư là gì?")
     assert body["linked"] is True
+
+
+def test_negative_or_non_finite_number_answers_are_rejected(client):
+    cid, headers = start_consultation(client)
+    url = f"{API}/navigator/consultations/{cid}/messages"
+    for value in (-3, "-1,5", "nan", "inf"):
+        r = client.post(url, json={"answers": [{"question_id": "pack_years", "value": value}]}, headers=headers)
+        assert r.status_code == 422, value
+    assert client.post(url, json={"answers": [{"question_id": "age", "value": -1}]}, headers=headers).status_code == 422
+    ok = say(client, cid, headers, answers=[{"question_id": "pack_years", "value": "không rõ"}])
+    assert ok["intake"]["pack_years"] is None
+
+
+def test_agent_error_detail_is_not_leaked(client, monkeypatch):
+    from ai_core.api import AgentError
+
+    from app.services import agent_service
+
+    class Broken:
+        name = "mock"
+
+        def navigate(self, **_):
+            raise AgentError("validation error for IntakeProfile input_value=-3.0")
+
+    monkeypatch.setattr(agent_service, "_agent", lambda: Broken())
+    cid, headers = start_consultation(client)
+    r = client.post(f"{API}/navigator/consultations/{cid}/messages", json={"message": "xin chào"}, headers=headers)
+    assert r.status_code == 502
+    assert "IntakeProfile" not in r.json()["detail"] and "input_value" not in r.json()["detail"]

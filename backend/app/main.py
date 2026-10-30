@@ -15,6 +15,7 @@ from app.services import scheduler
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
+    settings.check_secret_key()
     if settings.is_sqlite:
         init_db()
     scheduler.start()

@@ -152,3 +152,138 @@ def test_booking_validation(client):
     assert client.post(f"{API}/appointments", json=ok, headers=auth).status_code == 409
     assert client.post(f"{API}/appointments/{ids[0]}/cancel", headers=auth).json()["status"] == "cancelled"
     assert client.post(f"{API}/appointments/{ids[0]}/cancel", headers=auth).status_code == 409
+
+
+def _started_encounter(client, doctor, email="lan@test.vn"):
+    patient, appt = _patient_with_booking(client, email=email)
+    enc = client.post(f"{API}/doctor/appointments/{appt['id']}/start", headers=doctor).json()
+    return patient, appt, enc
+
+
+def _audit_actions(action: str) -> list:
+    from app.database import SessionLocal
+    from app.models import AuditLog
+
+    with SessionLocal() as db:
+        return db.query(AuditLog).filter(AuditLog.action == action).all()
+
+
+def test_red_flag_after_booking_escalates_open_appointment(client, doctor):
+    """R2: dấu hiệu cảnh báo xuất hiện SAU khi đặt lịch từ cùng phiên → lịch đang mở chuyển sang khẩn."""
+    patient, appt = _patient_with_booking(client)
+    assert appt["priority"] == "routine"
+    reply = say(client, appt["consultation_id"], patient, "Em sờ thấy khối cứng ở vú")["last_reply"]
+    assert reply["next_action"] == "urgent_care"
+    queue = client.get(f"{API}/doctor/appointments", headers=doctor).json()["items"]
+    assert [(a["id"], a["priority"]) for a in queue] == [(appt["id"], "urgent")]
+    kinds = {e["kind"] for e in client.get(f"{API}/patients/me/record", headers=patient).json()["timeline"]}
+    assert "appointment.escalated" in kinds
+
+
+def test_edited_plan_guardrail_covers_method_and_sources(client, doctor):
+    _, _, enc = _started_encounter(client, doctor)
+    url = f"{API}/doctor/encounters/{enc['id']}/finalize"
+    diag = enc["draft_plan"]
+    diag["items"][0]["method"] = "Nhũ ảnh — bệnh nhân đã mắc ung thư vú"
+    r = client.post(url, json={"conclusion": "ok", "final_plan": diag}, headers=doctor)
+    assert r.status_code == 400 and "method" in r.json()["detail"]
+    fake = client.get(f"{API}/doctor/encounters/{enc['id']}", headers=doctor).json()["draft_plan"]
+    fake["items"][0]["sources"] = [{"doc_id": "made-up", "title": "x", "excerpt": "y"}]
+    r = client.post(url, json={"conclusion": "ok", "final_plan": fake}, headers=doctor)
+    assert r.status_code == 400 and "kho guideline" in r.json()["detail"]
+
+
+def test_cannot_cancel_appointment_once_encounter_started(client, doctor):
+    patient, appt, enc = _started_encounter(client, doctor)
+    assert client.post(f"{API}/appointments/{appt['id']}/cancel", headers=patient).status_code == 409
+    done = client.post(f"{API}/doctor/encounters/{enc['id']}/finalize", json={"conclusion": "ok"}, headers=doctor)
+    assert done.status_code == 200
+    assert client.get(f"{API}/appointments", headers=patient).json()[0]["status"] == "completed"
+
+
+def test_finalize_requires_confirmed_appointment(client, doctor):
+    from app.database import SessionLocal
+    from app.models import Appointment
+
+    _, appt, enc = _started_encounter(client, doctor)
+    with SessionLocal() as db:  # trạng thái không nhất quán (dữ liệu cũ / sửa tay)
+        db.get(Appointment, appt["id"]).status = "cancelled"
+        db.commit()
+    r = client.post(f"{API}/doctor/encounters/{enc['id']}/finalize", json={"conclusion": "ok"}, headers=doctor)
+    assert r.status_code == 409
+    assert client.get(f"{API}/doctor/encounters/{enc['id']}", headers=doctor).json()["status"] == "in_progress"
+
+
+def test_only_starting_doctor_can_regenerate_or_finalize(client, doctor):
+    _, _, enc = _started_encounter(client, doctor)
+    other = register_and_login(client, "doc2@test.vn", "doctor")
+    assert client.post(f"{API}/doctor/encounters/{enc['id']}/brief", headers=other).status_code == 403
+    url = f"{API}/doctor/encounters/{enc['id']}/finalize"
+    assert client.post(url, json={"conclusion": "ok"}, headers=other).status_code == 403
+    done = client.post(url, json={"conclusion": "ok"}, headers=doctor)
+    assert done.status_code == 200 and done.json()["doctor"]["email"] == "doc@test.vn"
+
+
+def test_discarding_draft_is_audited_but_unchanged_draft_is_not(client, doctor):
+    _, _, enc = _started_encounter(client, doctor)
+    r = client.post(
+        f"{API}/doctor/encounters/{enc['id']}/finalize", json={"conclusion": "ok", "use_draft": False}, headers=doctor
+    )
+    assert r.status_code == 200 and r.json()["final_plan"] is None
+    [audit] = _audit_actions("plan.edit")
+    assert audit.before == enc["draft_plan"] and audit.after is None
+    assert client.get(f"{API}/doctor/metrics", headers=doctor).json()["plans_edited_by_doctor"] == 1
+
+    _, _, kept = _started_encounter(client, doctor, email="kept@test.vn")
+    r = client.post(f"{API}/doctor/encounters/{kept['id']}/finalize", json={"conclusion": "ok"}, headers=doctor)
+    assert r.status_code == 200 and r.json()["final_plan"] == kept["draft_plan"]
+    assert len(_audit_actions("plan.edit")) == 1  # duyệt nguyên bản nháp không phải là sửa
+
+
+def test_interval_cap_and_next_cycle_overflow_is_safe(client, doctor):
+    from app.database import SessionLocal
+    from app.models import Encounter
+
+    patient, _, enc = _started_encounter(client, doctor)
+    url = f"{API}/doctor/encounters/{enc['id']}/finalize"
+    plan = enc["draft_plan"]
+    plan["items"][0]["next_due"] = date.today().isoformat()
+    plan["items"][0]["interval_months"] = 1_000_000
+    assert client.post(url, json={"conclusion": "ok", "final_plan": plan}, headers=doctor).status_code == 422
+    plan["items"][0]["interval_months"] = 12
+    assert client.post(url, json={"conclusion": "ok", "final_plan": plan}, headers=doctor).status_code == 200
+    with SessionLocal() as db:  # dữ liệu cũ (trước khi có giới hạn) với chu kỳ vượt phạm vi lịch
+        e = db.get(Encounter, enc["id"])
+        e.final_plan = {**e.final_plan, "items": [{**e.final_plan["items"][0], "interval_months": 1_000_000}]}
+        db.commit()
+    reminder = client.get(f"{API}/reminders", headers=patient).json()[0]
+    r = client.post(f"{API}/reminders/{reminder['id']}/complete", json={}, headers=patient)
+    assert r.status_code == 200 and r.json()["status"] == "done"
+    assert len(client.get(f"{API}/reminders", headers=patient).json()) == 1  # không sinh chu kỳ kế tiếp
+
+
+def test_patient_question_never_returns_trace(client, doctor, monkeypatch):
+    from ai_core.schemas import QuestionAnswer
+
+    from app.services import agent_service
+
+    patient, _, enc = _started_encounter(client, doctor)
+    client.post(f"{API}/doctor/encounters/{enc['id']}/finalize", json={"conclusion": "ok"}, headers=doctor)
+
+    async def answer_with_trace(question, plan):
+        return QuestionAnswer(
+            answer="a", disclaimer="d", trace_id="t", trace_events=[{"node": "respond", "status": "ok"}]
+        )
+
+    monkeypatch.setattr(agent_service, "answer_question", answer_with_trace)
+    r = client.post(f"{API}/encounters/{enc['id']}/questions", json={"question": "Kế hoạch gồm gì?"}, headers=patient)
+    assert r.status_code == 200 and r.json()["trace_events"] == []
+    runs = client.get(f"{API}/doctor/agent-runs?agent=patient_qa", headers=doctor).json()["items"]
+    assert runs[0]["events"] == [{"node": "respond", "status": "ok"}]  # trace vẫn lưu cho bác sĩ
+
+
+def test_pagination_bounds(client, doctor):
+    for query in ("page=0", "page=-1", "page_size=0", "page_size=101"):
+        assert client.get(f"{API}/doctor/appointments?{query}", headers=doctor).status_code == 422
+        assert client.get(f"{API}/doctor/agent-runs?{query}", headers=doctor).status_code == 422
+    assert client.get(f"{API}/doctor/appointments?page=1&page_size=100", headers=doctor).status_code == 200
