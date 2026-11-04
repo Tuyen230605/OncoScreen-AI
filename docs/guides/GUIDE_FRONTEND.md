@@ -14,6 +14,18 @@ npm run dev                       # http://localhost:3000
 ```
 (Khung chỉ có `package.json` tối thiểu — nếu muốn khởi tạo lại bằng `npx create-next-app@latest . --ts --tailwind --app --src-dir --eslint`, giữ nguyên `src/types`, `src/lib`, `src/mocks`.)
 
+## 0.1 E2E (Puppeteer) — 4 kịch bản demo
+
+`npm run e2e` tự dựng backend (SQLite tạm + seed + `USE_MOCK_AGENT=true`, cổng 8100) và frontend (build riêng vào `.next-e2e`, cổng 3100),
+chạy 4 kịch bản trong `docs/02_BUSINESS_FLOW.md` qua trình duyệt headless rồi dọn dẹp. Kịch bản nằm ở `e2e/scenarios.mjs`; ngoài luồng
+nghiệp vụ còn kiểm tra quy tắc hiển thị an toàn: disclaimer (S6), red-flag không có gợi ý/kế hoạch (S3), bệnh nhân không thấy brief /
+ghi chú nội bộ (S4), từ chối diễn giải kết quả (S1). Khi fail: screenshot ở `e2e/artifacts/`.
+
+- Python dùng `.venv` ở gốc repo nếu có (ghi đè: `E2E_PYTHON`). `E2E_SKIP_BUILD=1` dùng lại bản build cũ; `E2E_ONLY=1,3` chạy một phần;
+  `E2E_HEADFUL=1` mở trình duyệt; `E2E_BASE_URL=http://localhost:3000` chạy trên hệ thống đang bật sẵn (phải seed + MockAgent).
+- Đổi text/nhãn UI mà kịch bản dựa vào (vd. "Tạo tài khoản để đặt lịch", "Duyệt và hoàn tất lượt khám", `#plan-next-due-0`) → sửa kèm `e2e/`.
+- CI chạy job `e2e` sau `python` và `frontend`.
+
 ## 1. Màn hình cần làm
 
 ### Chung
