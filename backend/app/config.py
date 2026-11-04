@@ -20,6 +20,9 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:3000"
     use_mock_agent: bool = True
     reminder_tick_seconds: int = 60
+    # Giới hạn tạo phiên tư vấn Navigator (endpoint công khai) theo IP / tài khoản; 0 = tắt.
+    consult_create_limit: int = 10
+    consult_create_window_seconds: int = 600
 
     @property
     def cors_origin_list(self) -> list[str]:

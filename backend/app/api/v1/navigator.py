@@ -1,7 +1,7 @@
 """Navigator công khai: người dùng chưa đăng nhập vẫn tư vấn được; token phiên thay cho tài khoản."""
 
 from ai_core.schemas import CancerType, EducationContent, Questionnaire
-from fastapi import APIRouter, status
+from fastapi import APIRouter, Request, status
 
 from app.api.deps import DB, ConsultToken, OptionalUser, Patient
 from app.schemas.navigator import ConsultationCreated, ConsultationOut, NavigatorMessageIn, ServiceOut
@@ -17,7 +17,10 @@ def questionnaire():
 
 
 @router.post("/consultations", response_model=ConsultationCreated, status_code=status.HTTP_201_CREATED)
-def create_consultation(db: DB, user: OptionalUser):
+def create_consultation(request: Request, db: DB, user: OptionalUser):
+    # Theo tài khoản nếu đăng nhập, ngược lại theo IP kết nối (không tin X-Forwarded-For: client tự đặt được).
+    key = f"user:{user.id}" if user else f"ip:{request.client.host if request.client else 'unknown'}"
+    navigator_service.check_create_rate(key)
     return navigator_service.create(db, user)
 
 

@@ -45,6 +45,7 @@ Quy tắc:
 - `next_action`: `continue_chat` → tiếp tục hỏi; `suggest_booking` → FE hiển thị CTA "Tạo tài khoản để đặt lịch" với `booking_hint.service_codes`; `urgent_care` → FE hiển thị cảnh báo đỏ + CTA đặt lịch ưu tiên + gọi 115 khi nặng.
 - Red-flag đã ghi nhận trong phiên không bị gỡ ở các lượt sau (fail-safe).
 - Tối đa 40 lượt/phiên (429 khi vượt) để hạn chế lạm dụng.
+- `POST /navigator/consultations` giới hạn `CONSULT_CREATE_LIMIT` phiên / `CONSULT_CREATE_WINDOW_SECONDS` giây (mặc định 10 / 600) theo tài khoản nếu có Bearer, ngược lại theo IP kết nối; vượt → `429` + header `Retry-After` (giây). Bộ đếm nằm trong bộ nhớ tiến trình (một worker).
 
 ## 2. Auth
 

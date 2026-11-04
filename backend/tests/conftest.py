@@ -19,6 +19,9 @@ API = "/api/v1"
 
 @pytest.fixture(autouse=True)
 def _fresh_db():
+    from app.services.navigator_service import create_limiter
+
+    create_limiter.reset()  # limiter nằm trong bộ nhớ tiến trình: mỗi test bắt đầu với bộ đếm sạch
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     yield
