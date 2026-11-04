@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import UTC, datetime
 
 from ai_core.api import get_agent
@@ -52,7 +53,15 @@ def demo(real: bool, case: str) -> None:
     print(json.dumps(agent.build_brief(record).model_dump(mode="json"), ensure_ascii=False, indent=2))
 
 
+def ensure_utf8_output() -> None:
+    """Console Windows mặc định là cp1252/cp437 → in tiếng Việt sẽ UnicodeEncodeError."""
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure") and (stream.encoding or "").lower().replace("-", "") != "utf8":
+            stream.reconfigure(encoding="utf-8")
+
+
 if __name__ == "__main__":
+    ensure_utf8_output()
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("demo")
