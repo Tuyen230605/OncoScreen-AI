@@ -34,15 +34,30 @@ def rrf(rankings: list[list[str]], k: int = RRF_K) -> dict[str, float]:
     return fused
 
 
+def _age_applies(meta: dict, age: int) -> bool:
+    return int(meta.get("min_age", 0)) <= age <= int(meta.get("max_age", 120))
+
+
+def excluded_by_age(doc_id: str, age: int) -> bool:
+    """True nếu guideline `doc_id` tồn tại nhưng nằm ngoài khoảng tuổi áp dụng."""
+    meta = next((c.meta for c in load_chunks() if c.doc_id == doc_id), None)
+    return meta is not None and not _age_applies(meta, age)
+
+
 def _matches(chunk: Chunk, gender: Gender | None, age: int | None, cancer_types: set[CancerType] | None) -> bool:
     meta = chunk.meta
     if gender is not None and meta.get("gender") not in {gender.value, "any"}:
         return False
-    if age is not None and (int(meta.get("min_age", 0)) > age or int(meta.get("max_age", 120)) < age):
+    if age is not None and not _age_applies(meta, age):
         return False
     if cancer_types and meta.get("cancer_type") not in {c.value for c in cancer_types} | {"other"}:
         return False
     return True
+
+
+def gender_filter(gender: Gender | None) -> Gender | None:
+    """Chỉ lọc theo giới khi biết rõ nam/nữ; `other` không loại nguồn nào (tránh bỏ sót nguồn áp dụng được)."""
+    return gender if gender in {Gender.female, Gender.male} else None
 
 
 def _dense_ids(query: str, gender: Gender | None, n: int) -> list[str]:

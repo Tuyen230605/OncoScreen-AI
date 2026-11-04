@@ -30,7 +30,7 @@ from ai_core.guardrails.safety import (
 )
 from ai_core.observability import new_trace_id, traced
 from ai_core.prompts import NAVIGATOR_PROMPT, NAVIGATOR_SYSTEM_PROMPT
-from ai_core.rag.retriever import retrieve
+from ai_core.rag.retriever import excluded_by_age, gender_filter, retrieve
 from ai_core.schemas import (
     Answer,
     BookingHint,
@@ -246,10 +246,28 @@ class NavigatorAgent:
 
     def _retrieve(self, state: NavigatorState) -> dict:
         topics = " ".join(LABEL_VI[s.cancer_type] for s in state.get("suggestions", []))
-        result = retrieve(f"{state['message']} {topics}".strip(), dense=self.dense)
+        query = f"{state['message']} {topics}".strip()
+        intake = state["intake"]
+        gender = gender_filter(intake.gender)
+        # Lọc metadata trước (docs/05_AGENT_RELIABILITY.md §3.3): giới ∈ {g, any}, min_age ≤ tuổi ≤ max_age.
+        result = retrieve(query, gender=gender, age=intake.age, dense=self.dense)
+        age_filter = "applied" if intake.age is not None else "unknown"
+        if intake.age is not None:
+            # Câu hỏi nhắm vào một guideline chưa áp dụng cho tuổi này ("30 tuổi, bao giờ nên nội soi đại tràng?")
+            # → dùng guideline đó để trả lời mốc tuổi; vẫn giữ lọc giới. Con số tư vấn vẫn do luật sinh (S2).
+            broad = retrieve(query, gender=gender, dense=self.dense)
+            top = broad.sources[0].doc_id if broad.sources else None
+            if top and not top.startswith("other_") and excluded_by_age(top, intake.age):
+                result, age_filter = broad, "relaxed"
         return {
             "sources": result.sources,
-            "trace_attrs": {"source_count": len(result.sources), "mode": result.mode, "dense": result.dense_status},
+            "trace_attrs": {
+                "source_count": len(result.sources),
+                "mode": result.mode,
+                "dense": result.dense_status,
+                "gender_filter": gender is not None,
+                "age_filter": age_filter,
+            },
         }
 
     def _respond(self, state: NavigatorState) -> dict:

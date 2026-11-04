@@ -30,7 +30,7 @@ from ai_core.guardrails.safety import (
 from ai_core.observability import new_trace_id, traced
 from ai_core.prompts import COPILOT_BRIEF_PROMPT, COPILOT_QA_PROMPT, COPILOT_SYSTEM_PROMPT
 from ai_core.rag.lexical import BM25, tokenize
-from ai_core.rag.retriever import retrieve
+from ai_core.rag.retriever import gender_filter, retrieve
 from ai_core.schemas import (
     BriefFact,
     CancerType,
@@ -343,7 +343,10 @@ class ClinicalCopilot:
                 insufficient_evidence=True,
                 trace_events=[{"node": "input_guard", "status": "ok", "out_of_scope": True}],
             )
-        guideline = retrieve(question, dense=self.dense).sources
+        # Lọc theo giới của bệnh nhân (như _retrieve); không lọc tuổi vì bác sĩ hay hỏi mốc tuổi sắp tới.
+        from_profile = intake_tool.from_profile(record.profile) if record.profile else None
+        gender = gender_filter(intake_tool.merge(from_profile, record.intake).gender)
+        guideline = retrieve(question, gender=gender, dense=self.dense).sources
         candidates = guideline + record_sources(record)
         scores = BM25([tokenize(f"{s.title} {s.section} {s.excerpt}") for s in candidates]).scores(tokenize(question))
         ranked = [s for s, sc in sorted(zip(candidates, scores, strict=True), key=lambda x: -x[1]) if sc > 0][:6]
