@@ -214,3 +214,67 @@ def test_relative_smoking_does_not_trigger_lung_screening():
         history=[],
     )
     assert "lung" not in {s.cancer_type.value for s in reply.suggestions}
+
+
+# --------------------------------------------------------------------------- lọc metadata khi truy xuất (§3.3)
+
+FEMALE_ONLY_DOCS = {"breast_uspstf_2024", "cervical_uspstf_2018", "cervical_who_2021"}
+
+
+def _retrieve_state(message: str, **intake) -> dict:
+    return {"message": message, "intake": IntakeProfile(**intake), "suggestions": []}
+
+
+def test_retrieve_for_male_never_returns_female_only_guidelines():
+    agent = NavigatorAgent(use_llm=False, dense=False)
+    message = "Tôi nên tầm soát ung thư gì? chụp nhũ ảnh, phết tế bào cổ tử cung"
+    out = agent._retrieve(_retrieve_state(message, gender="male"))
+    doc_ids = {s.doc_id for s in out["sources"]}
+    assert doc_ids and not doc_ids & FEMALE_ONLY_DOCS
+    assert out["trace_attrs"]["gender_filter"] is True
+
+
+def test_retrieve_without_gender_keeps_all_guidelines():
+    agent = NavigatorAgent(use_llm=False, dense=False)
+    out = agent._retrieve(_retrieve_state("chụp nhũ ảnh bao lâu một lần"))
+    assert out["sources"][0].doc_id == "breast_uspstf_2024"
+    assert out["trace_attrs"]["gender_filter"] is False and out["trace_attrs"]["age_filter"] == "unknown"
+
+
+def test_retrieve_other_gender_is_not_filtered():
+    agent = NavigatorAgent(use_llm=False, dense=False)
+    out = agent._retrieve(_retrieve_state("chụp nhũ ảnh bao lâu một lần", gender="other"))
+    assert out["sources"][0].doc_id == "breast_uspstf_2024" and out["trace_attrs"]["gender_filter"] is False
+
+
+def test_retrieve_filters_by_age_for_general_questions():
+    agent = NavigatorAgent(use_llm=False, dense=False)
+    out = agent._retrieve(_retrieve_state("Tôi nên tầm soát những gì?", age=30, gender="male"))
+    doc_ids = {s.doc_id for s in out["sources"]}
+    # 30 tuổi: guideline phổi (50–80), đại trực tràng (45–75), tiền liệt tuyến (55–69) không áp dụng.
+    assert doc_ids and not doc_ids & {"lung_uspstf_2021", "colorectal_uspstf_2021", "prostate_uspstf_2018"}
+    assert out["trace_attrs"]["age_filter"] == "applied"
+
+
+def test_retrieve_keeps_age_filter_when_guideline_applies():
+    agent = NavigatorAgent(use_llm=False, dense=False)
+    out = agent._retrieve(_retrieve_state("tầm soát ung thư phổi chụp CT liều thấp", age=60, gender="male"))
+    assert out["sources"][0].doc_id == "lung_uspstf_2021" and out["trace_attrs"]["age_filter"] == "applied"
+
+
+def test_retrieve_relaxes_age_for_question_about_future_eligibility():
+    agent = NavigatorAgent(use_llm=False, dense=False)
+    out = agent._retrieve(_retrieve_state("Bao giờ tôi nên nội soi đại tràng tầm soát?", age=30, gender="male"))
+    assert out["sources"][0].doc_id == "colorectal_uspstf_2021"
+    assert out["trace_attrs"]["age_filter"] == "relaxed"
+    # Nới lọc tuổi không bao giờ nới lọc giới.
+    assert not {s.doc_id for s in out["sources"]} & FEMALE_ONLY_DOCS
+
+
+def test_navigate_trace_records_metadata_filter():
+    reply = NavigatorAgent(use_llm=False, dense=False).run(
+        message="Tôi là nam 55 tuổi, nên tầm soát gì?", answers=[], intake=IntakeProfile(), history=[]
+    )
+    event = next(e for e in reply.trace_events if e["node"] == "retrieve")
+    assert event["gender_filter"] is True and event["age_filter"] == "applied"
+    assert not {s.doc_id for s in reply.sources} & FEMALE_ONLY_DOCS

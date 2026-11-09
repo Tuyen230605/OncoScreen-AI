@@ -33,3 +33,7 @@ backend/dev.db
 .idea/
 .DS_Store
 Thumbs.db
+
+# E2E (frontend/e2e)
+frontend/.next-e2e/
+frontend/e2e/artifacts/

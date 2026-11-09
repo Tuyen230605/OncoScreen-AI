@@ -41,6 +41,8 @@ Tin nhắn ──►  out-of-scope · injection · RED-FLAG ──►  luật t�
 
 ### 3.3 Retrieval lai (`rag/retriever.py`, `rag/lexical.py`)
 1. **Lọc metadata trước**: giới (`gender ∈ {g, any}`), tuổi (`min_age ≤ age ≤ max_age`), loại ung thư (Copilot).
+   - Navigator: lọc giới (chỉ khi là nam/nữ; `other` không lọc) và tuổi. Nếu tài liệu liên quan nhất khi chỉ lọc giới là guideline của một loại ung thư cụ thể bị loại *chỉ vì tuổi* (vd. "30 tuổi, bao giờ nên nội soi đại tràng?"), nới lọc tuổi để trả lời mốc tuổi, vẫn giữ lọc giới; trace ghi `gender_filter`, `age_filter = applied | relaxed | unknown`.
+   - Copilot `ask()`: lọc giới theo hồ sơ bệnh nhân, không lọc tuổi (bác sĩ hay hỏi mốc tuổi sắp tới).
 2. **Lexical BM25** thuần Python: token = âm tiết **bỏ dấu** + **bigram** (bắt cụm "nhũ ảnh", "cổ tử cung"), bỏ stopword tiếng Việt.
 3. **Dense**: Chroma + `paraphrase-multilingual-MiniLM-L12-v2` (đa ngôn ngữ, chạy local).
 4. **Reciprocal Rank Fusion** (k = 60) gộp hai danh sách; khử trùng theo `(doc_id, section)`; top-k = 6.

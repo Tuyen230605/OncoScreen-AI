@@ -142,3 +142,11 @@ def test_copilot_qa_insufficient_evidence_does_not_return_llm_text(monkeypatch):
     )
     answer = ClinicalCopilot(use_llm=True, dense=False).ask("Guideline nhũ ảnh cho phụ nữ 45 tuổi?", _record(), [])
     assert answer.insufficient_evidence and text not in answer.answer
+
+
+def test_copilot_qa_filters_guidelines_by_patient_gender():
+    male = _record(profile=PatientProfile(age=58, gender=Gender.male), reason_for_visit="Tầm soát")
+    answer = ClinicalCopilot(use_llm=False, dense=False).ask("Guideline chụp nhũ ảnh và phết cổ tử cung?", male, [])
+    assert not {s.doc_id for s in answer.sources} & {"breast_uspstf_2024", "cervical_uspstf_2018", "cervical_who_2021"}
+    female = ClinicalCopilot(use_llm=False, dense=False).ask("Guideline nhũ ảnh cho phụ nữ 45 tuổi?", _record(), [])
+    assert "breast_uspstf_2024" in {s.doc_id for s in female.sources}

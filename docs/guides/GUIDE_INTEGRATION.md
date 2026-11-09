@@ -2,11 +2,12 @@
 
 AI Core là package Python được backend gọi trực tiếp, không có server/port riêng. Frontend gọi REST API của backend. `USE_MOCK_AGENT=true` chạy cùng pipeline (luật, red-flag, BM25, guardrail) nhưng không gọi LLM; `false` bật LLM. LLM lỗi hoặc bị guardrail chặn → agent tự trả câu trả lời mẫu xác định (trace ghi `template_fallback`).
 
-## Khởi động (Linux/macOS, từ root repo)
+## Khởi động (từ root repo; venv ở `.venv/` gốc repo — lệnh Windows xem `README.md` §"Chạy dự án local")
 
 ```bash
-# Terminal 1: kích hoạt venv hiện có hoặc tạo mới
-if [ -x ai_core/.venv/bin/python ]; then source ai_core/.venv/bin/activate; else python3 -m venv .venv && source .venv/bin/activate; fi
+# Terminal 1: tạo venv nếu chưa có, rồi kích hoạt (Git Bash trên Windows: .venv/Scripts/activate)
+[ -d .venv ] || python3 -m venv .venv
+source .venv/bin/activate
 python -m pip install -r requirements.txt
 [ -f .env ] || cp .env.example .env
 

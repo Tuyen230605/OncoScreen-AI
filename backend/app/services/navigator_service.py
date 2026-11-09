@@ -12,6 +12,8 @@ from ai_core.schemas import ChatTurn, IntakeProfile, NavigatorReply
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
+from app.config import settings
+from app.core.rate_limit import SlidingWindowLimiter, retry_after_header
 from app.models import AuditLog, Consultation, PatientProfile, User
 from app.models._common import utcnow
 from app.schemas.navigator import ConsultationCreated, ConsultationOut, NavigatorMessageIn
@@ -19,6 +21,18 @@ from app.services import agent_service, appointment_service, record_service
 from app.services.record_service import ai_profile
 
 MAX_TURNS = 40
+create_limiter = SlidingWindowLimiter()
+
+
+def check_create_rate(key: str) -> None:
+    """Chặn tạo hàng loạt phiên (mỗi phiên mở 40 lượt gọi agent → tốn chi phí LLM khi bật agent thật)."""
+    wait = create_limiter.hit(key, settings.consult_create_limit, settings.consult_create_window_seconds)
+    if wait is not None:
+        raise HTTPException(
+            status.HTTP_429_TOO_MANY_REQUESTS,
+            "Bạn đã tạo quá nhiều phiên tư vấn trong thời gian ngắn; vui lòng thử lại sau ít phút.",
+            headers=retry_after_header(wait),
+        )
 
 
 def _hash(token: str) -> str:
